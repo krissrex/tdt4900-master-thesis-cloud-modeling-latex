@@ -1,0 +1,72 @@
+\documentclass[american,titlepage,oneside]{ntnuthesis}
+
+\input{listings-settings.tex} % Define new programming languages
+
+% Number subsubsections
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+% Research questions
+\newlist{questions}{enumerate}{2}
+\setlist[questions,1]{label={\textbf{RQ\arabic*.}},ref={\arabic*},labelindent=\parindent,leftmargin=*,}
+\setlist[questions,2]{label={--- \textbf{RQ\thequestionsi.\arabic*.}},ref={\thequestionsi.\arabic*},leftmargin=*}
+
+\creflabelformat{questionsi}{#2\textup{#1}#3} % #2 and #3 are start and end of hyperlink.
+\crefname{questionsi}{RQ}{RQs} % singular and plural forms of text labels
+\Crefname{questionsi}{RQ}{RQs}
+\creflabelformat{questionsii}{#2\textup{#1}#3}
+\crefname{questionsii}{RQ}{RQs}
+\Crefname{questionsii}{RQ}{RQs}
+%
+
+\title{A Modeling Environment in the Cloud for
+Education}
+\shorttitle{Cloud Modeling for Education}
+\author{Kristian Rekstad}
+\shortauthor{K. Rekstad}
+\date{\parbox{\linewidth}{\centering%
+  {June~11,~2021}\endgraf\bigskip
+  Master's Thesis\endgraf\medskip
+  Dept.\ of Computer Science \endgraf{}
+  Norwegian University of Science and Technology}}
+
+\addbibresource{thesis.bib}
+
+% Formatting help: 
+% https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Hyphenation
+
+\input{glossary.tex} % add glossary and acronym lists before document
+
+\begin{document}
+\setlength{\parindent}{15pt}
+
+\input{chapters/0a-abstract.tex}
+\input{chapters/0b-sammendrag.tex}
+\input{chapters/1-acknowledgments.tex} 
+
+\tableofcontents
+\listoffigures
+\listoftables
+\lstlistoflistings{}
+
+\printglossary[type=\acronymtype] % Print acronyms
+\printglossary{}                    % Print glossary
+
+
+\input{chapters/2-introduction.tex}
+\input{chapters/3-background.tex}
+\input{chapters/4-reviewed-research-questions.tex}
+\input{chapters/5-method.tex}
+\input{chapters/6-results.tex}
+\input{chapters/7-evaluation.tex}
+\input{chapters/8-discussion.tex}
+\input{chapters/9-conclusion.tex}
+
+\chapter*{\bibname}
+\printbibliography[heading=none]
+
+
+\appendix
+%\input{appendices/a-appendix.tex}
+
+\end{document}

@@ -1,0 +1,161 @@
+
+% From https://www.overleaf.com/learn/latex/Glossaries
+
+\makeglossaries % Prepare for adding glossary entries
+
+
+%\newglossaryentry{latex}
+%{
+%        name=latex,
+%        description={Is a mark up language specially suited for
+%scientific documents}
+%}
+
+%\newglossaryentry{bibliography}
+%{
+%        name=bibliography,
+%        plural=bibliographies,
+%        description={A list of the books referred to in a scholarly work,
+%typically printed as an appendix}
+%}
+
+\newglossaryentry{Theia}
+{
+  name=Theia,
+  description={An \acrshort{IDE} for software development. Theia is accessible in a web browser and as a desktop application. The implementation reuses much of \gls{VSCode}'s internals. Managed by the Eclipse Foundation}
+}
+
+\newglossaryentry{VSCode}{
+  name=VSCode,
+  description={Visual Studio Code. An \acrshort{IDE} for software development. The full name is Visual Studio Code. Managed by Microsoft}
+}
+
+\newglossaryentry{metamodel}{
+  name=metamodel,
+  description={In conceptual modeling, the model itself can be modeled. This model of the model is called a meta-model. \Gls{Ecore} is one example of a metamodel}
+}
+
+\newglossaryentry{Ecore}{
+  name=Ecore,
+  description={The \acrshort{emf} core model. A \gls{metamodel} similar to UML Class Diagrams}
+}
+
+\newglossaryentry{Eclipse}{
+  name={Eclipse IDE},
+  description={An \acrshort{IDE} by the Eclipse Foundation. Originally created by IBM. It is based on a plugin architecture using OSGi, and is written in Java. For more details, see \cref{sec:eclipse-ide}}
+}
+
+\newglossaryentry{cloud}{
+  name={cloud},
+  description={Remote data centers that provide computing as a service. Commonly used by businesses to provide web infrastructure}
+}
+
+\newglossaryentry{open source}{
+  name={open source},
+  description={The source code for a software is available; not just for inspection, but for re-use and modification}
+}
+
+\newglossaryentry{Che}{
+  name={Eclipse Che},
+  description={A \gls{cloud} based or self hosted workspace and \acrshort{IDE} for software development. It is based on \gls{Kubernetes} and \gls{Theia}}
+}
+
+\newglossaryentry{Gitpod}{
+  name=Gitpod,
+  description={A \gls{cloud} based workspace and \acrshort{IDE} for software development. It is based on \gls{Docker}, \gls{Kubernetes} and \gls{Theia}}
+}
+
+\newglossaryentry{Kubernetes}{
+  name=Kubernetes,
+  description={A container orchestration system created by Google}
+}
+
+\newglossaryentry{Docker}{
+  name=Docker,
+  description={A linux containerization system for process isolation and distribution. Popular for distributing and deploying self-contained software applications}
+}
+
+\newglossaryentry{UML}{
+  name=UML,
+  description={Unified Modeling Language. A common modeling language for creating diagrams such as Class Diagrams. It is standardized by \acrlong{OMG}}
+}
+
+\newglossaryentry{Electron}{
+  name={Electron},
+  description={A desktop application runtime for javascript, based on Chromium}
+}
+\newglossaryentry{Nodejs}{
+  name={NodeJS},
+  description={A javascript interpreter for desktop, based on the Chromium V8 javascript engine. It also includes some desktop \acrshortpl{API} like filesystem access}
+}
+
+\newglossaryentry{JSON-RPC}{
+  name={JSON-RPC},
+  description={Remote Procedure Call (RPC) protocol using Javascript Object Notation (JSON) serialization. It allows a process to execute functions in another process and obtain the results}
+}
+
+\newglossaryentry{JSON}{
+  name={JSON},
+  description={Javascript Object Notation. A serialization format for object structures}
+}
+
+\newglossaryentry{REST}{
+  name=REST,
+  description={Represential State Transfer (REST). A paradigm for creating HTTP \acrshortpl{API}, centered around resources}
+}
+
+\newglossaryentry{WebSocket}{
+  name=WebSocket,
+  description={A two-way communication protocol over TCP sockets made available for web browsers. It allows for a persistent and reusable connection which can send multiple messages, unlike regular HTTP requests. Commonly used to avoid polling over HTTP, or live updates of a website}
+}
+
+\newglossaryentry{NPM}{
+  name={NPM},
+  description={Node Package Manager (NPM). Hosts javascript packages online. Similar to Maven Central, but for javascript}
+}
+
+\newglossaryentry{ELK}{
+  name={Eclipse Layout Kernel},
+  description={Eclipse Layout Kernel (ELK) is a system for automatic diagram layout.~\cite{eclipsefoundationEclipseLayoutKernel} It positions nodes and edges for optimal viewing}
+}
+
+\newglossaryentry{React}{
+  name=React,
+  description={A javascript framework by Facebook for rendering views in HTML}
+}
+
+%\newglossaryentry{API}{
+%  name=API,
+%  description={Application Programming Interface (API). The interface which  another program needs to use. This can be protocols and message contents, or  programming language constructs like function definitions}
+%  long={Application Programming Interface},
+%  first={\glsentrylong{api}} (\glsentryname{api})
+%}
+
+% --------------------
+% ----- Acronyms -----
+% --------------------
+
+%\newacronym{phd}{PhD}{philosophiae doctor}
+%\newacronym{CoPCSE}{CoPCSE@NTNU}{Community of Practice in Computer ScienceEducation at NTNU}
+%\newacronym{gcd}{GCD}{Greatest Common Divisor}
+
+\newacronym{mdd}{MDD}{Model-Driven Development}
+\newacronym{IDE}{IDE}{Integrated Development Environment}
+\newacronym{emf}{EMF}{Eclipse Modeling Framework}
+\newacronym{NTNU}{NTNU}{Norges Teknisk-naturvitenskapelige Universitet}
+\newacronym{API}{API}{Application Programming Interface}
+\newacronym{DSL}{DSL}{Domain-specific language}
+
+\newacronym{EMOF}{EMOF}{Essential Meta Object Facility}
+\newacronym{OMG}{OMG}{Object Management Group}
+\newacronym{XMI}{XMI}{XML Metadata Interchange}
+
+\newacronym{RCP}{RCP}{Rich Client Platform}
+\newacronym{RAP}{RAP}{Remote Application Platform}
+\newacronym{GWT}{GWT}{Google Web Toolkit}
+
+\newacronym{LSP}{LSP}{Language Server Protocol}
+\newacronym{GLSP}{GLSP}{Graphical Language Server Platform}
+\newacronym{RPC}{RPC}{Remote Procedure Call}
+
+\newacronym{svg}{svg}{Scalable Vector Graphics}
