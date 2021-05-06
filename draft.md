@@ -1,0 +1,117 @@
+
+
+# Master thesis structure draft
+
+
+* Front page
+* Abstract
+* Sammendrag
+* Acknowledgements
+* Introduction
+  * topic, purpose, relevance, what to expect from thesis
+  * Narrow down scope
+  * Research questions and objectives
+  * Overview of thesis structure.
+* Background
+  * Design Science
+  * Agile
+  * Stakeholders
+  * MDD and EMF
+    * EMF libraries (validation, transaction) ?
+  * Eclipse EMF, genmodel, Eclipse RCP
+    * Editors (graphical, xml textual, tree)
+    * Eclipse+plugin as a target/output for new workbench/editor
+  * Vscode and Theia
+  * Gitpod, openvsx
+  * Theia Tree Editor
+  * Vscode custom editor
+  * LSP and GLSP
+  * EMFCloud model-server
+  * Observed trends in modern development
+    * Json configurations
+    * CI/CD
+    * Configurability
+    * Static typing for code navigation
+    * CLI applications (create-react-app, npx, vue-cli, prettier)
+    * Lint (eslint, prettier)
+    * Modularity (submodules, multiple packages)
+    * Web technologies (html/css/ts, electron)
+    * Thorough, online documentation with examples and guides
+    * Publicly available issue tracker
+    * Open Source
+* Litterature review (?)
+  * Approach
+    * Databases, queries
+  * Results
+    * LSP
+    * Tree editors
+  * Gaps in the litterature
+    * Protocol design for editors
+    * Tree editor requirements
+    * Feasibility and reccomended design of such editors
+* Method (Design science)
+  * Design Science
+    * Evaluation of value
+    * Analysis method
+  * How to ensure rigour
+  * Agile sprints, mvp, iterations
+  * Pragmatic programmer "tracer bullets"
+  * Domain driven design inspired (but anemic and without aggregates etc.)
+  * Prototyping to test feasibility
+  * Google-style Design documents for lean requirements spec
+  * Tools
+    * Vscode, typescript, npm, intellij, java, maven, git, github
+* Results
+  * Environment components and context
+  * Identified functional and non-functional requirements
+  * Architecture and components
+  * Implemented features
+  * TLSP protocol design and the principles/values behind its design
+  * Anemic domain models for tree documents
+  * Acceptance test results on confluence EMF tasks
+* Evaluation
+  * Acceptance test success/failure
+  * Value of solution to stakeholders
+    * Value of editor
+    * Value of protocol design
+    * Value of tree editor for reuse
+  * Research question answers
+* Discussion
+  * Findings wrt to research questions
+  * Value of completing this work
+  * Value of replacing EMF with something else
+  * Value of sticking to Eclipse for EMF
+  * Using ecore-glsp or Theia Tree Editor instead
+    * Theia only
+    * diagrams only, prefer trees for ecore. Anecdotal, is there research behind this?
+    * Provide a generic tree editor for other vscode extensions
+  * Choices made of the design of this solution
+    * Self-made tree editor vs off-the-shelf library vs integrated tree viewer
+    * VSCode or Theia-only
+    * Generic or specialized JSON-RPC protocol
+    * JSON-RPC vs REST for server
+    * Why server instead of pure vscode-extension code
+    * Shortcuts chosen
+    * Major outstanding areas of work
+      * EMF Forms
+      * Context-menu
+      * User-specified label logic
+      * Dynamic server using end-user `.edit`-javacode
+      * Validation
+      * Code navigation (source-links (ala `myfile.java:86:3`), ctrl-click an element to go to its declaration)
+      * Model analysis (`find usages`, `refactor/rename`)
+      * Editor-creation (custom Theia, Eclipse+plugin)
+      * Model debugging
+      * Keyboard shortcuts
+  * Amount of work required to complete this work. Is it justified? Is this worth pursuing?
+  * Limitations, what can't the results answer?
+    * If students would use a more finished extension
+    * Of other vscode extensions would be made with a tree editor
+    * If EMF itself could be replaced with something better
+* Conclusion
+  * Main research question answer
+  * Main findings
+  * What was not known before? Why does this research matter?
+  * Further work
+* References
+* Appendix
