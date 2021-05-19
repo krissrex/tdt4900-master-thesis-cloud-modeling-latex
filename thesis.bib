@@ -1,4 +1,35 @@
 
+@inproceedings{akessonJatteTunableTree2017,
+  title = {Jatte: A Tunable Tree Editor for Integrated {{DSLs}}},
+  shorttitle = {Jatte},
+  booktitle = {Proceedings of the 2nd {{ACM SIGPLAN International Workshop}} on {{Comprehension}} of {{Complex Systems}}},
+  author = {Åkesson, Alfred and Hedin, Görel},
+  date = {2017-10-23},
+  pages = {7--12},
+  publisher = {{Association for Computing Machinery}},
+  location = {{New York, NY, USA}},
+  doi = {10.1145/3141842.3141844},
+  url = {https://doi.org/10.1145/3141842.3141844},
+  urldate = {2021-02-03},
+  abstract = {Complex systems often integrate domain-specific languages to let users customize the behavior. Developing tooling for such languages is typically time-consuming and error-prone. We present Jatte, a tool intended to simplify this development. Jatte works as a generic tree editor for an abstract syntax, but uses aspects and attribute grammars to support powerful modular ways of tuning both the projected view and the editing commands. We present the key features of Jatte, and discuss its application in an orchestration language for internet of things.},
+  file = {C\:\\Users\\krire\\Zotero\\storage\\522U2CHK\\Åkesson and Hedin - 2017 - Jatte a tunable tree editor for integrated DSLs.pdf},
+  isbn = {978-1-4503-5521-6},
+  keywords = {attribute grammars,Domain-specific languages,dsl,projectional editing,tree editor},
+  series = {{{CoCoS}} 2017}
+}
+
+@book{alanhevnerDesignResearchInformation2010,
+  title = {Design {{Research}} in {{Information Systems}}},
+  author = {{Alan Hevner} and {Samir Chatterjee}},
+  date = {2010},
+  volume = {22},
+  publisher = {{Springer, Boston, MA}},
+  url = {https://doi.org/10.1007/978-1-4419-5653-8},
+  isbn = {978-1-4419-5653-8},
+  langid = {english},
+  series = {Integrated {{Series}} in {{Information Systems}}}
+}
+
 @online{antonkosyakovCodeOrganization2019,
   title = {Code {{Organization}}},
   author = {{Anton Kosyakov} and {Sven Efftinge}},
@@ -12,6 +43,19 @@
   organization = {{GitHub}}
 }
 
+@online{antonkosyakovImplementingJSONRPCProtocol2017,
+  title = {Implementing a {{JSON}}-{{RPC}} Protocol with {{Eclipse LSP4J}} | {{The Eclipse Foundation}}},
+  author = {{Anton Kosyakov}},
+  date = {2017-05},
+  url = {https://www.eclipse.org/community/eclipse_newsletter/2017/may/article2.php},
+  urldate = {2021-04-22},
+  abstract = {Get a introduction to the core concepts of Eclipse LSP4J and learn how to implement a JSON-RPC protocol.},
+  file = {C\:\\Users\\krire\\Zotero\\storage\\NXA864VE\\article2.html},
+  keywords = {eclipse,json-rpc,lsp},
+  langid = {english},
+  organization = {{Eclipse Foundation}}
+}
+
 @software{awadBenawadVscodestories2020,
   title = {Benawad/Vscode-Stories},
   author = {Awad, Ben},
@@ -22,6 +66,24 @@
   abstract = {Stories for VSCode. Contribute to benawad/vscode-stories development by creating an account on GitHub.},
   keywords = {example,extension,stories,vscode},
   version = {334e1d7}
+}
+
+@inproceedings{beckmannEfficientEditingTreeoriented2020,
+  title = {Efficient Editing in a Tree-Oriented Projectional Editor},
+  booktitle = {Conference {{Companion}} of the 4th {{International Conference}} on {{Art}}, {{Science}}, and {{Engineering}} of {{Programming}}},
+  author = {Beckmann, Tom},
+  date = {2020-03-23},
+  pages = {215--216},
+  publisher = {{Association for Computing Machinery}},
+  location = {{New York, NY, USA}},
+  doi = {10.1145/3397537.3398477},
+  url = {https://doi.org/10.1145/3397537.3398477},
+  urldate = {2021-02-03},
+  abstract = {In contrast to text editors, using projectional editors typically requires users to learn a new editing metaphor. In text-oriented projectional editors, rules may be used to give users the impression of working in a regular text editor. As such, the editing metaphor appears clear to the user, but if the implemented rules do not suffice, users may be confused why certain actions do not work. Block-oriented projectional editors, where the editing metaphors are typically clearer, often present challenges in editing efficiency, as code takes up more space and editing is perceived to be slower. We present a block-oriented projectional editor that tries to address the issues of editing efficiency and space usage. Through a reusable set of commands for tree modifications, a space-efficient AST visualization, and context-aware input we allow users to edit as fast or faster than in a text editor. We provide a first evaluation by comparing the number of keystrokes required to carry out common edit operations.},
+  file = {C\:\\Users\\krire\\Zotero\\storage\\E2NB4HTD\\Beckmann - 2020 - Efficient editing in a tree-oriented projectional .pdf},
+  isbn = {978-1-4503-7507-8},
+  keywords = {Editing Efficiency,Modal Editing,Projectional Editing},
+  series = {\&lt;{{Programming}}\&gt; '20}
 }
 
 @inproceedings{beckmannVisualDesignTreeoriented2020,
@@ -41,6 +103,24 @@
   isbn = {978-1-4503-7507-8},
   keywords = {smalltalk,tree editor},
   langid = {english}
+}
+
+@inproceedings{beckmannVisualDesignTreeoriented2020a,
+  title = {Visual Design for a Tree-Oriented Projectional Editor},
+  booktitle = {Conference {{Companion}} of the 4th {{International Conference}} on {{Art}}, {{Science}}, and {{Engineering}} of {{Programming}}},
+  author = {Beckmann, Tom and Ramson, Stefan and Rein, Patrick and Hirschfeld, Robert},
+  date = {2020-03-23},
+  pages = {113--119},
+  publisher = {{Association for Computing Machinery}},
+  location = {{New York, NY, USA}},
+  doi = {10.1145/3397537.3397560},
+  url = {https://doi.org/10.1145/3397537.3397560},
+  urldate = {2021-02-03},
+  abstract = {Projectional editors show promise for a variety of use cases, for example in language composition and domain specific projections. To allow efficient interactions within a projectional editor, it is necessary for the editor to clearly communicate the structure of the program to the user, such that it is clear what editing operations are supported for a given element. Making the abstract syntax tree visible within the editor may provide this clarity, however, it generally also results in considerably increased space usage, potentially also impacting usability. We present an early prototype of a tree-oriented projectional editor for Squeak/Smalltalk that tries to minimize space usage while retaining a clear visualization of the tree structure, balancing the two problems. We describe and discuss our design prototype and do a preliminary evaluation through individual account of experience working with the editor on various projects.},
+  file = {C\:\\Users\\krire\\Zotero\\storage\\UI2HQRVD\\Beckmann et al. - 2020 - Visual design for a tree-oriented projectional edi.pdf},
+  isbn = {978-1-4503-7507-8},
+  keywords = {design,projectional editing,Squeak/Smalltalk,tree editor,ui,visual programming language},
+  series = {\&lt;{{Programming}}\&gt; '20}
 }
 
 @inreference{benjaminpaseroSourceCodeOrganization2020,
@@ -142,6 +222,26 @@
   abstract = {Ecore GLSP provides a web-based editor for Ecore Models (including Diagrams), integrated with Eclipse Theia. It contains two components: one GLSP language server (Server-side, written in Java), and one GLSP client extension to actually present the diagrams (Using Sprotty).},
   organization = {{eclipse-emfcloud}},
   version = {d104af3}
+}
+
+@incollection{carlssonDesignScienceResearch2010,
+  title = {Design {{Science Research}} in {{Information Systems}}: {{A Critical Realist Approach}}},
+  shorttitle = {Design {{Science Research}} in {{Information Systems}}},
+  booktitle = {Design {{Research}} in {{Information Systems}}: {{Theory}} and {{Practice}}},
+  author = {Carlsson, Sven A.},
+  editor = {Hevner, Alan and Chatterjee, Samir},
+  date = {2010},
+  pages = {209--233},
+  publisher = {{Springer US}},
+  location = {{Boston, MA}},
+  doi = {10.1007/978-1-4419-5653-8_15},
+  url = {https://doi.org/10.1007/978-1-4419-5653-8_15},
+  urldate = {2021-02-16},
+  abstract = {Information systems (IS) research has serious utilization and relevance problems. To increase IS research utilization and relevance, scholars argue that the dominating behavioral IS research paradigm should be complemented with IS design science research. The most influential IS design science research schools have a strong focus on the IT artifact, in most cases an exclusive focus on the IT artifact. The schools have very little discussions and clarifications regarding underpinning philosophies, but most seem to be based on positivism, traditional realism, or pragmatism. This chapter presents, as a complement to the most influential design science research schools, an alternative approach for IS design science research. The approach builds on the premise that one of the most critical aims of IS design science research is to develop practical knowledge for the design and realization of different classes of IS initiatives, where IS are viewed as socio-technical systems and not just IT artifacts. The underpinning philosophy of the approach is critical realism which has been developed as an alternative to positivism and traditional realism as well as to constructivism (relativism). The developed practical IS design knowledge can be represented in different forms, for example, as heuristic design propositions, design exemplars and patterns, models or frameworks, and stories or narratives. The IS design knowledge can be developed using different methods and techniques. The chapter presents how practical IS design knowledge can be developed as well as the nature of the developed knowledge.},
+  isbn = {978-1-4419-5653-8},
+  keywords = {Critical Realism,Design Knowledge,Design Theory,Information System,Knowledge Management System},
+  langid = {english},
+  series = {Integrated {{Series}} in {{Information Systems}}}
 }
 
 @inproceedings{carrascal-manzanaresBuildingMDECloud2015,
@@ -251,6 +351,17 @@
   langid = {english},
   organization = {{projects.eclipse.org}},
   type = {Text}
+}
+
+@software{EclipseEclipseJdt2021,
+  title = {Eclipse/Eclipse.Jdt.Ls},
+  date = {2021-03-06T04:46:36Z},
+  origdate = {2016-06-27T13:06:53Z},
+  url = {https://github.com/eclipse/eclipse.jdt.ls},
+  urldate = {2021-03-08},
+  abstract = {Java language server. Contribute to eclipse/eclipse.jdt.ls development by creating an account on GitHub.},
+  keywords = {eclipse,java,jdt,language-server-protocol,lsp},
+  organization = {{Eclipse Foundation}}
 }
 
 @software{EclipseemfcloudTheiatreeeditor2020,
@@ -406,6 +517,17 @@
   organization = {{eclipse-glsp}}
 }
 
+@software{EclipseLsp4j2021,
+  title = {Eclipse/Lsp4j},
+  date = {2021-03-05T16:47:40Z},
+  origdate = {2016-11-10T16:10:59Z},
+  url = {https://github.com/eclipse/lsp4j},
+  urldate = {2021-03-08},
+  abstract = {A Java implementation of the language server protocol intended to be consumed by tools and language servers implemented in Java.},
+  keywords = {eclipse,java,json-rpc,language-server-protocol,lsp},
+  organization = {{Eclipse Foundation}}
+}
+
 @online{eclipsesourceEMFFormsEditors2016,
   title = {{{EMF Forms Editors}}},
   author = {{Eclipsesource}},
@@ -551,7 +673,7 @@
 @online{hannesvogtProvideDependencyGraph2020,
   title = {Provide a Dependency Graph via an Existing Language Server · {{Eclipse GLSP}}},
   author = {{Hannes Vogt} and {Philip Langer}},
-  date = {2020-02-20T08:22:20.711Z},
+  date = {2020-02-20T08:22:20},
   url = {https://spectrum.chat/glsp/general/provide-a-dependency-graph-via-an-existing-language-server~f4d2cf0d-b795-4d8c-88a5-b275e71fdd01},
   urldate = {2020-10-05},
   abstract = {Hi! I try to understand if GLSP would be a good approach to visualize a dependency graph in my language server. It's a bit hard to understand how the different…},
@@ -598,6 +720,30 @@
   organization = {{EclipseSource}}
 }
 
+@online{helmingEMFTutorial,
+  title = {{{EMF Tutorial}}},
+  author = {Helming, Jonas and Jonas, Maximilian Koegel and work as {consultants}, Maximilian co-lead EclipseSource They and Web-Based, Software Engineers for Building and are tool experts with a focus on IDEs, desktop-based tools Both and Tools, Domain-Specific and are project {leads}, modeling tools They and to various open source projects including EMF.cloud, committers and Forms, JSON and {GLSP} and {EMF} and Forms, E. M. F. and {EMFStore} and {Edapt} and {e4} and Platform, the EMF Client and Twitter, regular conferences speakers on these topics Email |},
+  url = {https://eclipsesource.com/blogs/tutorials/emf-tutorial/},
+  urldate = {2021-03-03},
+  abstract = {What every Eclipse developer should know about EMF This tutorial is an introduction to EMF and explains the basics of EMF....},
+  file = {C\:\\Users\\krire\\Zotero\\storage\\ZYBRIQPG\\emf-tutorial.html},
+  langid = {american},
+  organization = {{EclipseSource}}
+}
+
+@online{helmingEMFTutorial2014,
+  title = {{{EMF Tutorial}}},
+  author = {Helming, Jonas and Koegel, Maximilian},
+  date = {2014-07-15},
+  url = {https://eclipsesource.com/blogs/tutorials/emf-tutorial/},
+  urldate = {2021-03-03},
+  abstract = {What every Eclipse developer should know about EMF This tutorial is an introduction to EMF and explains the basics of EMF....},
+  file = {C\:\\Users\\krire\\Zotero\\storage\\ZGLFJP8V\\emf-tutorial.html},
+  keywords = {eclipsesource,ecore,editingdomain,emf},
+  langid = {american},
+  organization = {{EclipseSource}}
+}
+
 @online{helmingHowAddExtensions2019,
   title = {How to Add Extensions and Plugins to {{Eclipse Theia}}},
   author = {Helming, Jonas and Koegel, Maximilian},
@@ -607,6 +753,18 @@
   abstract = {This article describes how to add extensions and plugins to the Eclipse Theia IDE, during development time and during runtime.},
   file = {C\:\\Users\\krire\\Zotero\\storage\\X7P4E3CW\\how-to-add-extensions-and-plugins-to-eclipse-theia.html},
   keywords = {extension,theia},
+  langid = {american},
+  organization = {{EclipseSource}}
+}
+
+@online{helmingHowBuildTree2021,
+  title = {How to Build a Tree Editor in {{Eclipse Theia}}},
+  author = {Helming, Jonas and Jonas, Maximilian Koegel and work as {consultants}, Maximilian co-lead EclipseSource They and Web-Based, Software Engineers for Building and are tool experts with a focus on IDEs, desktop-based tools Both and Tools, Domain-Specific and are project {leads}, modeling tools They and to various open source projects including EMF.cloud, committers and Forms, JSON and {GLSP} and {EMF} and Forms, E. M. F. and {EMFStore} and {Edapt} and {e4} and Platform, the EMF Client and Twitter, regular conferences speakers on these topics Email |},
+  date = {2021-02-03T10:22:06+00:00},
+  url = {https://eclipsesource.com/blogs/2021/02/03/how-to-build-a-tree-editor-in-eclipse-theia/},
+  urldate = {2021-02-03},
+  abstract = {In this article we introduce the tree/form editor framework for Eclipse Theia to build data-centric form editors with EMF.cloud},
+  file = {C\:\\Users\\krire\\Zotero\\storage\\RVBP7ACR\\how-to-build-a-tree-editor-in-eclipse-theia.html},
   langid = {american},
   organization = {{EclipseSource}}
 }
@@ -687,6 +845,228 @@
   organization = {{EclipseSource}}
 }
 
+@incollection{hevnerDesignCreativity2010,
+  title = {Design and {{Creativity}}},
+  booktitle = {Design {{Research}} in {{Information Systems}}: {{Theory}} and {{Practice}}},
+  author = {Hevner, Alan and Chatterjee, Samir},
+  editor = {Hevner, Alan and Chatterjee, Samir},
+  date = {2010},
+  pages = {145--156},
+  publisher = {{Springer US}},
+  location = {{Boston, MA}},
+  doi = {10.1007/978-1-4419-5653-8_11},
+  url = {https://doi.org/10.1007/978-1-4419-5653-8_11},
+  urldate = {2021-02-16},
+  abstract = {Abraham Maslow once said “The key question isn’t ‘What fosters creativity?’ But it is why in God’s name isn’t everyone creative? Where was the human potential lost? How was it crippled? I think therefore a good question might be not why do people create? But why do people not create or innovate? We have got to abandon that sense of amazement in the face of creativity, as if it were a miracle if anybody created anything.”Every designer is creative. In the world of software design, we also create artifacts. Where does this creativity come from? What exactly is meant to be creative? In this chapter we explore questions such as these. We also take a brief look at the creativity literature and discuss how information technology tools can help humans become more creative and vice versa.},
+  isbn = {978-1-4419-5653-8},
+  keywords = {Active Research Field,Creative Idea,Group Creativity,Virtual World,Wide Wall},
+  langid = {english},
+  series = {Integrated {{Series}} in {{Information Systems}}}
+}
+
+@incollection{hevnerDesignScienceResearch2010,
+  title = {Design {{Science Research Frameworks}}},
+  booktitle = {Design {{Research}} in {{Information Systems}}: {{Theory}} and {{Practice}}},
+  author = {Hevner, Alan and Chatterjee, Samir},
+  editor = {Hevner, Alan and Chatterjee, Samir},
+  date = {2010},
+  pages = {23--31},
+  publisher = {{Springer US}},
+  location = {{Boston, MA}},
+  doi = {10.1007/978-1-4419-5653-8_3},
+  url = {https://doi.org/10.1007/978-1-4419-5653-8_3},
+  urldate = {2021-02-16},
+  abstract = {The founding father of design science was Herbert E. Simon. Well known for his work on AI, decision making, and economics, Simon wrote a thought-provoking book called Sciences of the Artificial in the 1960s (Simon 1996). His profound insight was that certain phenomena or entities are “artificial” in the sense that they are contingent to the goals or purposes of their designer. In other words, they could have been different had the goals been different (as opposed to natural phenomena which are necessarily evolved given natural laws). He further posits: Since artifacts are contingent, how is a science of the artificial possible? How to study artifacts empirically? On the other hand, Simon also deals with the notion of complexity. This is necessary because artificiality and complexity are inextricably interwoven.},
+  isbn = {978-1-4419-5653-8},
+  keywords = {Design Science Research,Founding Father,Mental Model,Research Output,Theory Building},
+  langid = {english},
+  series = {Integrated {{Series}} in {{Information Systems}}}
+}
+
+@incollection{hevnerDesignScienceResearch2010a,
+  title = {Design {{Science Research}} in {{Information Systems}}},
+  booktitle = {Design {{Research}} in {{Information Systems}}: {{Theory}} and {{Practice}}},
+  author = {Hevner, Alan and Chatterjee, Samir},
+  editor = {Hevner, Alan and Chatterjee, Samir},
+  date = {2010},
+  pages = {9--22},
+  publisher = {{Springer US}},
+  location = {{Boston, MA}},
+  doi = {10.1007/978-1-4419-5653-8_2},
+  url = {https://doi.org/10.1007/978-1-4419-5653-8_2},
+  urldate = {2021-02-16},
+  abstract = {Design activities are central to most applied disciplines. Research in design has a long history in many fields including architecture, engineering, education, psychology, and the fine arts (Cross 2001). The computing and information technology (CIT) field since its advent in the late 1940s has appropriated many of the ideas, concepts, and methods of design science that have originated in these other disciplines. However, information systems (IS) as composed of inherently mutable and adaptable hardware, software, and human interfaces provide many unique and challenging design problems that call for new and creative ideas.},
+  isbn = {978-1-4419-5653-8},
+  keywords = {Design Cycle,Design Science,Group Decision Support System,Information System,Research Cycle},
+  langid = {english},
+  series = {Integrated {{Series}} in {{Information Systems}}}
+}
+
+@incollection{hevnerDesignScienceResearch2010b,
+  title = {Design {{Science Research}}: {{Looking}} to the {{Future}}},
+  shorttitle = {Design {{Science Research}}},
+  booktitle = {Design {{Research}} in {{Information Systems}}: {{Theory}} and {{Practice}}},
+  author = {Hevner, Alan and Chatterjee, Samir},
+  editor = {Hevner, Alan and Chatterjee, Samir},
+  date = {2010},
+  pages = {261--268},
+  publisher = {{Springer US}},
+  location = {{Boston, MA}},
+  doi = {10.1007/978-1-4419-5653-8_18},
+  url = {https://doi.org/10.1007/978-1-4419-5653-8_18},
+  urldate = {2021-02-16},
+  abstract = {The previous chapters have taken you through the fundamentals of design science research, the problems, solutions space, design process, frameworks, outputs and artifacts, theories and dissemination of the research results. The design science research paradigm is highly relevant to information systems (IS) research because it directly addresses two of the key issues of the discipline: the central, albeit controversial, role of the IT artifact in IS research (Weber 1987; Orlikowski and Iacono 2001; Benbasat and Zmud 2003) and the lack of professional relevance of IS research (Benbasat and Zmud 1999; Hirschheim and Klein 2003). Design science, as conceptualized by Simon (1996), supports a pragmatic research paradigm that calls for the creation of innovative artifacts to solve real-world problems. Thus, design science research combines a focus on the IT artifact with a high priority on relevance in the application domain.},
+  isbn = {978-1-4419-5653-8},
+  keywords = {Carbon Footprint,Clinical Decision Support System,Information System,Personal Health Record,Social Networking Site},
+  langid = {english},
+  series = {Integrated {{Series}} in {{Information Systems}}}
+}
+
+@incollection{hevnerDesignTheory2010,
+  title = {On {{Design Theory}}},
+  booktitle = {Design {{Research}} in {{Information Systems}}: {{Theory}} and {{Practice}}},
+  author = {Hevner, Alan and Chatterjee, Samir},
+  editor = {Hevner, Alan and Chatterjee, Samir},
+  date = {2010},
+  pages = {33--42},
+  publisher = {{Springer US}},
+  location = {{Boston, MA}},
+  doi = {10.1007/978-1-4419-5653-8_4},
+  url = {https://doi.org/10.1007/978-1-4419-5653-8_4},
+  urldate = {2021-02-16},
+  abstract = {Science progresses because of advancement in theories. Dictionary definitions show that the word theory can take on many meanings, including “a mental view” or “contemplation,” “a concept or mental scheme of something to be done, or the method of doing it; a systematic statement of rules or principles to be followed,” a “system of ideas or statements held as an explanation or account of a group of facts or phenomena; a hypothesis that has been confirmed or established by observation or experiment and is propounded or accepted as accounting for the known facts; statements of what are held to be the general laws, principles, or causes of something known or observed,” a “mere hypothesis, speculation, conjecture” (Gregor 2006).},
+  isbn = {978-1-4419-5653-8},
+  keywords = {Descriptive Theory,Design Theory,Earning Announcement,Normative Theory,Theory Building},
+  langid = {english},
+  series = {Integrated {{Series}} in {{Information Systems}}}
+}
+
+@incollection{hevnerDisseminatingDesignScience2010,
+  title = {Disseminating {{Design Science Research}}},
+  booktitle = {Design {{Research}} in {{Information Systems}}: {{Theory}} and {{Practice}}},
+  author = {Hevner, Alan and Chatterjee, Samir},
+  editor = {Hevner, Alan and Chatterjee, Samir},
+  date = {2010},
+  pages = {255--259},
+  publisher = {{Springer US}},
+  location = {{Boston, MA}},
+  doi = {10.1007/978-1-4419-5653-8_17},
+  url = {https://doi.org/10.1007/978-1-4419-5653-8_17},
+  urldate = {2021-02-16},
+  abstract = {As you near the completion of a design science research project, your thoughts are now diverted to what to do next? Every researcher wants to publish their finding to the scientific community and in particular to their peer group. While academic publishing is certainly a preferred outcome of DSR, we would also like to mention that another possible (and lucrative) outcome of DSR is entrepreneurial activity for those who have the mindset. If you have built it, let them come.As experienced researchers, and editors in the field, we share with the readers the challenges and issues of writing papers for leading conference and journals. In that context, we also briefly discuss getting funds from foundation to support your research. We also discuss the necessary first steps toward commercializing DSR by building a start-up company around the project artifact.},
+  isbn = {978-1-4419-5653-8},
+  keywords = {Acceptance Rate,Design Science Research,Initial Public Offering,Software Technology Research,Venture Capital Fund},
+  langid = {english},
+  series = {Integrated {{Series}} in {{Information Systems}}}
+}
+
+@incollection{hevnerEvaluation2010,
+  title = {Evaluation},
+  booktitle = {Design {{Research}} in {{Information Systems}}: {{Theory}} and {{Practice}}},
+  author = {Hevner, Alan and Chatterjee, Samir},
+  editor = {Hevner, Alan and Chatterjee, Samir},
+  date = {2010},
+  pages = {109--119},
+  publisher = {{Springer US}},
+  location = {{Boston, MA}},
+  doi = {10.1007/978-1-4419-5653-8_9},
+  url = {https://doi.org/10.1007/978-1-4419-5653-8_9},
+  urldate = {2021-02-16},
+  abstract = {Evaluation is a key element in the design of IT-based artifacts. A designer finds a suitable and interesting problem to solve. Then they come up with design solutions. That is followed by the actual build phase. After they have built the artifact, the next phase is evaluating for efficiency, utility, or performance.Evaluation is a crucial component in the design science research process. The designed IT artifact is a socio-technical entity that exists within an environment (business or social) which lays out the requirements for its evaluation. Such evaluation of IT artifacts requires definition of appropriate metrics and possibly the gathering and analysis of appropriate data. IT artifacts can be evaluated in terms of functionality, completeness, consistency, accuracy, performance, reliability, usability, fit with the organization, and other relevant quality attributes (Hevner, March et al. 2004).In this chapter, it is our goal to help the reader understand the different issues, questions, methods, and techniques that arise when one does evaluation. To present a full detailed analysis of various techniques is beyond the scope of this chapter or the book, but we hope that the reader will learn to ask the right questions, know when to apply which technique and be confident to look at the right places for more answers.},
+  isbn = {978-1-4419-5653-8},
+  keywords = {Clinical Decision Support System,Design Science,Information System Architecture,Postoperative Infection Rate,Reminder Group},
+  langid = {english},
+  series = {Integrated {{Series}} in {{Information Systems}}}
+}
+
+@incollection{hevnerIntroductionDesignScience2010,
+  title = {Introduction to {{Design Science Research}}},
+  booktitle = {Design {{Research}} in {{Information Systems}}: {{Theory}} and {{Practice}}},
+  author = {Hevner, Alan and Chatterjee, Samir},
+  editor = {Hevner, Alan and Chatterjee, Samir},
+  date = {2010},
+  pages = {1--8},
+  publisher = {{Springer US}},
+  location = {{Boston, MA}},
+  doi = {10.1007/978-1-4419-5653-8_1},
+  url = {https://doi.org/10.1007/978-1-4419-5653-8_1},
+  urldate = {2021-02-16},
+  abstract = {Since the dawn of the digital revolution, information technologies have changed the way we live, work, play, and entertain. Designers of IT-based digital technology products play a critical role in ensuring that their designed artifacts are not just beautiful but provide value to their users. Users are increasingly interacting with a digital world. Designing interactions in this new world is a challenging task. The experiences we have when we browse the web, or visit amazon.com, sell/buy stuff on eBay or play amusing games on our mobile cell phones do have a tremendous impact on how we live our lives. Designing information systems is even more challenging.},
+  isbn = {978-1-4419-5653-8},
+  keywords = {Design Knowledge,Design Science Research,Information System,Research Paradigm,Routine Design},
+  langid = {english},
+  series = {Integrated {{Series}} in {{Information Systems}}}
+}
+
+@incollection{hevnerPeopleDesign2010,
+  title = {People and {{Design}}},
+  booktitle = {Design {{Research}} in {{Information Systems}}: {{Theory}} and {{Practice}}},
+  author = {Hevner, Alan and Chatterjee, Samir},
+  editor = {Hevner, Alan and Chatterjee, Samir},
+  date = {2010},
+  pages = {79--86},
+  publisher = {{Springer US}},
+  location = {{Boston, MA}},
+  doi = {10.1007/978-1-4419-5653-8_7},
+  url = {https://doi.org/10.1007/978-1-4419-5653-8_7},
+  urldate = {2021-02-16},
+  abstract = {Information technology design is by no means simple. Most real-world problems are not simple and they often have no correct solution. The challenges that everyday designers’ face is to handle trade-offs. It is the conscious choice among many alternatives each of which places constraints on utility and resources. As Mitch Kapor suggests above, a designer stands with one foot in the technology and one foot in the domain of human concerns, and these two worlds are not easily commensurable (Winograd 1996).},
+  isbn = {978-1-4419-5653-8},
+  keywords = {Consumer Phase,Human Concern,Jazz Musician,Online Discussion Group,Xerox PARC},
+  langid = {english},
+  series = {Integrated {{Series}} in {{Information Systems}}}
+}
+
+@incollection{hevnerScienceDesignSoftwareIntensive2010,
+  title = {A {{Science}} of {{Design}} for {{Software}}-{{Intensive Systems}}},
+  booktitle = {Design {{Research}} in {{Information Systems}}: {{Theory}} and {{Practice}}},
+  author = {Hevner, Alan and Chatterjee, Samir},
+  editor = {Hevner, Alan and Chatterjee, Samir},
+  date = {2010},
+  pages = {63--77},
+  publisher = {{Springer US}},
+  location = {{Boston, MA}},
+  doi = {10.1007/978-1-4419-5653-8_6},
+  url = {https://doi.org/10.1007/978-1-4419-5653-8_6},
+  urldate = {2021-02-16},
+  abstract = {Future complex software-intensive systems (SIS) will be vastly different from the software systems that run today’s world. Revolutionary advances in hardware, networking, information, and human interface technologies will require entirely new ways of thinking about how software-intensive systems are conceptualized, built, and evaluated. As we envision the future of tera1-computing and even peta2-computing environments, new science of design principles are needed to provide the foundations for managing issues of complexity, composition, quality, cost, and control of software-intensive systems.},
+  isbn = {978-1-4419-5653-8},
+  keywords = {Computational Thinking,Dynamic Composition,Emergent Behavior,Software Component,Software Layer},
+  langid = {english},
+  series = {Integrated {{Series}} in {{Information Systems}}}
+}
+
+@incollection{hevnerSoftwareDesignPresent2010,
+  title = {Software {{Design}}: {{Past}} and {{Present}}},
+  shorttitle = {Software {{Design}}},
+  booktitle = {Design {{Research}} in {{Information Systems}}: {{Theory}} and {{Practice}}},
+  author = {Hevner, Alan and Chatterjee, Samir},
+  editor = {Hevner, Alan and Chatterjee, Samir},
+  date = {2010},
+  pages = {87--107},
+  publisher = {{Springer US}},
+  location = {{Boston, MA}},
+  doi = {10.1007/978-1-4419-5653-8_8},
+  url = {https://doi.org/10.1007/978-1-4419-5653-8_8},
+  urldate = {2021-02-16},
+  abstract = {The design of software has been one of the greatest challenges in the development of information systems. From its fairly primitive beginnings in the form of toggling on/off switches and punching holes in paper tapes, software has come to dominate the cost of all forms of information systems. Yet, instead of gaining increasing mastery over the processes of software design, we continue to be challenged by new software technologies, greater quality expectations, and higher complexities of integrated systems. Thus, software design remains an essentially wicked problem that is typically crafted to each software-intensive system developed.},
+  isbn = {978-1-4419-5653-8},
+  keywords = {Business Application,Business Process,Software Architecture,Software Development,Software Development Process},
+  langid = {english},
+  series = {Integrated {{Series}} in {{Information Systems}}}
+}
+
+@online{HowStructureDissertation,
+  title = {How to {{Structure}} a {{Dissertation}} | {{Step}}-by-{{Step Guide}}},
+  url = {https://www.scribbr.com/category/dissertation/},
+  urldate = {2021-02-16},
+  abstract = {What are the elements of a well-structured dissertation? Our step-by-step guide takes you all the way from the title page to the appendix.},
+  file = {C\:\\Users\\krire\\Zotero\\storage\\JL882Y8E\\dissertation.html},
+  keywords = {dissertation,guide,thesis,tips},
+  langid = {american},
+  organization = {{Scribbr}}
+}
+
 @inproceedings{hutchinsonEmpiricalAssessmentMDE2011,
   title = {Empirical Assessment of {{MDE}} in Industry},
   booktitle = {Proceedings of the 33rd {{International Conference}} on {{Software Engineering}}},
@@ -703,6 +1083,25 @@
   isbn = {978-1-4503-0445-0},
   keywords = {adoption,empirical software engineering,industry,model driven engineering},
   series = {{{ICSE}} '11}
+}
+
+@incollection{iivariTwelveThesesDesign2010,
+  title = {Twelve {{Theses}} on {{Design Science Research}} in {{Information Systems}}},
+  booktitle = {Design {{Research}} in {{Information Systems}}: {{Theory}} and {{Practice}}},
+  author = {Iivari, Juhani},
+  editor = {Hevner, Alan and Chatterjee, Samir},
+  date = {2010},
+  pages = {43--62},
+  publisher = {{Springer US}},
+  location = {{Boston, MA}},
+  doi = {10.1007/978-1-4419-5653-8_5},
+  url = {https://doi.org/10.1007/978-1-4419-5653-8_5},
+  urldate = {2021-02-16},
+  abstract = {This essay discusses 12 theses for guiding design science research. They are aimed at strengthening the design science orientation of Information Systems, clarifying future discourses on design science research aspects of the discipline, and giving some further guidelines for design science research in Information Systems.},
+  isbn = {978-1-4419-5653-8},
+  keywords = {Design Science,Design Theory,Empirical Regularity,Information System,Technology Acceptance Model},
+  langid = {english},
+  series = {Integrated {{Series}} in {{Information Systems}}}
 }
 
 @inproceedings{jacomeSoftwareDevelopmentTools2017,
@@ -769,6 +1168,25 @@
   file = {C\:\\Users\\krire\\Zotero\\storage\\7XIIR72E\\specification.html},
   keywords = {JSON-RPC,LSP},
   langid = {english}
+}
+
+@incollection{judgeDesignLanguageKnowledge2010,
+  title = {A {{Design Language}} for {{Knowledge Management Systems}} ({{KMS}})},
+  booktitle = {Design {{Research}} in {{Information Systems}}: {{Theory}} and {{Practice}}},
+  author = {Judge, Robert},
+  editor = {Hevner, Alan and Chatterjee, Samir},
+  date = {2010},
+  pages = {157--177},
+  publisher = {{Springer US}},
+  location = {{Boston, MA}},
+  doi = {10.1007/978-1-4419-5653-8_12},
+  url = {https://doi.org/10.1007/978-1-4419-5653-8_12},
+  urldate = {2021-02-16},
+  abstract = {As with all species, humans spend their life in competition. Unlike other organisms, we carry this competitive drive past mere survival and reproduction into the structures of our social and business life. The structures of our business environment revolve around the ability of an organization to obtain long-term competitiveness through the control of rare and valuable resources that have limited substitutability, mobility, and imitability (Barney, 1991, Peteraf, 1993). Knowledge is precisely such a rare and valuable resource and does add greatly to an organization’s ability to sustain competitiveness (Alavi and Leidner, 2001, Kogut and Zander, 1992, Argote and Ingram, 2000).},
+  isbn = {978-1-4419-5653-8},
+  keywords = {Explicit Information,Information Packet,Interarrival Time,Knowledge Flow,Knowledge Management System},
+  langid = {english},
+  series = {Integrated {{Series}} in {{Information Systems}}}
 }
 
 @inproceedings{kahaniProblemsEclipseModeling2016,
@@ -911,6 +1329,25 @@
   abstract = {The Eclipse Foundation - home to a global community, the Eclipse IDE, Jakarta EE and over 375 open source projects, including runtimes, tools and frameworks.},
   file = {C\:\\Users\\krire\\Zotero\\storage\\HWX7T3WC\\org.html},
   langid = {english}
+}
+
+@incollection{marchDesignScienceManagement2010,
+  title = {Design {{Science}} in the {{Management Disciplines}}},
+  booktitle = {Design {{Research}} in {{Information Systems}}: {{Theory}} and {{Practice}}},
+  author = {March, Salvatore T. and Vogus, Timothy J.},
+  editor = {Hevner, Alan and Chatterjee, Samir},
+  date = {2010},
+  pages = {195--208},
+  publisher = {{Springer US}},
+  location = {{Boston, MA}},
+  doi = {10.1007/978-1-4419-5653-8_14},
+  url = {https://doi.org/10.1007/978-1-4419-5653-8_14},
+  urldate = {2021-02-16},
+  abstract = {Design science and natural science are complementary research paradigms in the management disciplines. Fundamentally the task of management is to develop, articulate, and achieve organizational goals and purposes. Design science research addresses that task by creating novel and effective artifacts that are demonstrated to improve managers’ capability to change “existing situations into preferred ones” (Simon (1996), p. 130). Natural science research addresses it by developing theories that provide deep, principled explanations of phenomena, justified by rigorous empirical evidence that managers can use to guide their actions. Designed artifacts have no special dispensation from the laws of nature; however, business organizations and the environments in which they operate are social constructions (Searle, J. R. (2006) Social ontology: some basic principles, Anthropological Theory 6 (1), pp. 12–29). They are themselves artifacts designed to achieve human goals, purposes, and intentions, influenced by and operating within the context of emergent and intentional human behavior. Furthermore, natural science explanations of how or why an artifact works or does not work may lag years behind the application of the artifact. If academic research is to make significant contributions to management practice it must utilize the results from each paradigm to guide the other. There is evidence that this integration is beginning to take place in several management disciplines including information systems and organizational science. This paper summarizes and assesses this emerging work.},
+  isbn = {978-1-4419-5653-8},
+  keywords = {Design Science,Design Science Research,Natural Science Research,Organization Design,Wicked Problem},
+  langid = {english},
+  series = {Integrated {{Series}} in {{Information Systems}}}
 }
 
 @incollection{markusvolterFrameworkbasierteGUIEntwicklung2004,
@@ -1200,6 +1637,17 @@
   organization = {{GitHub}}
 }
 
+@software{MicrosoftVscodelanguageservernode2021,
+  title = {Microsoft/Vscode-Languageserver-Node},
+  date = {2021-03-08T06:39:44Z},
+  origdate = {2015-09-03T13:39:52Z},
+  url = {https://github.com/microsoft/vscode-languageserver-node},
+  urldate = {2021-03-08},
+  abstract = {Language server protocol implementation for VSCode. This allows implementing language services in JS/TS running on node.js},
+  keywords = {json-rpc,lsp,vscode},
+  organization = {{Microsoft}}
+}
+
 @online{microsoftWebviewAPI2020,
   title = {Webview {{API}}},
   author = {{Microsoft}},
@@ -1260,6 +1708,15 @@
   langid = {english}
 }
 
+@inproceedings{nuseibehRequirementsEngineeringRoadmap2000,
+  title = {Requirements Engineering: A Roadmap},
+  shorttitle = {Requirements Engineering},
+  author = {Nuseibeh, Bashar and Easterbrook, Steve},
+  date = {2000-01-01},
+  pages = {35--46},
+  file = {C\:\\Users\\krire\\Zotero\\storage\\NF7TV5FZ\\Nuseibeh and Easterbrook - 2000 - Requirements engineering a roadmap.pdf}
+}
+
 @online{obeoEclipseSiriusOpensource,
   title = {Eclipse {{Sirius}} - {{Open}}-Source Domain-Specific Modeling - {{Obeo Designer}}},
   author = {{Obeo}},
@@ -1295,6 +1752,24 @@
   file = {C\:\\Users\\krire\\Zotero\\storage\\8RWCJZGF\\products.html}
 }
 
+@inproceedings{ortizBuildingServersideWeb2010,
+  title = {Building Server-Side Web Language Processors},
+  booktitle = {Proceedings of the 41st {{ACM}} Technical Symposium on {{Computer}} Science Education},
+  author = {Ortiz, Ariel},
+  date = {2010-03-10},
+  pages = {2--6},
+  publisher = {{Association for Computing Machinery}},
+  location = {{New York, NY, USA}},
+  doi = {10.1145/1734263.1734267},
+  url = {https://doi.org/10.1145/1734263.1734267},
+  urldate = {2021-02-03},
+  abstract = {This paper discusses some useful insights for instructors who might want to consider using a web approach in courses involving language design and implementation. The basic idea is to have students build a language processor that actually runs on the web, instead of a processor that just runs on a command-line shell. The author documents the advantages and possible shortcomings of this approach, as well as his class experiences.},
+  file = {C\:\\Users\\krire\\Zotero\\storage\\A5UHAKAG\\Ortiz - 2010 - Building server-side web language processors.pdf},
+  isbn = {978-1-4503-0006-3},
+  keywords = {compilers,interpreters,language processor,programming languages,server side,web,web development,web frameworks},
+  series = {{{SIGCSE}} '10}
+}
+
 @online{paulmarechalTheiaPluginImplementation2020,
   title = {Theia {{Plugin Implementation}}},
   author = {{Paul Maréchal}},
@@ -1306,6 +1781,25 @@
   keywords = {plugin,rpc,theia,wiki},
   langid = {english},
   organization = {{GitHub}}
+}
+
+@article{peffersDesignScienceResearch2007,
+  title = {A {{Design Science Research Methodology}} for {{Information Systems Research}}},
+  author = {Peffers, Ken and Tuunanen, Tuure and Rothenberger, Marcus A. and Chatterjee, Samir},
+  date = {2007-12-01},
+  journaltitle = {Journal of Management Information Systems},
+  volume = {24},
+  pages = {45--77},
+  publisher = {{Routledge}},
+  issn = {0742-1222},
+  doi = {10.2753/MIS0742-1222240302},
+  url = {https://doi.org/10.2753/MIS0742-1222240302},
+  urldate = {2021-02-16},
+  abstract = {The paper motivates, presents, demonstrates in use, and evaluates a methodology for conducting design science (DS) research in information systems (IS). DS is of importance in a discipline oriented to the creation of successful artifacts. Several researchers have pioneered DS research in IS, yet over the past 15 years, little DS research has been done within the discipline. The lack of a methodology to serve as a commonly accepted framework for DS research and of a template for its presentation may have contributed to its slow adoption. The design science research methodology (DSRM) presented here incorporates principles, practices, and procedures required to carry out such research and meets three objectives: it is consistent with prior literature, it provides a nominal process model for doing DS research, and it provides a mental model for presenting and evaluating DS research in IS. The DS process includes six steps: problem identification and motivation, definition of the objectives for a solution, design and development, demonstration, evaluation, and communication. We demonstrate and evaluate the methodology by presenting four case studies in terms of the DSRM, including cases that present the design of a database to support health assessment methods, a software reuse measure, an Internet video telephony application, and an IS planning method. The designed methodology effectively satisfies the three objectives and has the potential to help aid the acceptance of DS research in the IS discipline.},
+  annotation = {\_eprint: https://doi.org/10.2753/MIS0742-1222240302},
+  file = {C\:\\Users\\krire\\Zotero\\storage\\LD5PUDFE\\Peffers et al. - 2007 - A Design Science Research Methodology for Informat.pdf;C\:\\Users\\krire\\Zotero\\storage\\JDQKT6EC\\MIS0742-1222240302.html},
+  keywords = {case study,design science,design science research,design theory,dsrm,mental model,methodology,process model,research},
+  number = {3}
 }
 
 @online{philiplangerEclipseglspGlspPROTOCOL2020,
@@ -1344,6 +1838,25 @@
   venue = {{Internet (virtual)}}
 }
 
+@incollection{puraoIntegratingActionResearch2010,
+  title = {On {{Integrating Action Research}} and {{Design Research}}},
+  booktitle = {Design {{Research}} in {{Information Systems}}: {{Theory}} and {{Practice}}},
+  author = {Purao, Sandeep and Rossi, Matti and Sein, Maung K.},
+  editor = {Hevner, Alan and Chatterjee, Samir},
+  date = {2010},
+  pages = {179--194},
+  publisher = {{Springer US}},
+  location = {{Boston, MA}},
+  doi = {10.1007/978-1-4419-5653-8_13},
+  url = {https://doi.org/10.1007/978-1-4419-5653-8_13},
+  urldate = {2021-02-16},
+  abstract = {IS research has been criticized for having little influence on practice. One approach to achieving more relevance is to conduct research using appropriate research methods that balance the interests of both researchers and practitioners. This chapter examines the similarities between two methods that address this mandate by adopting a proactive stance to investigating information systems in organizations. These two approaches, action research and design research, both directly intervene in “real-world” domains and effect changes in these domains. We investigate these similarities by examining exemplars of each type of research according to the criteria of the other. Our analysis reveals interesting parallels and similarities between the two suggesting that the two approaches have much to learn from each other. Based on our analysis, we propose ways to facilitate integration of the two approaches that we believe will be useful for both and for IS research in general.},
+  isbn = {978-1-4419-5653-8},
+  keywords = {Design Research,Functional Prototype,International Joint Venture,Proactive Stance,Software Process Improvement},
+  langid = {english},
+  series = {Integrated {{Series}} in {{Information Systems}}}
+}
+
 @inproceedings{quinteroHowFaceTop2012,
   ids = {quinteroHowFaceTop2012a},
   title = {How Face the Top {{MDE}} Adoption Problems},
@@ -1369,6 +1882,17 @@
   organization = {{InfoQ}}
 }
 
+@online{RedhatdeveloperVscodejava,
+  title = {Redhat-Developer/Vscode-Java},
+  url = {https://github.com/redhat-developer/vscode-java},
+  urldate = {2021-03-08},
+  abstract = {Java Language Support for Visual Studio Code. Contribute to redhat-developer/vscode-java development by creating an account on GitHub.},
+  file = {C\:\\Users\\krire\\Zotero\\storage\\RZ66VZ9S\\protocol.html},
+  keywords = {java,json-rpc,lsp,vscode},
+  langid = {english},
+  organization = {{GitHub}}
+}
+
 @online{redhatWorldOpenSource,
   title = {The World's Open Source Leader},
   author = {{RedHat}},
@@ -1377,6 +1901,19 @@
   abstract = {Red Hat is the world’s leading provider of open source solutions, using a community-powered approach to provide reliable and high-performing cloud, virtualization, storage, Linux, and middleware technologies. Red Hat also offers award-winning support, training, and consulting services. Red Hat is an S\&P 500 company with more than 80 offices spanning the globe, empowering its customers’ businesses.},
   file = {C\:\\Users\\krire\\Zotero\\storage\\PZHVTTL9\\en.html},
   langid = {english}
+}
+
+@thesis{rekstadModelingEnvironmentCloud2020,
+  title = {A {{Modeling Environment}} in the {{Cloud}} for {{Education}}},
+  author = {Rekstad, Kristian},
+  date = {2020-12-09},
+  institution = {{Norwegian University of Science and Technology}},
+  location = {{Trondheim, Norway}},
+  abstract = {Model-Driven Development is a an approach to software engineering. A common framework for Model-Driven Development (MDD) is the Eclipse Modeling Framework. However, students resist learning it because of its use of unpopular technologies. This thesis comes before a master’s thesis, and looks at how modeling can be moved to cloud based editors in order to renew the technology stack. At the same time, opportunities for saving effort are found, by reusing existing implementations, architectures and protocols from other tools. This thesis ends by finding the need for a tree based editor, and testing the feasibility of it. Finally, some requirements and an architecture for such an editor are found. These can be further studied and implemented in a master’s thesis.},
+  file = {C\:\\Users\\krire\\Zotero\\storage\\ZMUWIMUV\\Rekstad - A Modeling Environment in the Cloud for Education.pdf},
+  langid = {english},
+  pagetotal = {81},
+  type = {Pre-project}
 }
 
 @article{rodriguesdasilvaModeldrivenEngineeringSurvey2015,
@@ -1416,6 +1953,24 @@
   series = {{{MODELS}} '18}
 }
 
+@inproceedings{rodriguez-echeverriaLanguageServerProtocol2018a,
+  title = {Towards a {{Language Server Protocol Infrastructure}} for {{Graphical Modeling}}},
+  booktitle = {Proceedings of the 21th {{ACM}}/{{IEEE International Conference}} on {{Model Driven Engineering Languages}} and {{Systems}}},
+  author = {Rodriguez-Echeverria, Roberto and Izquierdo, Javier Luis Cánovas and Wimmer, Manuel and Cabot, Jordi},
+  date = {2018-10-14},
+  pages = {370--380},
+  publisher = {{Association for Computing Machinery}},
+  location = {{New York, NY, USA}},
+  doi = {10.1145/3239372.3239383},
+  url = {https://doi.org/10.1145/3239372.3239383},
+  urldate = {2021-02-03},
+  abstract = {The development of modern IDEs is still a challenging and time-consuming task, which requires implementing the support for language-specific features such as syntax highlighting or validation. When the IDE targets a graphical language, its development becomes even more complex due to the rendering and manipulation of the graphical notation symbols. To simplify the development of IDEs, the Language Server Protocol (LSP) proposes a decoupled approach based on language-agnostic clients and language-specific servers. LSP clients communicate changes to LSP servers, which validate and store language instances. However, LSP only addresses textual languages (i.e., character as atomic unit) and neglects the support for graphical ones (i.e., nodes/edges as atomic units). In this paper, we present our vision to decouple graphical language IDEs discussing the alternatives for integrating LSP's ideas in their development. Moreover, we propose a novel LSP infrastructure to simplify the development of new graphical modeling tools, in which Web technologies may be used for editor front-ends while leveraging existing modeling frameworks to build language servers.},
+  file = {C\:\\Users\\krire\\Zotero\\storage\\SAPZXMMK\\Rodriguez-Echeverria et al. - 2018 - Towards a Language Server Protocol Infrastructure .pdf},
+  isbn = {978-1-4503-4949-9},
+  keywords = {Domain Specific Languages,glsp,graphical editor,Language Server Protocol,lsp,Modeling Editors},
+  series = {{{MODELS}} '18}
+}
+
 @inproceedings{sainiWebCollaborativeModelling2019,
   title = {Towards Web Collaborative Modelling for the User Requirements Notation Using Eclipse Che and Theia {{IDE}}},
   booktitle = {Proceedings of the 11th {{International Workshop}} on {{Modelling}} in {{Software Engineerings}}},
@@ -1430,6 +1985,23 @@
   abstract = {Collaborative modelling has become a necessity when developing a complex system or in a team of modellers with a diverse set of expertise. Textual notations have a long history in software engineering because of their fast editing style, simple usage, and scalability. Therefore, we propose a novel collaborative modelling framework for the graphical User Requirements Notation (URN) which we call tColab. It uses the text-based TGRL (Textual Goal-oriented Requirement Language) to build URN goal models and then automatically generates corresponding graphical models. This framework is based on the architecture of Eclipse Che and Theia. On one side, Theia provides support for LSP (Language Server Protocol) so that textual models can be built and their corresponding graphical models can be generated in a browser IDE (Integrated Development Environment). On the other hand, Eclipse Che adds support for collaboration where multiple modellers can contribute to building the textual models in an online collaborative manner. This initiative aims to replace the jUCMNAV tool, which is the most comprehensive URN modelling tool to date but only supports a single user.},
   file = {C\:\\Users\\krire\\Zotero\\storage\\P2EJTI2G\\Saini et al. - 2019 - Towards web collaborative modelling for the user r.pdf},
   keywords = {cloud,eclipse che,ELK,jUCMNav,LSP,sprotty,TGRL,theia,TURN,URN,user requirements notation},
+  series = {{{MiSE}} '19}
+}
+
+@inproceedings{sainiWebCollaborativeModelling2019a,
+  title = {Towards Web Collaborative Modelling for the User Requirements Notation Using Eclipse Che and Theia {{IDE}}},
+  booktitle = {Proceedings of the 11th {{International Workshop}} on {{Modelling}} in {{Software Engineerings}}},
+  author = {Saini, Rijul and Bali, Shivani and Mussbacher, Gunter},
+  date = {2019-05-26},
+  pages = {15--18},
+  publisher = {{IEEE Press}},
+  location = {{Montreal, Quebec, Canada}},
+  doi = {10.1109/MiSE.2019.00010},
+  url = {https://doi.org/10.1109/MiSE.2019.00010},
+  urldate = {2021-02-03},
+  abstract = {Collaborative modelling has become a necessity when developing a complex system or in a team of modellers with a diverse set of expertise. Textual notations have a long history in software engineering because of their fast editing style, simple usage, and scalability. Therefore, we propose a novel collaborative modelling framework for the graphical User Requirements Notation (URN) which we call tColab. It uses the text-based TGRL (Textual Goal-oriented Requirement Language) to build URN goal models and then automatically generates corresponding graphical models. This framework is based on the architecture of Eclipse Che and Theia. On one side, Theia provides support for LSP (Language Server Protocol) so that textual models can be built and their corresponding graphical models can be generated in a browser IDE (Integrated Development Environment). On the other hand, Eclipse Che adds support for collaboration where multiple modellers can contribute to building the textual models in an online collaborative manner. This initiative aims to replace the jUCMNAV tool, which is the most comprehensive URN modelling tool to date but only supports a single user.},
+  file = {C\:\\Users\\krire\\Zotero\\storage\\6GEKCF4R\\Saini et al. - 2019 - Towards web collaborative modelling for the user r.pdf},
+  keywords = {che,collaborative modelling,eclipse che,ELK,jUCMNav,LSP,sprotty,TGRL,theia,TURN,URN,user requirements notation},
   series = {{{MiSE}} '19}
 }
 
@@ -1453,6 +2025,14 @@
   langid = {english},
   organization = {{projects.eclipse.org}},
   type = {Text}
+}
+
+@online{SphinxArchitectureEclipsepedia,
+  title = {Sphinx/Architecture - {{Eclipsepedia}}},
+  url = {https://wiki.eclipse.org/Sphinx/architecture},
+  urldate = {2021-01-25},
+  file = {C\:\\Users\\krire\\Zotero\\storage\\ICSPZTPX\\architecture.html},
+  keywords = {eclipse,model server,sphinx}
 }
 
 @online{stackoverflowStackOverflowDeveloper2019,
@@ -1535,6 +2115,25 @@
   version = {7f40886}
 }
 
+@incollection{tremblayUseFocusGroups2010,
+  title = {The {{Use}} of {{Focus Groups}} in {{Design Science Research}}},
+  booktitle = {Design {{Research}} in {{Information Systems}}: {{Theory}} and {{Practice}}},
+  author = {Tremblay, Monica Chiarini and Hevner, Alan R. and Berndt, Donald J.},
+  editor = {Hevner, Alan and Chatterjee, Samir},
+  date = {2010},
+  pages = {121--143},
+  publisher = {{Springer US}},
+  location = {{Boston, MA}},
+  doi = {10.1007/978-1-4419-5653-8_10},
+  url = {https://doi.org/10.1007/978-1-4419-5653-8_10},
+  urldate = {2021-02-16},
+  abstract = {Focus groups to investigate new ideas are widely used in many research fields. The use of focus groups in design science research poses interesting opportunities and challenges. Traditional focus group methods must be adapted to meet two specific goals of design research. For the evaluation of an artifact design, exploratory focus groups (EFGs) study the artifact to propose improvements in the design. The results of the evaluation are used to refine the design and the cycle of build and evaluate using EFGs continues until the artifact is released for field test in the application environment. Then, the field test of the design artifact may employ confirmatory focus groups (CFGs) to establish the utility of the artifact in field use. Rigorous investigation of the artifact requires multiple CFGs to be run with opportunities for quantitative and qualitative data collection and analyses across the multiple CFGs. In this chapter, we discuss the adaptation of focus groups to design science research projects. We demonstrate the use of both EFGs and CFGs in a design research doctoral thesis in the health-care field.},
+  isbn = {978-1-4419-5653-8},
+  keywords = {Data Analytic Strategy,Design Artifact,Design Science Research,Focus Group,Focus Group Participant},
+  langid = {english},
+  series = {Integrated {{Series}} in {{Information Systems}}}
+}
+
 @online{typefoxArchitectureOverview,
   title = {Architecture {{Overview}}},
   author = {{Typefox}},
@@ -1615,6 +2214,17 @@
   langid = {english}
 }
 
+@online{Vscodejsonrpc,
+  title = {Vscode-Jsonrpc},
+  url = {https://www.npmjs.com/package/vscode-jsonrpc},
+  urldate = {2021-03-08},
+  abstract = {A json rpc implementation over streams},
+  file = {C\:\\Users\\krire\\Zotero\\storage\\9BRSVSAN\\vscode-jsonrpc.html},
+  keywords = {json-rpc,lsp,vscode},
+  langid = {english},
+  organization = {{npm}}
+}
+
 @inproceedings{walshClientagnosticHybridModel2020,
   title = {Toward Client-Agnostic Hybrid Model Editor Tools as a Service},
   booktitle = {Proceedings of the 23rd {{ACM}}/{{IEEE International Conference}} on {{Model Driven Engineering Languages}} and {{Systems}}: {{Companion Proceedings}}},
@@ -1650,6 +2260,26 @@
   keywords = {adoption,model-driven engineering,modeling tools,organizational change},
   langid = {english},
   series = {Lecture {{Notes}} in {{Computer Science}}}
+}
+
+@incollection{williamsDesignEmergingDigital2010,
+  title = {Design of {{Emerging Digital Services}}: {{A Taxonomy}}},
+  shorttitle = {Design of {{Emerging Digital Services}}},
+  booktitle = {Design {{Research}} in {{Information Systems}}: {{Theory}} and {{Practice}}},
+  author = {Williams, Kevin and Chatterjee, Samir and Rossi, Matti},
+  editor = {Hevner, Alan and Chatterjee, Samir},
+  date = {2010},
+  pages = {235--253},
+  publisher = {{Springer US}},
+  location = {{Boston, MA}},
+  doi = {10.1007/978-1-4419-5653-8_16},
+  url = {https://doi.org/10.1007/978-1-4419-5653-8_16},
+  urldate = {2021-02-16},
+  abstract = {There has been a gigantic shift from a product-based economy to one based on services, specifically digital services. From every indication it is likely to be more than a passing fad and the changes these emerging digital services represent will continue to transform commerce and have yet to reach market saturation. Digital services are being designed for and offered to users, yet very little is known about the design process that goes behind these developments. Is there a science behind designing digital services? By examining 13 leading digital services, we have developed a design taxonomy to be able to classify and contrast digital services. What emerged in the taxonomy were two broad dimensions: a set of fundamental design objectives and a set of fundamental service provider objectives. This chapter concludes with an application of the proposed taxonomy to three leading digital services. We hope that the proposed taxonomy will be useful in understanding the science behind the design of digital services.},
+  isbn = {978-1-4419-5653-8},
+  keywords = {Business Objective,Revenue Sharing,Service Provider,Service User,Social Networking Site},
+  langid = {english},
+  series = {Integrated {{Series}} in {{Information Systems}}}
 }
 
 
