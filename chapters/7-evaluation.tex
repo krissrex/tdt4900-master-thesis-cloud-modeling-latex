@@ -1,3 +1,22 @@
 \chapter{Evaluation}\label{chap:evaluation}
 
 % TODO
+
+* Feature test based on Confluence tasks.
+  * Result: missing many features still. Not usable in education.
+
+* Protocol-to-usecase parity. (Protocol-to-emfCommands parity?)
+  * Result: JSON-RPC part is missing most features still. Not stable and recommended for adoption. The extension needs more features in order to grow the protocol. The data structure is valid; it can represent different tree structures from domains like Ecore, json and file systems.
+
+* Environment end-to-end test in gitpod.
+  * Result: the extension can install and render Ecore diagrams.
+
+* Flexibility test to change the label or which properties are shown as children.
+  * Result: failed. No such feature yet. No major blocker except development time.
+
+* Editor functionality test.
+  * Result: Can view multiple trees and select nodes. Can show/hide children. Does not show correct icon. Missing drag-and-drop, editing, keyboard shortcuts, right click, keyboard navigation, validation.
+
+* Project viability test.
+  * Result: has a good kernel. Missing issues and roadmap on github. Clean code, but many TODO/FIXME that are unresolved. 
+  

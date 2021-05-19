@@ -1,3 +1,39 @@
 \chapter{Background}\label{chap:background}
 
 % TODO
+
+* Conceptual modeling
+
+* TDT4250. Modeling, use of instances to validate model as you develop, validation of models.
+
+* Eclipse EMF offers different Ecore editors. Tree-editor is important for developers, and diagrams are important in runtime and end-users.
+
+* Master-detail Tree Editors. Brief introduction to Tree Structures.
+
+* Reflective Ecore Editor, its architecture, Commands in .Edit, works on any model.
+
+* Ecore metamodel, EMF, XMI, genmodel. Adaptation of editors to special cases like Ecore model and Genmodel.
+
+* VSCode Custom Editor API enables any type of graphical editor to be made, not just text.
+
+* LSP from VSCode solves language-to-editor m*n combinations. There is already a need to move EMF from Eclipse to VSCode, it might need to move to IntelliJ etc. in the future.
+
+* The pre-project suggested an architecture for a VSCode Extension based on LSP. It confirmed the feasibility of the client-server model with a custom editor, the major blockers for this architecture.
+  * It also suggested a data structure for general purpose tree editing.
+  * It suggested a base protocol on which to build the TLSP on, but did not implement it.
+
+* What can make this Open Source software project viable and worth pursuing further? Anecdotal and empirical evidence, not research.
+  * This project needs to live on after the delivery of the Thesis.
+  * Correct open source licenses, and "licence hygience" wrt. copy-pasting. Eclipse Foundation do thorough licence reviews.
+  * Use of programming languages accepted by the developer community.
+  * Use of automated build systems accepted by the developer community.
+  * Testable code to reduce legacy and maintenance burden.
+  * Human readable, clean code. Correct use of Design Patterns. Clean separation of concerns.
+  * Use of commonly used and recognized dependencies/libraries/frameworks/tools.
+  * CI/CD.
+  * Good developer documentation. Architecture diagrams. Informative Readme-files with pictures of the running software. Instructions for developer environment setup.
+  * Google Design Documents (?). Not too common in this ecosystem, but valuable inside Google. Complements the readme.
+  * Publicly available bug/issue tracker and roadmap.
+  * Release management. Semantic versioning. Changelogs. More useful for end-users or those using this as a library/dependency.
+  * Specific to Eclipse Foundation, is the "Eclipse Foundation Project Handbook" (https://www.eclipse.org/projects/handbook/) and its checklist.
+  * Measures to reduce new-developer onboarding and friction.
