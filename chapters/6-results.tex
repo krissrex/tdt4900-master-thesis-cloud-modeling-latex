@@ -1,17 +1,24 @@
 \chapter{Results}\label{chap:results}
 
 % TODO
-
+\section{Software Artifact: Tree Editor Extension for Ecore in Visual Studio Code}
 * Functioning viewer of any Ecore model in VSCode. Missing most features.
+  * List of functional requirements implemented.
+  * List of non-functional requirements implemented.
+* Reuses java EMF code and EMF.Cloud ModelServer. No re-implementation of EMF logic.
 
+\section{Design Artifact: Architecture for Tree Language Server Systems}
 * TLSP architecture. 3-component system (view, extension, server).
 
+\section{Design Artifact: Tree Language Server Protocol}
 * TLSP protocol. JSON-RPC based with LSP Base, with a Tree Document Model data structure. Hierarchy schemas for optimistic-view drag-n-drop. Type and id based nodes. 
 
-* Reuses java EMF code and EMF.Cloud ModelServer. No re-implementation of EMF logic.
+\section{Open Source Project: Measures Taken for Viability and Maintainability}
 
 * A project that may be viable and further developed.
   * Bundled IDE configuration: recommended extension, build tasks, run configurations. Reduces overhead for new developers.
   * NOT: CI/CD. Easily added later when needed. Overhead for 1-man project.
   * Build-scripts and npm/maven for building.
   * Readme-files for all components and modules.
+  * Commonly used programming languages and (official) dependencies
+  
