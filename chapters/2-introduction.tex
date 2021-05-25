@@ -13,24 +13,60 @@ The model itself is often one or more artifacts in the software project, express
 Modeling simplifies the \gls{domain} by using abstraction, and reduces the world down to the entities, relations, procedures (or other abstractions) that are needed to solve the relevant problems.
 
 
-\paragraph{The \acrshort{MDD} approach is taught at \acrfull{NTNU} in a course named \textit{\gls{TDT4250} Advanced Software Design}.}
-% TODO
+\paragraph{The \acrshort{MDD} approach is taught at \acrfull{NTNU}.}
+The course is named \textit{\gls{TDT4250} Advanced Software Design}.
+A modeling language called \textit{\gls{Ecore}} is used in \gls{TDT4250}.
+This language comes from the \acrfull{EMF}.
+The models can generate java code, and can extend the \gls{Eclipse} as a plugin.
+The plugin lets a user enter data for a model instance by using \gls{Eclipse} as a user interface.
+Students also learn to create \acrfullpl{DSL} with an \gls{Ecore} model as its core.
 
-\paragraph{Eclipse IDE is required to work with EMF modeling.}
-% students don't like eclipse. reduces chance of adoption and use of emf afterwards.
-% TODO
+\paragraph{\Gls{Eclipse} is required to work with \acrshort{EMF} modeling.}
+It has editors for \gls{Ecore}, code generation and model validation.
+There are two main types of editors: hierarchical tree editors and graphical diagram editors.
+There are also multiple different implementation on the tree editors, based on different underlying frameworks.
 
-\paragraph{\acrshort{NTNU} wants to move from Eclipse IDE to \gls{VSCode}  running in a web browser.}
-% Avoids installation issues with eclipse and java etc. Makes it easier to publish assignments from github. 
-% TODO
+\paragraph{The reliance on \gls{Eclipse} is a problem for students.}
+Students don't like to work in Eclipse, because of various issues with usability, errors or stability. %TODO: cite?
+If a student wants to use \acrshort{EMF} afterwards in their job, they would have to use \gls{Eclipse}, and also convince their team to do it as well.
+Some students see \acrshort{EMF} as being too \gls{Eclipse} related, as well, and incorrectly see it as a tool for only developing Eclipse plugins.
+This results in students resisting to learn \acrshort{EMF}, and also \acrshort{MDD} by implication, because no \acrshort{EMF} alternative is taught.
+
+\paragraph{\acrshort{NTNU} wants to move from \gls{Eclipse} to \gls{VSCode}  running in a web browser.}
+This is a recent decision, and mainly for the course in Object Oriented Programming with java.
+Some of the reasoning behind the change, is to avoid installation issues from \gls{Eclipse}, and to ease online collaboration through Github and publication of assignments. %TODO: cite?
+\gls{VSCode} is an advanced text editor that has increased in popularity in the recent years.
+It is based on web technologies, but normally runs as a desktop application.
+A website and service called \textit{gitpod} allows running \gls{VSCode} in a web browser, and connect it to a workspace based on a Github repository.
+The workspace has the project files, software development kits and other tools already installed and running in a remote machine in the \gls{cloud}.
+This avoids all installation on a student's machine.
+
+\paragraph{For \gls{TDT4250} to follow suit and move to gitpod, the \gls{Ecore} editors would have to be available in \gls{VSCode} as well.}
+The current situation is that there are no \gls{Ecore} editors for \gls{VSCode}.
+There are also no known \acrshort{MDD} frameworks for \gls{VSCode} that integrates with the other curriculum of \gls{TDT4250} either, as alternatives to \acrshort{EMF}.
 
 
-%TODO
 \section{The Eclipse Ecosystem Wants to Run Software in the Cloud}
+%* Eclipse ecosystem is moving to the cloud, EMF.Cloud, GLSP, Theia, gitpod, Sprotty.
+%  * Pre-project identified that the main actors are Typefox, EclipseSource, RedHat, Obeo
+%  * Main focus on development, not the developer; code in Eclipse and run in cloud
 
-* Eclipse ecosystem is moving to the cloud, EMF.Cloud, GLSP, Theia, gitpod, Sprotty.
-  * Pre-project identified that the main actors are Typefox, EclipseSource, RedHat, Obeo
-  * Main focus on development, not the developer; code in Eclipse and run in cloud
+\paragraph{The \acrlong{EMF} is powered by \gls{open source} software and an ecosystem of developers.}
+The framework has many tools and software libraries available, contributed by various developers and organizations.
+These developers and organizations, is what this thesis nicknames the \textit{Eclipse Ecosystem}.
+Some prominent actors are the organizations \textit{Typefox}, \textit{EclipseSource} (with Dr.\ Jonas Helming and Maximilian Koegel), \textit{Obeo} and \textit{RedHat}~\cite{rekstadModelingEnvironmentCloud2020}.
+For example, \textit{gitpod} is developed by Typefox, and one of the \gls{Eclipse} tree editors for \gls{Ecore} is created by EclipseSource.
+
+\paragraph{\Gls{cloud} is becoming more popular, and the Eclipse Ecosystem is heading there.}
+When something \textit{runs in the \gls{cloud}}, it really means that it runs on rented computers in a data center somewhere outside of the organization.
+Running in the cloud is a win for developers and organizations, because they don't need to take care of their own hardware.
+And scaling up to more computers is as easy as clicking a button, or often happens automatically with load balancing technology.
+No more purchasing of hardware and configuring it.
+When developers ``embrace'' the \gls{cloud}, it also means working more with web technologies and less with desktop applications.
+
+\paragraph{To use \acrshort{EMF} in the cloud, the Eclipse ecosystem has started to create new tools.}
+Most of the tools are related to \textbf{running} \acrshort{EMF}-based software, but not \textbf{developing} it.
+There are \textit{some} advances to developing in the cloud, with \textit{gitpod} and the \gls{VSCode} re-implementation \textit{\gls{Theia}}, but neither have tools for \acrshort{EMF}.
 
 \section{A Pre-project Identified a Need for a Tree Editor}
 
