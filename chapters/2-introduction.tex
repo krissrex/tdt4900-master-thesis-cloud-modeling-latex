@@ -37,17 +37,17 @@ This is a recent decision, and mainly for the course in Object Oriented Programm
 Some of the reasoning behind the change, is to avoid installation issues from \gls{Eclipse}, and to ease online collaboration through Github and publication of assignments. %TODO: cite?
 \gls{VSCode} is an advanced text editor that has increased in popularity in the recent years.
 It is based on web technologies, but normally runs as a desktop application.
-A website and service called \textit{gitpod} allows running \gls{VSCode} in a web browser, and connect it to a workspace based on a Github repository.
+A website and service called \textit{\gls{Gitpod}} allows running \gls{VSCode} in a web browser, and connect it to a workspace based on a Github repository.
 The workspace has the project files, software development kits and other tools already installed and running in a remote machine in the \gls{cloud}.
 This avoids all installation on a student's machine.
 
-\paragraph{For \gls{TDT4250} to follow suit and move to gitpod, the \gls{Ecore} editors would have to be available in \gls{VSCode} as well.}
+\paragraph{For \gls{TDT4250} to follow suit and move to \gls{Gitpod}, the \gls{Ecore} editors would have to be available in \gls{VSCode} as well.}
 The current situation is that there are no \gls{Ecore} editors for \gls{VSCode}.
 There are also no known \acrshort{MDD} frameworks for \gls{VSCode} that integrates with the other curriculum of \gls{TDT4250} either, as alternatives to \acrshort{EMF}.
 
 
 \section{The Eclipse Ecosystem Wants to Run Software in the Cloud}
-%* Eclipse ecosystem is moving to the cloud, EMF.Cloud, GLSP, Theia, gitpod, Sprotty.
+%* Eclipse ecosystem is moving to the cloud, EMF.Cloud, GLSP, Theia, Gitpod, Sprotty.
 %  * Pre-project identified that the main actors are Typefox, EclipseSource, RedHat, Obeo
 %  * Main focus on development, not the developer; code in Eclipse and run in cloud
 
@@ -55,7 +55,7 @@ There are also no known \acrshort{MDD} frameworks for \gls{VSCode} that integrat
 The framework has many tools and software libraries available, contributed by various developers and organizations.
 These developers and organizations, is what this thesis nicknames the \textit{Eclipse Ecosystem}.
 Some prominent actors are the organizations \textit{Typefox}, \textit{EclipseSource} (with Dr.\ Jonas Helming and Maximilian Koegel), \textit{Obeo} and \textit{RedHat}~\cite{rekstadModelingEnvironmentCloud2020}.
-For example, \textit{gitpod} is developed by Typefox, and one of the \gls{Eclipse} tree editors for \gls{Ecore} is created by EclipseSource.
+For example, \textit{\gls{Gitpod}} is developed by Typefox, and one of the \gls{Eclipse} tree editors for \gls{Ecore} is created by EclipseSource~\cite{typefoxTypeFoxSmartTools,eclipsesourceEMFFormsEditors2016}.
 
 \paragraph{\Gls{cloud} is becoming more popular, and the Eclipse Ecosystem is heading there.}
 When something \textit{runs in the \gls{cloud}}, it really means that it runs on rented computers in a data center somewhere outside of the organization.
@@ -66,7 +66,7 @@ When developers ``embrace'' the \gls{cloud}, it also means working more with web
 
 \paragraph{To use \acrshort{EMF} in the cloud, the Eclipse ecosystem has started to create new tools.}
 Most of the tools are related to \textbf{running} \acrshort{EMF}-based software, but not \textbf{developing} it.
-There are \textit{some} advances to developing in the cloud, with \textit{gitpod} and the \gls{VSCode} re-implementation \textit{\gls{Theia}}, but neither have tools for \acrshort{EMF}.
+There are \textit{some} advances to developing in the cloud, with \textit{Gitpod} and the \gls{VSCode} re-implementation \textit{\gls{Theia}}, but neither have tools for \acrshort{EMF}.
 
 
 \section{A Pre-project Identified a Need for a Tree Editor}
@@ -78,15 +78,43 @@ The need for \acrshort{EMF} editing in the \gls{cloud} was known, but not how to
 
 \paragraph{The pre-project identified a need for a web-based tree editor for working with \acrshort{EMF}.}
 Early plans were to create a diagram editor, inspired by \textit{\gls{UML} Class Diagrams} and the \gls{Eclipse} diagram editor for \gls{Ecore} named \textit{Ecore Tools} (based on \textit{Sirius} by aforementioned Obeo)~\cite{rekstadModelingEnvironmentCloud2020}.
+During an online conference for the Eclipse ecosystem, EclipseCon 2020, it became clear that EclipseSource was already working on this.
+However, as a former student of \gls{TDT4250}, most of the work with \gls{Ecore} happened in a tree structure\footnote{\textit{Tree structure} here means the hierarchical parent-child structure, perhaps better known from file system folders and file browsers.} editor with a property sheet.
+This kind of editor has what is known as a \textit{master-detail layout}, where the tree is a master view, and the property sheet is the details of the current selection in the tree.
+No actor in the Eclipse ecosystem was working on such a tree editor for \gls{Ecore} models for \gls{VSCode}.
+Preliminary searches online did not find such an editor created by anyone outside the Eclipse ecosystem either.
 
-% EclipseCon, GLSP, Ecore GLSP, Theia extension, gitpod, 
+% TODO: add a picture of a tree editor
 
-\paragraph{Initial requirements for a tree editor were found.}
+% EclipseCon, GLSP, Ecore GLSP, Theia extension, Gitpod, 
+
+\paragraph{Initial requirements for a tree editor were chosen.}
+The period of work was constrained to the pre-project and master's thesis, which is from August 2020 to June 2021.
+This constraint made it a goal to reduce the amount of unnecessary work and reduce re-implementation of existing solutions.
+For example, the \acrlong{EMF} is big, with many years worth of experience ingrained in its implementation details.
+Therefore, a non-funcitonal requirement emerged: \textbf{the editor should re-use as much of the existing \acrshort{EMF} java code as possible.}
+
+
+Another non-functional requirement was that \textbf{it should run inside \gls{VSCode} as an extension}.
+Gitpod was at the time was using \gls{Theia} as the editor, which was compatible with \gls{VSCode} extensions~\cite{rekstadModelingEnvironmentCloud2020}.
+\Gls{Theia} has two extension mechanisms, but only the \gls{VSCode} extension mechanism could be installed during runtime by students\cite{rekstadModelingEnvironmentCloud2020}.
+Because a goal was to use the Gitpod service for \gls{TDT4250}, this compatibility was needed.
+
+
+The third non-functional requirement was that \textbf{the project should be \gls{open source} and designed to live longer than the period of work.}
+A goal is to include all or most of the functionality already present in \gls{Eclipse}, which was estimated to be more work than what was possible to do during the pre-project and master's thesis.
+Therefore, the development will need to be taken over by someone else afterwards.
+Either the Eclipse ecosystem, or a master's thesis by another student.
+An \gls{open source} project needs some additional care if it wants to succeed.
+For the Eclipse ecosystem to handle it, the software should have a compatible license, and not copy or use code with incompatible licenses.
+The code should also be well structured, documented and easy to contribute to for others.
+
 % non-functional. functional.
 % EMF big. Open source, maintenance.
 % Functional.
 
 \paragraph{A software architecture and protocol emerged by analysing similar solutions.}
+
 % LSP. GLSP. 
 
 \paragraph{The pre-project used prototypes to verify the feasibility of the architecture.}
