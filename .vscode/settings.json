@@ -20,7 +20,6 @@
     "editor.tabSize": 2
   },
   // https://github.com/James-Yu/LaTeX-Workshop/wiki
-  "latex-workshop.latex.autoClean.run": "onBuilt",
   "latex-workshop.chktex.enabled": true,
   "latex-workshop.chktex.run": "onType",
   "latex-workshop.chktex.args.active": [
