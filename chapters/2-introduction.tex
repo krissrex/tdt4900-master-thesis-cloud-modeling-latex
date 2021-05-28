@@ -34,10 +34,10 @@ This results in students resisting to learn \acrshort{EMF}, and also \acrshort{M
 
 \paragraph{\acrshort{NTNU} wants to move from \gls{Eclipse} to \gls{VSCode}  running in a web browser.}
 This is a recent decision, and mainly for the course in Object Oriented Programming with java.
-Some of the reasoning behind the change, is to avoid installation issues from \gls{Eclipse}, and to ease online collaboration through Github and publication of assignments. %TODO: cite?
+Some of the reasoning behind the change, is to avoid installation issues from \gls{Eclipse}, and to ease online collaboration through GitHub and publication of assignments. %TODO: cite?
 \gls{VSCode} is an advanced text editor that has increased in popularity in the recent years.
 It is based on web technologies, but normally runs as a desktop application.
-A website and service called \textit{\gls{Gitpod}} allows running \gls{VSCode} in a web browser, and connect it to a workspace based on a Github repository.
+A website and service called \textit{\gls{Gitpod}} allows running \gls{VSCode} in a web browser, and connect it to a workspace based on a GitHub repository.
 The workspace has the project files, software development kits and other tools already installed and running in a remote machine in the \gls{cloud}.
 This avoids all installation on a student's machine.
 
@@ -71,15 +71,16 @@ There are \textit{some} advances to developing in the cloud, with \textit{Gitpod
 
 \section{A Pre-project Identified a Need for a Tree Editor}
 
-\paragraph{This masters thesis is preceeded by a pre-project thesis.}
+\paragraph{This masters thesis is preceded by a pre-project thesis.}
 This work happened during the Autumn of 2020, the semester before this masters thesis.
+The results were presented in \cite{rekstadModelingEnvironmentCloud2020}.
 The project began by identifying what to build.
 The need for \acrshort{EMF} editing in the \gls{cloud} was known, but not how to do it or if it was even possible.
 
 \paragraph{The pre-project identified a need for a web-based tree editor for working with \acrshort{EMF}.}
 Early plans were to create a diagram editor, inspired by \textit{\gls{UML} Class Diagrams} and the \gls{Eclipse} diagram editor for \gls{Ecore} named \textit{Ecore Tools} (based on \textit{Sirius} by aforementioned Obeo)~\cite{rekstadModelingEnvironmentCloud2020}.
 During an online conference for the Eclipse ecosystem, EclipseCon 2020, it became clear that EclipseSource was already working on this.
-However, as a former student of \gls{TDT4250}, most of the work with \gls{Ecore} happened in a tree structure\footnote{\textit{Tree structure} here means the hierarchical parent-child structure, perhaps better known from file system folders and file browsers.} editor with a property sheet.
+However, based on the author's experience as a former student of \gls{TDT4250}, most of the work with \gls{Ecore} happened in a tree structure\footnote{\textit{Tree structure} here means the hierarchical parent-child structure, perhaps better known from file system folders and file browsers.} editor with a property sheet.
 This kind of editor has what is known as a \textit{master-detail layout}, where the tree is a master view, and the property sheet is the details of the current selection in the tree.
 No actor in the Eclipse ecosystem was working on such a tree editor for \gls{Ecore} models for \gls{VSCode}.
 Preliminary searches online did not find such an editor created by anyone outside the Eclipse ecosystem either.
@@ -92,7 +93,7 @@ Preliminary searches online did not find such an editor created by anyone outsid
 The period of work was constrained to the pre-project and master's thesis, which is from August 2020 to June 2021.
 This constraint made it a goal to reduce the amount of unnecessary work and reduce re-implementation of existing solutions.
 For example, the \acrlong{EMF} is big, with many years worth of experience ingrained in its implementation details.
-Therefore, a non-funcitonal requirement emerged: \textbf{the editor should re-use as much of the existing \acrshort{EMF} java code as possible.}
+Therefore, a non-functional requirement emerged: \textbf{the editor should re-use as much of the existing \acrshort{EMF} java code as possible.}
 
 
 Another non-functional requirement was that \textbf{it should run inside \gls{VSCode} as an extension}.
@@ -109,11 +110,13 @@ An \gls{open source} project needs some additional care if it wants to succeed.
 For the Eclipse ecosystem to handle it, the software should have a compatible license, and not copy or use code with incompatible licenses.
 The code should also be well structured, documented and easy to contribute to for others.
 
-% non-functional. functional.
-% EMF big. Open source, maintenance.
-% Functional.
+The initial, unrefined functional requirement was that \textbf{\gls{VSCode} should be able to view, edit and save \gls{Ecore} models and model instances in ``.ecore'' and ``.xmi'' files.}
+The pre-project did further work to refine this functional requirement into multiple smaller requirements, and discovered many new ones, by requirements extraction~\cite[p.~47,48]{rekstadModelingEnvironmentCloud2020}.
+As noted in the discussion in \cite[p.~51]{rekstadModelingEnvironmentCloud2020}, the list of functional requirements was not complete.
+% TODO: add requirements as appendix?
 
-\paragraph{A software architecture and protocol emerged by analysing similar solutions.}
+
+\paragraph{A software architecture and protocol emerged by analyzing similar solutions.}
 
 % LSP. GLSP. 
 
@@ -140,7 +143,7 @@ The code should also be well structured, documented and easy to contribute to fo
     * Flexibility - customize rendering and logic for different models.
     * Configurability - alter or toggle behavior per-project based on config files.
     * Conforming to existing architectures that are empirically validated, and familiar to the Eclipse ecosystem developers.
-    * Legal - open source licence. No use of incompatible license (e.g. GPL)
+    * Legal - open source license. No use of incompatible license (e.g. GPL)
     * Compatibility - run in Theia and VSCode
 
 
