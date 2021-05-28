@@ -32,7 +32,7 @@ If a student wants to use \acrshort{EMF} afterwards in their job, they would hav
 Some students see \acrshort{EMF} as being too \gls{Eclipse} related, as well, and incorrectly see it as a tool for only developing Eclipse plugins.
 This results in students resisting to learn \acrshort{EMF}, and also \acrshort{MDD} by implication, because no \acrshort{EMF} alternative is taught.
 
-\paragraph{\acrshort{NTNU} wants to move from \gls{Eclipse} to \gls{VSCode}  running in a web browser.}
+\paragraph{\acrshort{NTNU} wants to move from \gls{Eclipse} to \gls{VSCode} running in a web browser.}
 This is a recent decision, and mainly for the course in Object Oriented Programming with java.
 Some of the reasoning behind the change, is to avoid installation issues from \gls{Eclipse}, and to ease online collaboration through GitHub and publication of assignments. %TODO: cite?
 \gls{VSCode} is an advanced text editor that has increased in popularity in the recent years.
@@ -48,14 +48,14 @@ There are also no known \acrshort{MDD} frameworks for \gls{VSCode} that integrat
 
 \section{The Eclipse Ecosystem Wants to Run Software in the Cloud}
 %* Eclipse ecosystem is moving to the cloud, EMF.Cloud, GLSP, Theia, Gitpod, Sprotty.
-%  * Pre-project identified that the main actors are Typefox, EclipseSource, RedHat, Obeo
+%  * Pre-project identified that the main actors are TypeFox, EclipseSource, RedHat, Obeo
 %  * Main focus on development, not the developer; code in Eclipse and run in cloud
 
 \paragraph{The \acrlong{EMF} is powered by \gls{open source} software and an ecosystem of developers.}
 The framework has many tools and software libraries available, contributed by various developers and organizations.
 These developers and organizations, is what this thesis nicknames the \textit{Eclipse Ecosystem}.
-Some prominent actors are the organizations \textit{Typefox}, \textit{EclipseSource} (with Dr.\ Jonas Helming and Maximilian Koegel), \textit{Obeo} and \textit{RedHat}~\cite{rekstadModelingEnvironmentCloud2020}.
-For example, \textit{\gls{Gitpod}} is developed by Typefox, and one of the \gls{Eclipse} tree editors for \gls{Ecore} is created by EclipseSource~\cite{typefoxTypeFoxSmartTools,eclipsesourceEMFFormsEditors2016}.
+Some prominent actors are the organizations \textit{TypeFox}, \textit{EclipseSource} (with Dr.\ Jonas Helming and Maximilian Koegel), \textit{Obeo} and \textit{RedHat}~\cite{rekstadModelingEnvironmentCloud2020}.
+For example, \textit{\gls{Gitpod}} is developed by TypeFox, and one of the \gls{Eclipse} tree editors for \gls{Ecore} is created by EclipseSource~\cite{typefoxTypeFoxSmartTools,eclipsesourceEMFFormsEditors2016}.
 
 \paragraph{\Gls{cloud} is becoming more popular, and the Eclipse Ecosystem is heading there.}
 When something \textit{runs in the \gls{cloud}}, it really means that it runs on rented computers in a data center somewhere outside of the organization.
@@ -70,6 +70,7 @@ There are \textit{some} advances to developing in the cloud, with \textit{Gitpod
 
 
 \section{A Pre-project Identified a Need for a Tree Editor}
+% EclipseCon, GLSP, Ecore GLSP, Theia extension, Gitpod, 
 
 \paragraph{This masters thesis is preceded by a pre-project thesis.}
 This work happened during the Autumn of 2020, the semester before this masters thesis.
@@ -86,8 +87,6 @@ No actor in the Eclipse ecosystem was working on such a tree editor for \gls{Eco
 Preliminary searches online did not find such an editor created by anyone outside the Eclipse ecosystem either.
 
 % TODO: add a picture of a tree editor
-
-% EclipseCon, GLSP, Ecore GLSP, Theia extension, Gitpod, 
 
 \paragraph{Initial requirements for a tree editor were chosen.}
 The period of work was constrained to the pre-project and master's thesis, which is from August 2020 to June 2021.
@@ -125,7 +124,7 @@ As noted in the discussion in \cite[p.~51]{rekstadModelingEnvironmentCloud2020},
 \paragraph{More work was needed in order to evaluate the pre-project solution.}
 % Not connected end-to-end. Not usable.
 
-* The pre-project identified a need for a web-based tree editor to work with EMF. It suggested an architecture and design. The ecosystem is already working on graphical editors for EMF, as presented on EclipseCon2020.
+* The pre-project identified a need for a web-based tree editor to work with EMF. It suggested an architecture and design. The ecosystem is already working on graphical editors for EMF, as presented on EclipseCon 2020.
   * Some early identified requirements:
     * EMF is big, we don't want to re-implement it. Focus on re-use of existing software
     * Open Source, to increase the chance of adoption and further improvement. The solution will require more work than a single semester.
