@@ -109,6 +109,7 @@ An \gls{open source} project needs some additional care if it wants to succeed.
 For the Eclipse ecosystem to handle it, the software should have a compatible license, and not copy or use code with incompatible licenses.
 The code should also be well structured, documented and easy to contribute to for others.
 
+
 The initial, unrefined functional requirement was that \textbf{\gls{VSCode} should be able to view, edit and save \gls{Ecore} models and model instances in ``.ecore'' and ``.xmi'' files.}
 The pre-project did further work to refine this functional requirement into multiple smaller requirements, and discovered many new ones, by requirements extraction~\cite[p.~47,48]{rekstadModelingEnvironmentCloud2020}.
 As noted in the discussion in \cite[p.~51]{rekstadModelingEnvironmentCloud2020}, the list of functional requirements was not complete.
@@ -116,35 +117,27 @@ As noted in the discussion in \cite[p.~51]{rekstadModelingEnvironmentCloud2020},
 
 
 \paragraph{A software architecture and protocol emerged by analyzing similar solutions.}
+Because the \acrshort{EMF} tooling had to move to \gls{VSCode} now, it is plausible that it will need to move to another \acrshort{IDE} later in the future.
+This could result in a customized plugin for each editor.
+That problem is also seen in programming languages: every editor needs a plugin for every programming language.
+Microsoft has tried to solve this combinatorial ``\(m{\times}n\)'' problem in \gls{VSCode} by introducing the \acrfull{LSP}.
+This architecture was also used as inspiration for a Eclipse ecosystem project, the \acrfull{GLSP}.
+A similar protocol design could benefit this tree editor, where the \gls{Ecore} language details are isolated in a component reusable across \acrshortpl{IDE}~\cite{rekstadModelingEnvironmentCloud2020}.
 
-% LSP. GLSP. 
+
+The architecture was also inspired by \acrshort{GLSP} in terms of components for the \gls{VSCode} extension.
+A ``generic'' frontend that handles all kinds of tree structures is hosted in a webview inside \gls{VSCode}, and talks to the \gls{VSCode} extension.
+The extension code bridges the \gls{Ecore} specific server to the generic frontend via the previously mentioned protocol~\cite{rekstadModelingEnvironmentCloud2020}.
+
+% TODO: add figure of architecture?
 
 \paragraph{The pre-project used prototypes to verify the feasibility of the architecture.}
+The main issues solved in the pre-project were related to design choices and feasibility.
+It tried to answer if and how such a \gls{Ecore} specific server could be made in java and be executed from the \gls{VSCode} extension itself.
+
 
 \paragraph{More work was needed in order to evaluate the pre-project solution.}
 % Not connected end-to-end. Not usable.
-
-* The pre-project identified a need for a web-based tree editor to work with EMF. It suggested an architecture and design. The ecosystem is already working on graphical editors for EMF, as presented on EclipseCon 2020.
-  * Some early identified requirements:
-    * EMF is big, we don't want to re-implement it. Focus on re-use of existing software
-    * Open Source, to increase the chance of adoption and further improvement. The solution will require more work than a single semester.
-    * Special needs for project management, because it must be maintained and improved over a longer period of time.
-  * Functional requirements were extracted in pre-project from Eclipse IDE's EMF tree editors.
-    * View models of different levels, from Ecore metamodel to model instances.
-    * View model as a tree based on containment properties.
-    * Create empty model files with the minimum file contents.
-    * Edit model hierarchies by creating, deleting or moving tree nodes.
-    * Edit tree node properties by using a form-based editor.
-    * Saving model changes to xmi files.
-    * Validation of models.
-    * Generation of code from models.
-  * Non-functional requirements from empirical evidence, to increase the chance of project adoption of the Eclipse ecosystem.
-    * Flexibility - customize rendering and logic for different models.
-    * Configurability - alter or toggle behavior per-project based on config files.
-    * Conforming to existing architectures that are empirically validated, and familiar to the Eclipse ecosystem developers.
-    * Legal - open source license. No use of incompatible license (e.g. GPL)
-    * Compatibility - run in Theia and VSCode
-
 
 % Research objectives ?
 %TODO
