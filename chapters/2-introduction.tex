@@ -34,10 +34,10 @@ This results in students resisting to learn \acrshort{EMF}, and also \acrshort{M
 
 \paragraph{\acrshort{NTNU} wants to move from \gls{Eclipse} to \gls{VSCode} running in a web browser.}
 This is a recent decision, and mainly for the course in Object Oriented Programming with java.
-Some of the reasoning behind the change, is to avoid installation issues from \gls{Eclipse}, and to ease online collaboration through GitHub and publication of assignments. %TODO: cite?
+Some of the reasoning behind the change, is to avoid installation issues from \gls{Eclipse}, and to ease online collaboration through \gls{GitHub} and publication of assignments. %TODO: cite?
 \gls{VSCode} is an advanced text editor that has increased in popularity in the recent years.
 It is based on web technologies, but normally runs as a desktop application.
-A website and service called \textit{\gls{Gitpod}} allows running \gls{VSCode} in a web browser, and connect it to a workspace based on a GitHub repository.
+A website and service called \textit{\gls{Gitpod}} allows running \gls{VSCode} in a web browser, and connect it to a workspace based on a \gls{GitHub} repository.
 The workspace has the project files, software development kits and other tools already installed and running in a remote machine in the \gls{cloud}.
 This avoids all installation on a student's machine.
 
@@ -97,7 +97,7 @@ Therefore, a non-functional requirement emerged: \textbf{the editor should re-us
 
 Another non-functional requirement was that \textbf{it should run inside \gls{VSCode} as an extension}.
 Gitpod was at the time was using \gls{Theia} as the editor, which was compatible with \gls{VSCode} extensions~\cite{rekstadModelingEnvironmentCloud2020}.
-\Gls{Theia} has two extension mechanisms, but only the \gls{VSCode} extension mechanism could be installed during runtime by students\cite{rekstadModelingEnvironmentCloud2020}.
+\Gls{Theia} has two extension mechanisms, but only the \gls{VSCode} extension mechanism could be installed during runtime by students~\cite{rekstadModelingEnvironmentCloud2020}.
 Because a goal was to use the Gitpod service for \gls{TDT4250}, this compatibility was needed.
 
 
@@ -134,9 +134,10 @@ The extension code bridges the \gls{Ecore} specific server to the generic fronte
 \paragraph{The pre-project used prototypes to verify the feasibility of the architecture.}
 The main issues solved in the pre-project were related to design choices and feasibility.
 It tried to answer if and how such a \gls{Ecore} specific server could be made in java and be executed from the \gls{VSCode} extension itself.
-
+The pre-project also looked for a good data model to support editing of any tree structure, while providing a user interface with high usability and constraints~\cite[p.~24,25]{rekstadModelingEnvironmentCloud2020}.
 
 \paragraph{More work was needed in order to evaluate the pre-project solution.}
+
 % Not connected end-to-end. Not usable.
 
 % Research objectives ?
