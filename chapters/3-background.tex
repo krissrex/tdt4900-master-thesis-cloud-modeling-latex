@@ -1,10 +1,44 @@
 \chapter{Background}\label{chap:background}
 
-% TODO
+This background section will explain some of the concepts, approaches, technologies and software architectures required to understand this thesis.
+The findings from the pre-project in \cite{rekstadModelingEnvironmentCloud2020} will also be presented in more detail than the introduction, as the findings are central to this thesis.
+Lastly, a section on open source software project management follows, as they shape many of the choices made in the implementation of a solution.
 
 \section{Conceptual Modeling and Model-Driven Development}
 
-* Conceptual modeling
+\paragraph{Rationale}
+\Acrfull{MDD} is the approach to software development which this thesis aims to support.
+Therefore, and understanding of \acrshort{MDD} is beneficial, in order to see how an editor should work.
+
+\paragraph{Modeling and abstraction}
+The core of \acrshort{MDD} is the model.
+The model is a human created construct, formed through humans working together to discuss and refine a problem domain until they reach a consensus of what abstractions help them solve the relevant problems~\cite[p.~154]{brambillaModeldrivenSoftwareEngineering2012}.
+Humans perceive the world (and problem domain) as many different phenomena, and conceptual modeling is the act of trying to describe these at some level of abstraction~\cite[p.~1,408]{krogstieModelbasedDevelopmentEvolution2012}.
+The model is assumed to resemble the phenomena and work the same way, and yet be simpler than the real world~\cite[p.~414]{krogstieModelbasedDevelopmentEvolution2012}.
+Abstraction means to find something common in different observations of a phenomena, and \textit{generalize} their features, \textit{classify} coherent clusters of objects and \textit{aggregate} concepts into more complex ones~\cite[p.~1]{brambillaModeldrivenSoftwareEngineering2012}.
+The model will never describe every aspect of the world perfectly, but can \textit{reduce} the world down to relevant aspects, and easily \textit{map} between model elements and real world phenomena~\cite[p.~1-2]{brambillaModeldrivenSoftwareEngineering2012}.
+
+
+\paragraph{Modeling languages}
+In order to describe the model, a \textit{language} is used.
+To realize the benefits of \acrshort{MDD}, a \textit{formal language} is used.
+The language can be textual or graphical, or both, and imposes a formally defined syntax on the modeler~\cite[p.~13]{brambillaModeldrivenSoftwareEngineering2012}.
+
+\paragraph{Modeling tools}
+The advantage of using a formal language is that it can be parsed and understood by software tools, as well as humans.
+The tools can validate the model according to the syntax, and to specific rules for the domain.
+Tools can also generate code, or execute the model itself.
+The model can be transformed into other models, or text or graphics~\cite[p.~8]{brambillaModeldrivenSoftwareEngineering2012}.
+
+\paragraph{\acrlong{MDD}}
+The central idea of \acrlong{MDD} is that the model is the source of truth that \textit{drives} the rest of the engineering and development~\cite[p.~9]{brambillaModeldrivenSoftwareEngineering2012}.
+There is not a separate model for analysis and for design, but a single one for both~\cite[p.~49]{evansDomaindrivenDesignTackling2004}.
+The software code becomes an expression of the model itself, and changes to the code often happen as the result of changes to the model~\cite[p.~49]{evansDomaindrivenDesignTackling2004}.
+Because the model and the software are so directly related, the \acrshort{MDD} approach is heavily reliant on tools to automate the tasks of validation and code generation.
+The formal language may also sacrifice some of its human readability in order to be understood by tools~\cite[p.~232]{krogstieModelbasedDevelopmentEvolution2012}.
+To solve this, one can use other tools that interpret, transform or present models in other ways~\cite[p.~233]{krogstieModelbasedDevelopmentEvolution2012}.
+This increases the reliance on tools for \acrshort{MDD} even more.
+
 
 \section{Model-Driven Development at NTNU in the Course TDT4250}
 
