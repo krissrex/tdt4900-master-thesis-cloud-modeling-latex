@@ -1,0 +1,42 @@
+\paragraph{Rationale}
+Because the target audience of the software solution (tree editor) are students at \acrshort{NTNU}, it is helpful to know how they work with \acrlong{MDD}.
+Their use cases are the ones being solved, meaning the solution must be made with this context in mind.
+
+\paragraph{\Acrshort{MDD} at \acrshort{NTNU}}
+To do \acrlong{MDD} effectively, tools should be used.
+In the course ``\textit{\gls{TDT4250} Advanced Software Design}''\footnote{Course description is available at \href{https://www.ntnu.edu/studies/courses/TDT4250\#tab=omEmnet}{https://www.ntnu.edu/studies/courses/TDT4250\#tab=omEmnet}.} at \acrshort{NTNU}, the chosen tools are in the \acrfull{EMF}~\cite{hallvardtraettebergEMFTDT4250NTNU2017}.
+This includes the modeling language \gls{Ecore}, visual editors in \gls{Eclipse}, model validation logic, the code generator named ``GenModel''\footnote{The code generator is actually named ``codegen'', but users only see the configuration model called ``GenModel''.} (generator model), and more.
+\Acrshort{EMF} is a battle-tested technology also used in certain industries, and is well integrated with the \gls{Eclipse}.
+The course \gls{TDT4250} also uses \gls{Eclipse} as a case study for other software design concepts, such as modularity (plugin architecture) and dynamic systems (OSGi), and custom \acrlongpl{DSL} which automatically work with \gls{Eclipse}.
+\Acrshort{EMF} is relevant for most or all of those concepts.
+
+\paragraph{Development methodology}
+Students are taught a methodology or approach for how to do modeling.
+They start by specifying a problem space, for example bookkeeping an organization of employees or the courses in \acrshort{NTNU}, and then abstract the problem into a model.
+The initial model is externalized as \gls{Ecore} by using a tree editor in \gls{Eclipse}.
+
+
+Then an \textit{model instance} is made, based on the model, and filled with example data from the domain.
+This model instance is used to test and verify that the model is appropriate for the problem space.
+Adjustments are made to the model to accommodate any problems with the model instance.
+
+
+Then validations can be created for the model, by one or both of the following approaches: writing \acrfull{OCL} into model annotations, or marking the model element with an annotation and implementing it as java code.
+\Acrshort{OCL} is a \acrlong{DSL} for navigating models and evaluating expressions, and the \gls{Eclipse} can detect annotations with \acrshort{OCL} and evaluate them against the \gls{Ecore} model.
+The other option, writing java code, requires the student to first create a new \textit{genmodel} file from the model (by using a menu in \gls{Eclipse}), generating a java code project from the model, and then writing validation logic into the generated code.
+For the java code to be picked up, \gls{Eclipse} can start a new instance which installs the generated code as a plugin~\cite{hallvardtraettebergConstraintsValidationTDT42502020}.
+
+
+Next up, when the model is deemed sufficient, and the most important validations are in place, the student can try to create a user interface.
+One of several choices here is to create an \textit{\gls{Eclipse} plugin}.
+\Acrshort{EMF} provides code generation for utilities used to integrate the model into an editor for \gls{Eclipse}.
+The student uses the genmodel to create these, and tweaks the code if wanted.
+Then everything is installed into \gls{Eclipse} by launching a new \gls{Eclipse} instance with the code installed as a plugin.
+
+
+Lastly, the user interface can be tested.
+The student creates a new model instance file, enters some example data from the domain, and runs validation logic.
+
+\paragraph{Lecture materials}
+The steps mentioned in the methodology above are available online in \cite{hallvardtraettebergEMFStepbystepTDT42502017,hallvardtraettebergConstraintsValidationTDT42502020,hallvardtraettebergEditingEcoreModel2017,hallvardtraettebergGenmodelTDT4250NTNU2017}.
+This is an advantage, because they can by used used in this master's thesis as a basis for creating evaluations and acceptance criteria.
