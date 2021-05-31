@@ -9,7 +9,7 @@ The root node does not have a parent.
 When representing the tree as code, it is possible to omit either the parent or child relationship in a node, making the parent or child implicit.
 The relationship can still be found, by \textit{traversing} the tree.
 Traversing means to visit every node it the tree by following the parent or child relationships.
-
+Nodes that are children of the same parent are called \textit{siblings}, and parents of parents are called \textit{grandparents}.
 
 \paragraph{Visualizing trees}
 There are many ways to present trees to humans.
@@ -48,6 +48,7 @@ There may be properties on the relationships between a node and its children, bu
 For a diagram type visualization, the properties may be presented as labels on the edge.
 
 \paragraph{Mapping to trees}
-A data structure can be mapped to a tree if it has separate objects with a containment or aggregation relationship.
+A data structure can be mapped to a tree if it has separate objects with a references, containment or aggregation relationship.
+The references can not be circular (where a node has a child which is also a parent or grandparent etc.).
 There can be different ways to map to a tree, depending on what properties are used (or not used).
 The labels can also come from various object properties, be derived from them or combine multiple properties into one label.
