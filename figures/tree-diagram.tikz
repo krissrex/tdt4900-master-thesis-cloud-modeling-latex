@@ -1,0 +1,21 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=root, label={above:Background}] (0) at (0, 4) {};
+		\node [style=node, label={below:\shortstack{The Open\\ Source Ecosystem}}] (1) at (-5.25, 2) {};
+		\node [style=node, label={below:Ecore Editors}] (2) at (0, 2) {};
+		\node [style=node, label={below:\shortstack{Editor Extension\\ Components}}] (3) at (5.75, 2) {};
+		\node [style=node, label={below:\shortstack{Sample Reflective\\ Ecore Model Editor}}] (4) at (-6.75, -2) {};
+		\node [style=node, label={below:\shortstack{EMF Forms\\ Ecore Editor}}] (5) at (-0.75, -2) {};
+		\node [style=node, label={below: Ecore Tools}] (6) at (3.75, -2) {};
+		\node [style=node, label={below:\shortstack{EMF.Cloud \\ ecore-glsp}}] (7) at (7.75, -2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=child] (0) to (1);
+		\draw [style=child] (0) to (2);
+		\draw [style=child] (0) to (3);
+		\draw [style=child] (2) to (4);
+		\draw [style=child] (2) to (5);
+		\draw [style=child] (2) to (6);
+		\draw [style=child] (2) to (7);
+	\end{pgfonlayer}
+\end{tikzpicture}

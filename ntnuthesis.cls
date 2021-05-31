@@ -186,6 +186,7 @@
     \RequirePackage[noabbrev]{cleveref}
 \fi
 \RequirePackage[acronym]{glossaries}        % create a glossary and acronym list
+\RequirePackage{tikzit}
 
 %% CUSTOMISATION
 
