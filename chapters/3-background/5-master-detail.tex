@@ -1,0 +1,22 @@
+\paragraph{Rationale}
+The tree editors use a layout pattern called \textit{master-detail}.
+
+\paragraph{Description}
+As the name \textit{Tree Editor} implies, they are used to edit a tree.
+There are mainly two different things that can be edited: the parent-child relationships and the node's properties.
+The user interfaces for the tree editors in \cref{sec:emf-editors} use a pattern called \textit{master-detail}.
+This means the user interface is composed of two parts: a \textit{master view} and a \textit{detail view}.
+
+
+\paragraph{Master view}
+The tree structure is shown as a hierarchy in the master view.
+It is common for the master view to be positioned to the left of a detail view, or above it.
+The user interacts with the master view to add, remove and select nodes.
+Adding a new child to a parent is done here.
+
+
+\paragraph{Detail view}
+When a node is selected, its properties are displayed in the detail view.
+It is common for the detail view to be positioned to the right of a master view, or below it.
+The detail view is usually a \textit{input form} or tabular (rows and cells) structure.
+The user usually enters text, numbers, ticks checkboxes and opens selection dialogues from the detail view.
