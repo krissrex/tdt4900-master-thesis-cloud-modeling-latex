@@ -36,64 +36,53 @@ Lastly, a section on open source software project management follows, as they sh
 % TODO: remove? DUplicate of prev. section?
 
 \section{An Overview of EMF:\ Ecore Metamodel, XMI Serialization and GenModel for Code Generation}\label{sec:emf-metamodel}
+%TODO
 
 \paragraph{Rationale}
+%TODO
 
 \paragraph{\acrlong{EMF}}
+%TODO
 % eclipse editor plugins, language, codegen, ocl, serialization format
 
 \paragraph{Ecore metamodel}
+%TODO
 % Class, package, attribute, reference
 
 \paragraph{\Acrshort{XMI} serialization}
+%TODO
 % serialization, standardized EMOF, default for ecore, XML,
 
 \paragraph{Ecore java \acrshort{API}}
+%TODO
 % EPackage registration, instance, factory, EList, EditingDomain, ItemProvider, Resource and ResourceSet
 
 \paragraph{GenModel code generation}
+%TODO
 % Template based, configuration options, model + .edit + .editor output
 
 \paragraph{Custom code}
+%TODO
 % editing genmodel code. @generated NOT annotation
 
 
 * Ecore metamodel, EMF, XMI, genmodel. Adaptation of editors to special cases like Ecore model and Genmodel.
 
 \section{Visual Studio Code's Custom Editor API}
-
+%TODO
 * VSCode Custom Editor API enables any type of graphical editor to be made, not just text.
 
 \section{Language Server Protocol Architecture}
-
+%TODO
 * LSP from VSCode solves language-to-editor m*n combinations. There is already a need to move EMF from Eclipse to VSCode, it might need to move to IntelliJ etc. in the future.
 
 \section{\acrlong{EMF} in the \Gls{cloud}}
-
+%TODO
 * Recent development, EMF.Cloud Model Server, EMF.Cloud EMFJson, GLSP, GLSP Ecore Editor, GLSP Coffee Editor.
 
-\section{Pre-project Findings about Architecture and Protocol for a Solution}
+\section{Pre-project Results}
 
-* The pre-project suggested an architecture for a VSCode Extension based on LSP. It confirmed the feasibility of the client-server model with a custom editor, the major blockers for this architecture.
-  * It also suggested a data structure for general purpose tree editing.
-  * It suggested a base protocol on which to build the TLSP on, but did not implement it.
-
-\section{Pre-project Findings about Software Requirements}
-
-* Non-functional requirements from empirical evidence, to increase the chance of project adoption of the Eclipse ecosystem.
-    * Flexibility - customize rendering and logic for different models.
-    * Configurability - alter or toggle behavior per-project based on config files.
-    * Conforming to existing architectures that are empirically validated, and familiar to the Eclipse ecosystem developers.
-
-* Functional requirements were extracted in pre-project from Eclipse IDE's EMF tree editors.
-  * View models of different levels, from Ecore metamodel to model instances.
-  * View model as a tree based on containment properties.
-  * Create empty model files with the minimum file contents.
-  * Edit model hierarchies by creating, deleting or moving tree nodes.
-  * Edit tree node properties by using a form-based editor.
-  * Saving model changes to xmi files.
-  * Validation of models.
-  * Generation of code from models.
+\input{chapters/3-background/10-pre-project-findings.tex}
 
 
 \section{Open Source Software Project Management and Project Viability}

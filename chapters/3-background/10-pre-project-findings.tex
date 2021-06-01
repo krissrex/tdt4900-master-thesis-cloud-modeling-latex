@@ -1,0 +1,97 @@
+\subsection{Stakeholders}
+
+A stakeholder is someone affected by or interested in the solution.
+It can be an organization or people~\cite[p.~52]{bassSoftwareArchitecturePractice2013}.
+The pre-project identified the key stakeholders in \cite[p.~3]{rekstadModelingEnvironmentCloud2020} to be:
+
+\begin{itemize}
+  \item Kristian Rekstad (author). Goal: increase adoption of \acrshort{MDD} by students and industry. Has to design and develop the initial solution.
+  \item Hallvard Trætteberg (supervisor). Goal: teach students the concepts of \acrshort{MDD} in \gls{TDT4250}. Wants to use \gls{Gitpod} for student projects.
+  \item Students. Goal: learn useful technologies and pass courses like \gls{TDT4250} to get a grade. Will have to use \acrshort{EMF} if they study Computer Science with the ``Software Engineering'' specialization at \acrshort{NTNU}.
+  \item Eclipse Foundation. Goal: foster a community of developers and provide open source software. The maintainers of \acrshort{EMF}.
+  \item Eclipse ecosystem developers. Goal: contribute to Eclipse Foundation projects. May possibly have to maintain and further develop this (or a derivative) solution if this project succeeds and they embrace it.
+  \item Developers of third party \gls{VSCode} extensions that use tree editors. Goal: provide a high quality editor for their specific problem domain. Could use the architecture, protocol and frontends of this solution, if this solution is high enough quality, architected to be reusable and partially independent of \acrshort{EMF}, and reuse will reduce their design and/or development time.
+\end{itemize}
+
+\subsection{Software Requirements}
+
+\paragraph{Requirement engineering approach}
+The pre-project tried to establish the software requirements for a tree editor.
+A literature review failed to find related works that listed the requirements for a tree editor.
+The literature review also failed to find related works for modeling in the cloud with the purpose of creating \gls{Ecore} models.
+The related works either \textit{deployed} \gls{Ecore} models to the cloud, were textual editors, or did not use \gls{Ecore}~\cite[p.~3]{rekstadModelingEnvironmentCloud2020}.
+
+
+Without literature to suggest requirements, and without users to test on (except the author and supervisor), the best option was to analyze the existing tree editors in \gls{Eclipse}.
+Common modeling tasks were performed (see \cref{par:tdt4250-confluence}), and detected functionality was recorded.
+The result gave an initial list of functional requirements, but not a complete one.
+However, by following an agile approach instead of waterfall, this list does not need to be complete\footnote{Agile values working software over extensive documentation, thus spending time on creating a working solution is better than a ``worthless'' list of everything a solution \textit{could have done}.}.
+More requirements will emerge naturally as work progresses.
+Still, having a good overview of the requirements is needed to correctly decide a software architecture, because of ``architecturally significant requirements'' that affect the architecture~\cite[p.~291]{bassSoftwareArchitecturePractice2013}.
+
+\paragraph{Constraints}
+A constraint is a restriction on the available choices for a solution~\cite[p.~7]{wiegersSoftwareRequirements2013}.
+The most important constraint discovered was that the tree editor must be a \gls{VSCode} extension.
+There is an alternative extension mechanism for \gls{Theia}, which was deemed incompatible with \gls{Gitpod}%
+\footnote{Gitpod can use Theia as its editor frontend, but the user is not allowed to recompile and upload a new version of Theia. The alternative extension mechanism, \textit{Theia Extensions} needs a full recompilation of Theia~\cite[p.~38]{rekstadModelingEnvironmentCloud2020}. However, VSCode extensions can be installed during runtime, also in Theia in Gitpod.}%
+~\cite[p.~38]{rekstadModelingEnvironmentCloud2020}.
+
+
+\paragraph{Functional requirements}
+A functional requirement specifies \textit{what} a solution must do, such as supported features~\cite[p.~7]{wiegersSoftwareRequirements2013}.
+The pre-project identified several functional requirements for a tree editor in the cloud.
+The full list of functional requirements, with id, requirement and description can be found in \cref{app:functional-requirements}.
+The list can be summarized as follows:
+
+\begin{itemize}
+  \item Provide a master-detail tree editor in VSCode and Theia (Gitpod) by using an extension mechanism of the \gls{IDE}.
+  \item The tree editor must show nodes with labels and icons as a hierarchy.
+  \item Allow selecting a node in the tree editor by clicking it.
+  \item Provide a property sheet for the selected node in the tree editor.
+  \item Provide an action bar with actions that can be dynamically specified by a backend server.
+  \item Child nodes can be hidden or shown in the tree by a user.
+  \item The tree editor and property sheet must update when the underlying model changes in the server.
+  \item The action bar shows appropriate actions based on the selected node.
+  \item The tree editor must allow creation of new nodes.
+  \item The tree editor must allow deleting nodes.
+\end{itemize}
+
+Some more important requirements were implicit, and not defined in the list.
+This was not intentional, and an evidence to the list's non-completeness.
+Some of the implicit requirements are explicitly defined as follows:
+
+\begin{itemize}
+  \item The editor must handle \gls{Ecore} models.
+  \item The editor must handle model instances from \acrshort{XMI} files.
+  \item The tree structure must be based on containment properties in the \gls{Ecore} model.
+  \item The editor must provide a command in the \acrshort{IDE} to create a new \gls{Ecore} file with the minimum \acrshort{XMI} needed for a valid empty model.
+  \item Tree nodes can be moved to new parents by drag-and-drop by the user.
+  \item The drag-and-drop can not let the user drop a node on a parent that cannot contain the node as a child. 
+  \item Saving a model will serialize it as \acrshort{XMI} to a file on disk.
+  \item An action in the action bar must be added to run \textit{model validation}.
+  \item An action in the action bar must be added to run \textit{code generation}.
+  \item The editor shall show multiple tree roots when there are related model files. Opening a \gls{Ecore} file shall also show any genmodel file. A model instance shall also include a root for the \gls{Ecore} model in the same editor.
+  \item A user can open more than one unique \gls{Ecore} model at the same time, in separate ``tabs'' in the editor.
+\end{itemize}
+
+
+\paragraph{Non-functional requirements}
+A non-functional requirement specifies characteristics or properties of the solution~\cite[p.~7]{wiegersSoftwareRequirements2013}.
+Most of the non-functional requirements are grounded in empirical evidence like what the Eclipse ecosystem and web development ecosystems are currently doing.
+
+\begin{itemize}
+  \item Compatibility with a code editor in \gls{Gitpod}.
+  \item Use a permissive \gls{open source} license.
+  \item Avoid software dependencies that are closed-source or use restrictive licenses.
+  \item Use a distributed architecture with components reuseable in other \acrshortpl{IDE}, inspired by architectures already in use by similar solutions.
+  \item Configurability of user-facing options. Choices of colors, fonts, and similar should be possible to change.
+  \item Configurability of mapping of \gls{Ecore} models to trees. Which containment references to use as children, and custom logic for labels should be user-specifiable.
+  \item Localize the user interface in English.
+\end{itemize}
+
+
+\subsection{Architecture and Protocol for a Solution}
+%TODO
+* The pre-project suggested an architecture for a VSCode Extension based on LSP. It confirmed the feasibility of the client-server model with a custom editor, the major blockers for this architecture.
+  * It also suggested a data structure for general purpose tree editing.
+  * It suggested a base protocol on which to build the TLSP on, but did not implement it.
