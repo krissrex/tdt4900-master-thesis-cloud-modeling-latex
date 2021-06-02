@@ -177,7 +177,9 @@ The pre-project did not progress far enough to formally define this protocol, an
 However, it specified a starting point and some rules.
 The protocol should draw inspiration from the \acrlong{LSP}, and use the ``Base Protocol'' defined in \acrshort{LSP}.
 The Base Protocol has two parts: a HTTP header section, and a \gls{JSON-RPC} content section~\cite[p.~17,18]{rekstadModelingEnvironmentCloud2020}.
+The header section will at minimum include a \textit{Content-Length} field, specifying the number of symbols in the content section.
 The content section will specify the remote procedures to be called, and the contain responses with data, such as tree structures, success or failure status, and errors.
+
 
 
 \paragraph{Data structures}
