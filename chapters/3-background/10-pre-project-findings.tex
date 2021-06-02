@@ -1,4 +1,23 @@
-\subsection{Stakeholders}
+\subsection{Research Questions}
+
+The pre-project started by asking the following research question:
+\begin{quote}
+\textit{How can we modernize Model-Driven Development Frameworks to appeal to
+the next generation of software developers, using recent developments in cloud
+IDEs?}~\cite[p.~3]{rekstadModelingEnvironmentCloud2020}
+\end{quote}
+
+After answering this question, the pre-project narrowed down to the following research question:
+
+\begin{quote}
+\textit{How can we design an Ecore master-detail tree editor that works in both VSCode and Theia, while reusing existing tools for Ecore such as codegen and validation?}~\cite[p.~24]{rekstadModelingEnvironmentCloud2020}
+\end{quote}
+
+A set of five related sub-questions were also posed, and subsequently answered.
+These questions set the context for a solution, and the stakeholders, constraints and requirements that would be needed.
+The following subsections (\ref{subsec:stakeholders} to \ref{subsec:pre-project-protocol}) will present the results of the pre-project that are the basis of work done in this thesis.
+
+\subsection{Stakeholders}\label{subsec:stakeholders}
 
 A stakeholder is someone affected by or interested in the solution.
 It can be an organization or people~\cite[p.~52]{bassSoftwareArchitecturePractice2013}.
@@ -78,20 +97,99 @@ Some of the implicit requirements are explicitly defined as follows:
 \paragraph{Non-functional requirements}
 A non-functional requirement specifies characteristics or properties of the solution~\cite[p.~7]{wiegersSoftwareRequirements2013}.
 Most of the non-functional requirements are grounded in empirical evidence like what the Eclipse ecosystem and web development ecosystems are currently doing.
+A non-formal list of the non-functional requirements is as follows:
 
 \begin{itemize}
   \item Compatibility with a code editor in \gls{Gitpod}.
   \item Use a permissive \gls{open source} license.
   \item Avoid software dependencies that are closed-source or use restrictive licenses.
-  \item Use a distributed architecture with components reuseable in other \acrshortpl{IDE}, inspired by architectures already in use by similar solutions.
-  \item Configurability of user-facing options. Choices of colors, fonts, and similar should be possible to change.
-  \item Configurability of mapping of \gls{Ecore} models to trees. Which containment references to use as children, and custom logic for labels should be user-specifiable.
+  \item Use a distributed architecture with components reuseable in other \acrshortpl{IDE}, inspired by architectures already in use by similar solutions~\cite[p.~24]{rekstadModelingEnvironmentCloud2020}.
+  \item Configurability of user-facing options. Choices of colors, fonts, file system paths and similar should be possible to change~\cite[p.~24]{rekstadModelingEnvironmentCloud2020}.
+  \item Configurability of mapping of \gls{Ecore} models to trees. Which containment references to use as children, and custom logic for labels should be user-specifiable~\cite[p.~24]{rekstadModelingEnvironmentCloud2020}.
   \item Localize the user interface in English.
+  \item Flexibility and extensibility in the protocol to the server, allowing custom messages~\cite[p.~24]{rekstadModelingEnvironmentCloud2020}.
 \end{itemize}
 
 
-\subsection{Architecture and Protocol for a Solution}
-%TODO
-* The pre-project suggested an architecture for a VSCode Extension based on LSP. It confirmed the feasibility of the client-server model with a custom editor, the major blockers for this architecture.
-  * It also suggested a data structure for general purpose tree editing.
-  * It suggested a base protocol on which to build the TLSP on, but did not implement it.
+\subsection{Architecture and Protocol for a Solution}\label{subsec:pre-project-protocol}
+
+A specific software architecture was proposed.
+It had a goal to solve the requirements for: software reuse, \gls{Theia} and \gls{VSCode} compatibility, tree hierarchy editing, and a solution that could be transferrable to other tree domains and editors.
+Additionally, the protocol would try to stay close to related solutions, as they are empirically tested and familiar to developers in the Eclipse ecosystem.
+By creating prototypes, major ``blockers'' or risk factors of the proposed architecture was tested and proven non-problematic~\cite[p.~38-46]{rekstadModelingEnvironmentCloud2020}.
+
+
+\subsubsection{Architecture}
+
+The tree editor shall be a \gls{VSCode} extension, and use the available \acrlongpl{API} for \gls{VSCode} extensions.
+No dependencies to \gls{Theia} shall be introduced.
+To view the tree structure as a hierarchy, the \textit{Custom Editor API} in \gls{VSCode} must be used (see \cref{sec:vscode-custom-editor}).
+A custom editor can present the editor inside \gls{VSCode} as a \textit{WebView}, meaning a custom webpage free to render anything, isolated from the rest of \gls{VSCode}.
+
+
+\paragraph{Components}
+The editor thus comprises 4 components: the tree editor WebView (``\textbf{editor frontend}''), the \gls{VSCode} extension integration (``\textbf{extension}''), a \textit{Tree Language Server} (``\textbf{TLS}'') and the \textit{EMF.Cloud ModelServer} (``\textbf{ModelServer}'')~\cite[p.~48,49]{rekstadModelingEnvironmentCloud2020}.
+An illustration is shown in \cref{fig:pre-project-tree-editor-architecture}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/pre-project/tree-editor-component-diagram.png}
+  \caption[Tree Editor Architecture]{A suggested architecture for a tree editor. Copied from Figure 5.15~\cite[p.~49]{rekstadModelingEnvironmentCloud2020}. The diagram is based on \gls{Theia}, and the \gls{JSON-RPC} between TheiaFrontend and TheiaBackend happens behind the scenes, and is therefore not relevant to discuss.}\label{fig:pre-project-tree-editor-architecture}
+\end{figure}
+
+
+\paragraph{Editor frontend}
+The editor frontend must be a web application that renders the tree as HTML, and provides interactivity with javascript. 
+It communicates to the extension using \textit{messages} containing \gls{JSON}\footnote{This is a constraint imposed by the WebView API in VSCode.}.
+The editor frontend will send messages that are \textit{commands} with the changes or actions a user triggered.
+The extension will send messages with the new tree state to be shown.
+
+\paragraph{Extension}
+The extension is the main artifact which a user will install into \gls{VSCode} or \gls{Theia}.
+This must be implemented with the \gls{TypeScript} language or javascript.
+The extension will bundle the compiled code for the editor frontend, TLS and ModelServer inside it.
+The extension is responsible for integrating with the \gls{IDE}, so that model files are opened in the custom editor, and handles commands triggered by the user in the \gls{IDE} (such as actions to create a new file, or saving a model).
+The extension will start and stop the TLS process, and communicate over a \gls{JSON-RPC} protocol or \gls{REST} plus \gls{WebSocket}.
+The extension and TLS can either use TCP sockets or standard in/out as the transport.
+
+\paragraph{TLS}
+A Tree Language Server (TLS) will contain specific knowledge about \gls{Ecore} and \acrshort{EMF}.
+The choice of programming language is unconstrained.
+The main purpose of the TLS is informing the extension of tree state, provide configuration for the tree editor and extension, and receive commands to modify models.
+The TLS must be able to communicate using the same protocol as the extension (\gls{JSON-RPC} or \gls{REST} and \gls{WebSocket}), and either do so over standard in/out, or listen to incoming TCP sockets.
+The TLS will perform commands to modify \acrshort{EMF} models by using as much re-use of existing code and frameworks as possible.
+The TLS will start the ModelServer and communicate with it to read and modify models.
+The ModelServer is a main part in the strategy to re-use existing code.
+
+\paragraph{ModelServer}
+This is a component already made by EclipseSource in java.
+The ModelServer exposes \gls{REST} endpoints for working with \acrshort{EMF} models, such as listing models, reading models, and changing models with the EMF Commands framework.
+Changes to a model are exposed as \gls{WebSocket} endpoints which can be ``subscribed'' to.
+
+
+\subsubsection{Protocol}
+The communication between the extension and the TLS should follow a defined protocol.
+The protocol will contain the data structures and message formats to send, the serialization standard to use for messages, and define any required order for messages.
+
+
+\paragraph{Base protcol}
+The pre-project did not progress far enough to formally define this protocol, and did not implement it (or an alternative) either.
+However, it specified a starting point and some rules.
+The protocol should draw inspiration from the \acrlong{LSP}, and use the ``Base Protocol'' defined in \acrshort{LSP}.
+The Base Protocol has two parts: a HTTP header section, and a \gls{JSON-RPC} content section~\cite[p.~17,18]{rekstadModelingEnvironmentCloud2020}.
+The content section will specify the remote procedures to be called, and the contain responses with data, such as tree structures, success or failure status, and errors.
+
+
+\paragraph{Data structures}
+This protocol can use the data structures to contain generic tree structures, proposed in Code listing 5.3 in \cite[p.~43,44]{rekstadModelingEnvironmentCloud2020}. %TODO: add code listing to appendix?
+The protocol can not contain any specific references to \acrshort{EMF}, except as values in the generic data structures.
+The central properties in the tree strucure was \textit{name}, \textit{type}, \textit{id} and \textit{children}.
+The \textit{type} would for \gls{Ecore} be one of for example: \text{EClass}, \textit{EPackage}, \textit{EReference} and so on.
+
+
+The action bar should be populated based on a ``action schema'' data structure (Code listing 5.4 and 5.5 in \cite[p.~45]{rekstadModelingEnvironmentCloud2020}), passed from the TLS to the extension in the protocol.
+
+
+The hierarchy should be constrained by using a ``hierarchy schema'' (Code listing 5.6 in \cite[p.~45]{rekstadModelingEnvironmentCloud2020}).
+This would whitelist the allowed children for a node based on the \textit{type} property.
+This would be passed from the TLS to the extension.
