@@ -27,11 +27,11 @@
 		\draw [style=next process] (1) to (2);
 		\draw [style=next process] (2) to (3);
 		\draw [style=next process] (3) to (4);
-		\draw [style=next process] (5) to (0);
+		\draw [style=next process, in=180, out=90, looseness=0.50] (5) to (0);
 		\draw [style=arrow] (3) to (6.center);
 		\draw [style=arrow] (2) to (7.center);
 		\draw [style=arrow] (6.center) to (5);
-		\draw (4) to (8.center);
+		\draw [in=360, out=180, looseness=0.50] (4) to (8.center);
 		\draw [style=arrow, bend left=15] (8.center) to (5);
 		\draw (18.center) to (17.center);
 		\draw [style=next process] (20.center) to (0);
