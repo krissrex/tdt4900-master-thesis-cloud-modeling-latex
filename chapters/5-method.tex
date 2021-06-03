@@ -29,7 +29,8 @@ It may not be as widely known as ``the scientific method'' is, and is therefore 
 Research should be systematical and use data to answer questions, solve problems and provide understanding~\cite[p.~2,3]{alanhevnerDesignResearchInformation2010}.
 
 \paragraph{Design Science Research}
-\textit{Design Science Research} is an approach to research where knowledge is created by design. It is defined by \textcite[p.~5]{alanhevnerDesignResearchInformation2010} as follows:
+\textit{Design Science Research} is an approach to research where knowledge is created by design.
+It is defined by \textcite[p.~5]{alanhevnerDesignResearchInformation2010} as follows:
 
 \begin{quote}
   \textit{``Design science research is a research paradigm in which a designer answers questions relevant to human problems via the creation of innovative artifacts, thereby contributing new knowledge to the body of scientific evidence.
@@ -37,13 +38,23 @@ Research should be systematical and use data to answer questions, solve problems
 \end{quote}
 
 The end goal of a Design Science Research project is to create information technology \glspl{artifact}, that improve exiting solutions or solve a problem for the first time~\cite[p.~6]{alanhevnerDesignResearchInformation2010}.
+A similar methodology may also be known under the name \textit{Design and Creation}, as presented by \textcite[p.~108]{oatesResearchingInformationSystems2006}.
 According to \textcite{alanhevnerDesignResearchInformation2010}, the artifacts are generally classified as \textit{constructs}, \textit{models}, \textit{methods}, \textit{instantiations} or \textit{better design theories}%
 \footnote{This thesis aims to produce an instantiation: an implemented or prototype system. The thesis also seeks to advance on \textit{better design theories}, with regards to software architecture and protocol design.}.
+A very important aspect of Design Science Research is \textit{evaluation} of the artifact.
+The evaluation is the process that uncovers new knowledge, and separates the process from routine design~\cite[p.~7]{alanhevnerDesignResearchInformation2010}.
+There are many aspects that could be evaluated, but the aspects that \textit{should} be evaluated are those that are related to the reason for creating the artifact in the first place; the aspects related to the research objectives~\cite[p.~115]{oatesResearchingInformationSystems2006}.
 
 
 \subsection{Methodology}
 
 % TODO
+
+\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+  \centering
+  \includegraphics[width=\textwidth]{figures/dsrm-flow.pdf}
+  \caption[Design Science Research Process Model]{\textbf{Design Science Research Process Model}. The general process followed by Design Science Research. The figure is recreated based on Figure 3 in \textcite[p.~11]{vijayvaishnaviDesignScienceResearch2019}}\label{fig:dsrpm}
+\end{figure}
 
 * Design Science. Build and evaluate value. Contribute to knowledge base. Is this software we need?
 
@@ -55,10 +66,18 @@ According to \textcite{alanhevnerDesignResearchInformation2010}, the artifacts a
 
 \subsection{Requirements Extraction}
 
-* Requirements engineering by extraction. Skip user testing for requirement validation. 
+* Requirements engineering by extraction. Skip user testing for requirement validation. Use cases and existing product.
 
 \subsection{Source Code Analysis of Similar Projects}
 * Source code inspection of similar projects. Use the same architecture, design patterns, build systems, software dependencies. Ensures familiarity for the ecosystem, and uses already empirically validated designs.
+
+\subsection{Stakeholder Discussion}
+
+* Talks with supervisor. Discovers use cases, features and other wants.
+
+\subsection{Use Cases and Prototyping}
+
+* Creating a prototype or early version and trying to use it will reveal missing requirements. (For example here: copy-paste, keyboard shortcuts etc)
 
 \section{Development Methodologies}
 
@@ -87,4 +106,4 @@ According to \textcite{alanhevnerDesignResearchInformation2010}, the artifacts a
 
 \subsection{Prototyping}
 
-* Pre-project with prototyping. Reduce risk by testing feasibility early.
+* Pre-project with prototyping. Reduce risk by testing feasibility early. Creates more learning, validates requirements and discovers new requirements.

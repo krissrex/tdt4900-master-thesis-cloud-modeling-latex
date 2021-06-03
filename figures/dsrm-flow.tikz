@@ -1,0 +1,39 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=processtext] (0) at (5.25, 8.25) {\shortstack{Awareness\\of Problem}};
+		\node [style=processtext] (1) at (5.25, 6.25) {Suggestion};
+		\node [style=processtext] (2) at (5.25, 4.25) {Development};
+		\node [style=processtext] (3) at (5.25, 2.25) {Evaluation};
+		\node [style=processtext] (4) at (5.25, 0.25) {Conclusion};
+		\node [style=ellipse] (5) at (-3, 6.25) {\shortstack{Knowledge\\Contribution}};
+		\node [style=none] (6) at (-3, 2.25) {};
+		\node [style=none] (7) at (-3, 4.25) {};
+		\node [style=none] (8) at (-4, 0.25) {\shortstack{Design Science\\Knowledge}};
+		\node [style=none] (9) at (12, 8.25) {Proposal};
+		\node [style=none] (10) at (12, 6.25) {Tenative Design};
+		\node [style=none] (11) at (12, 4.25) {Artifact};
+		\node [style=none] (12) at (12, 2.25) {Performance Measures};
+		\node [style=none] (13) at (12, 0.25) {Results};
+		\node [style=none] (14) at (-3, 10.25) {\textbf{Knowledge Flows}};
+		\node [style=none] (15) at (5.25, 10.25) {\textbf{Process Steps}};
+		\node [style=none] (16) at (12, 10.25) {\textbf{Outputs}};
+		\node [style=none] (17) at (13, 9.75) {};
+		\node [style=none] (18) at (-4.75, 9.75) {};
+		\node [style=none] (19) at (5.25, 11.25) {};
+		\node [style=none] (20) at (5.25, 9.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=next process] (0) to (1);
+		\draw [style=next process] (1) to (2);
+		\draw [style=next process] (2) to (3);
+		\draw [style=next process] (3) to (4);
+		\draw [style=next process] (5) to (0);
+		\draw [style=arrow] (3) to (6.center);
+		\draw [style=arrow] (2) to (7.center);
+		\draw [style=arrow] (6.center) to (5);
+		\draw (4) to (8.center);
+		\draw [style=arrow, bend left=15] (8.center) to (5);
+		\draw (18.center) to (17.center);
+		\draw [style=next process] (20.center) to (0);
+	\end{pgfonlayer}
+\end{tikzpicture}

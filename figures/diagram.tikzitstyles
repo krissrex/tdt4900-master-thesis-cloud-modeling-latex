@@ -7,6 +7,11 @@
 \tikzstyle{Box}=[fill=white, draw=black, shape=rectangle]
 \tikzstyle{node}=[fill={rgb,255: red,243; green,198; blue,199}, draw=black, shape=circle]
 \tikzstyle{root}=[fill={rgb,255: red,43; green,75; blue,255}, draw=black, shape=circle]
+\tikzstyle{process}=[fill=white, draw=black, shape=rectangle, minimum width=1cm, minimum height=1cm, rounded corners]
+\tikzstyle{ellipse}=[fill=none, draw=black, shape=ellipse]
+\tikzstyle{processtext}=[fill=none, draw=none, shape=rectangle, minimum height=1ex]
 
 % Edge styles
 \tikzstyle{child}=[->]
+\tikzstyle{next process}=[->, ultra thick]
+\tikzstyle{arrow}=[->]
