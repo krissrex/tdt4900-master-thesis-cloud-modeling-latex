@@ -22,28 +22,117 @@ The development phase consists of requirements engineering methods, and software
 
 
 \section{Requirements Engineering}
-% The Design phase
+
+In Design Science Research, there is little guidance for how to execute the actual \textit{design and development} phase.
+However, the software engineering field has many approaches and ideas for how to do this.
+
+
+The design of the artifact starts by gathering requirements.
+These specify the concrete behaviors of the artifact; both the behaviors required for achieving the research objectives in \cref{sec:research-objectives}, and those required for a highly useable and valuable solution.
+
+
+The identified requirements are both part of the design, and influence the design.
+Most requirements are formed from existing knowledge of the background theory.
+They are also discovered as the solution is developed.
+The following subsections \ref{subsec:req-stakeholder}-\ref{subsec:req-agile} describe the key inputs for the software requirement engineering process.
+
+
+\subsection{Stakeholder Discussion}\label{subsec:req-stakeholder}
+
+Discussion with stakeholders reveal many requirements, use cases and needs.
+The two key types of stakeholders here are \acrshort{EMF} experts and \gls{TDT4250} students.
+The supervisor, Hallvard Trætteberg, fills the role as both a \acrshort{EMF} expert and lecturer of \gls{TDT4250}.
+The author, Kristian Rekstad, fills the role as a \gls{TDT4250} student.
+
+
+Dialogue questions include ``What features are required to model with \acrshort{EMF}?'' and ``What features would you like to see in a new solution?'', as well as ``Which features are missing from the existing solutions?''.
+
+
+The same questions can be asked both before realizing a solution, and underway as the response to prototypes and current progress of an unfinished solution.
+
 
 \subsection{Requirements Extraction}
 
-* Requirements engineering by extraction. Skip user testing for requirement validation. Use cases and existing product.
+\paragraph{Based on existing editors}
+The existing tree editors in \gls{Eclipse} already implement every feature needed to do \acrlong{MDD} with the \acrlong{EMF}.
+Therefore, they are excellent sources of requirements.
+Especially the Sample Reflective Ecore Editor and EMF Forms Ecore Editor. %TODO: cref sections
+
+
+\paragraph{No official requirements lists}
+The pre-study failed to find any related research detailing requirements for a tree editor~\cite[p.~3]{rekstadModelingEnvironmentCloud2020}.
+No design documents or requirements specifications were found for the \gls{Ecore} editors in \gls{Eclipse} either.
+
+
+\paragraph{Use cases and requirement detection}
+Therefore, the approach became to extract the requirements from the \gls{Ecore} tree editors.
+The extraction is done by following use cases of modeling, as described in \cref{par:tdt4250-methodology}.
+When a new functional requirement is discovered through use, it is recorded in a list.
+
+
+\paragraph{Shortcomings}
+This approach will find many of the required and ``obvious'' requirements.
+However, hidden functionality and expert level functionality is not guaranteed to be found.
+The rationale is that this functionality is not needed (yet) anyways, as the goal is to fulfil the common use cases that students have when learning \acrshort{MDD}.
+
+
+There is also a risk that the user which is recording the requirements fail to detect functionality.
+Some functionality can be so obvious or ``second nature'' that the user is oblivious to it.
+Such functionality \textit{should} become apparent later, however, when the solution is developed and tested.
+Any big omissions will prevent the use cases from succeeding.
+
 
 \subsection{Source Code Analysis of Similar Projects}
-* Source code inspection of similar projects. Use the same architecture, design patterns, build systems, software dependencies. Ensures familiarity for the ecosystem, and uses already empirically validated designs.
 
-\subsection{Stakeholder Discussion}
+\paragraph{Open source editors}
+Because the tree editors for \gls{Ecore} in \gls{Eclipse} are \gls{open source}, it is possible to read and analyze the source code.
+Finding the main classes responsible for editor functionality, and analyzing their method names, initialization procedures and method calls, may expose requirements.
+This approach may also detect some of the more hidden functionalities, and the more ``internal'' functional requirements.
 
-* Talks with supervisor. Discovers use cases, features and other wants.
+
+\paragraph{Architecture and software re-use}
+Another advantage is that the internal architecture and patterns are exposed, which can be used to influence the artifact design.
+This may increase familiarity with the design for the Eclipse ecosystem, aiding the \gls{open source} goals of this project.
+It also highlights the opportunities for software re-use, when familiar code, classes, interfaces, design patterns or software libraries are used.
+
+
+\paragraph{Shortcomings}
+Source code analysis is dependant on analyzing the correct source code files.
+If they are not found, this will fail.
+This also requires the source code to have some level of quality and readability to be useful for someone not already invested in that editor code base.
+The software architecture and design patterns used will matter too, in case functionality is hidden, dispersed or not clearly visible from the source code.
+
 
 \subsection{Use Cases and Prototyping}
 
-* Creating a prototype or early version and trying to use it will reveal missing requirements. (For example here: copy-paste, keyboard shortcuts etc)
+Creating realistic use cases based on \cref{par:tdt4250-methodology}, and executing them with early versions or prototypes will detect missing requirements.
+This is because a user will be blocked from progressing if a critical functionality is missing.
+%For example here: copy-paste, keyboard shortcuts etc)
 
-\subsection{Agile Requirements}
 
-* Changes as they are discovered, refined and better understood.
-* No big upfront waterfall requirements process. Only small to understand scope.
-* Responding to change over following a plan
+\subsection{Agile Requirements}\label{subsec:req-agile}
+
+\paragraph{Agile}
+Core values during the requirements engineering process come from \textit{Agile}.
+Agile is a counterpart to the Waterfall process\footnote{In waterfall, software is designed, developed and tested in very separate stages. All the requirements are collected, before any design or development begins. An early mistake will not be discovered until the very end of the process. Changes to requirements require a restart of the project phases.}
+
+
+\paragraph{Change over Plan}
+It embraces the fact that requirements change during the design and development, and thus favors \textbf{responding to change} over following a plan~\cite{kentbeckManifestoAgileSoftware2001}.
+Requirements will change as they are discovered, refined and better understood later on.
+
+
+\paragraph{Software over Documentation}
+Another key value is that Agile prefers \textbf{working software} over comprehensive documentation~\cite{kentbeckManifestoAgileSoftware2001}.
+This means that a small, working software artifact is more valuable than a large, complete and consistent list of software requirements and design, without any working software to show for it.
+
+
+\paragraph{Impact of agile on requirements engineering}
+The result is that the method here will start by collecting \textit{some} requirements, by using the previously described inputs.
+When there are enough requirements to sufficiently solve the known use cases, design and development can begin.
+There is no goal to create a complete list at the start.
+The requirements are also changed, and new ones added, during the design and development.
+
 
 \section{Development Methodologies}
 % The development phase
