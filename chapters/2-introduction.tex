@@ -144,8 +144,37 @@ It could only render an example tree in \gls{VSCode} and \gls{Theia} in \gls{Git
 This master's thesis will pick up on these results and try develop them further into a usable solution.
 It also aims to create an \gls{open source} repository that is viable and suitable for further development by the Eclipse ecosystem and other master students.
 
-% Research objectives ?
-%TODO
+\section{Research Objectives}
+
+\subsection{Problem}
+
+\paragraph{Problem definition}
+How can students use the \acrfull{EMF} in a \gls{cloud} based \acrfull{IDE} in order to learn \acrfull{MDD} as part of the course \gls{TDT4250}, \textit{without} using the \gls{Eclipse}?
+
+\paragraph{Value}
+\begin{enumerate}
+  \item Students may be more motivated to learn \acrshort{MDD} if they do not need to use \gls{Eclipse}, and do not perceive the \acrshort{MDD} framework (\acrshort{EMF}) as \gls{Eclipse}-specific or only for deploying to the \gls{Eclipse}~\cite[p.~2]{rekstadModelingEnvironmentCloud2020}.
+  Few to no other courses at \acrshort{NTNU} target \gls{Eclipse} as the deployment/target platform, and \textcite{kuzniarzTeachingModelDrivenSoftware2016} found that students resist learning when the technology and skills are not used in other courses.
+  Students also dislike or have problems with \gls{Eclipse} itself, and feedback collected from teaching students in 2015 by \textcite{jordicabotFailedConvinceMy2015} found that much of the complaints were about installation issues and problems with the tools, not problems with \acrshort{MDD} as a concept.
+  
+  \item By moving \acrshort{EMF} from \gls{Eclipse} to other \gls{IDE}, the value of the framework itself may increase, as adoption of \acrshort{EMF} does not imply adoption or use of \gls{Eclipse}.
+  Industry may use the framework for modeling, without requiring the developers to use \gls{Eclipse}.
+  A problem for \acrshort{MDD} adoption in general is low impact on personal career needs, identified by \textcite{jonwhittleTaxonomyToolrelatedIssues2015}.
+\end{enumerate}
+  
+
+\subsection{Objectives}
+
+There are two objectives for this thesis.
+
+\paragraph{Objective 1: EMF Modeling in the Cloud}
+The first objective is to perform \acrfull{MDD} by using \acrfull{EMF} in a cloud based \acrshort{IDE}.
+\Gls{Gitpod} with \gls{Theia} is chosen as the \acrshort{IDE}.
+A solution should be able to perform all the tasks needed to teach \acrshort{MDD}, and \gls{Eclipse} should not need to be installed on a student's computer.
+
+\paragraph{Objective 2: Open Source project}
+The artifact should exist longer than the period of work for the master's thesis, and be developed further by contributors other than this thesis' author.
+The artifact should be in a \gls{open source} project, to fit in with the expectations of the Eclipse ecosystem, current trends and expectations of students.
 
 % Thesis structure ?
 %TODO
