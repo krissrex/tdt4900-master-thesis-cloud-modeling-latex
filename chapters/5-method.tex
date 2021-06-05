@@ -154,8 +154,8 @@ Development methodology will not follow one strict practice, but rather piece to
 
 \subsection{Agile}
 
-Development will follow agile values and principles, as described in \citetitle{kentbeckManifestoAgileSoftware2001} and \citetitle{PrinciplesAgileManifesto}.
-This means iterative development, rapid feedback from stakeholders, and working software.
+Development will follow agile values and principles, as described in \citetitle{kentbeckManifestoAgileSoftware2001}~\cite{kentbeckManifestoAgileSoftware2001} and \citetitle{PrinciplesAgileManifesto}~\cite{PrinciplesAgileManifesto}.
+This means readjusting plans, rapid feedback from stakeholders, and software that works underway in development.
 
 \paragraph{Agile development}
 As there are many unknown factors in development, such as third party components and services to comply and integrate with, and unknown and hard to use \glspl{API}, the plans and designs may change.
@@ -174,18 +174,77 @@ If so, these will be removed or replaced if possible.
 
 Stakeholder involvement is important as well.
 The development will have a stakeholder as the developer (the author), which knows how the artifact will be used.
-Additionally, the supervisor will se a demo during development, to provide feedback and help prioritize the next steps.
+Additionally, the supervisor will see a demo during development, to provide feedback and help prioritize the next steps.
 
 
 \subsection{Iterative Development}
-* Iterative development. Work on one component at the time, up to a minimum level of functionality. Then come back later and add more.
+
+The software system will be developed iteratively.
+This means the components will be implemented up to a threshold of functionality, and executed to evaluate the behavior.
+The evaluation is not a formal and rigorous one, but rather informal and aims to quickly confirm if the software has the correct behavior.
+Then the components are developed some more, in a loop until the project ends.
+
+
+The components are also developed incrementally.
+It also means a component will be worked on until it reaches \textit{some} functionality, and then the next component will be worked on until it is on par.
+No component is developed to completion while the others are not started on.
 
 
 \subsection{Lean and Minimum Viable Product}
 
-* Lean development. Create a minimum viable product and see if it works.
+Lean development is a set of principles inspired from Lean Manufacturing (for automobiles and such)~\cite{rachellelynnGuidingPrinciplesLean}.
+
+
+\paragraph{Eliminate waste}
+A core principle is to \textbf{eliminate waste}.
+This is also seen in Agile, as maximizing work-not-done.
+What Lean regards as waste is any work and output that does not have value.
+This means avoiding: unnecessary code and functionality (things deemed ``could be nice to have''), unfinished work in progress (code and features not completed), defects and poor quality (do it well, do it once).
+
+
+\paragraph{Build quality in}
+Another principle is \textbf{building quality in}.
+Important business logic should have automated unit tests (however not all code needs tests\footnote{A project with high uncertainty and changing requirements may find tests a hinder as they have to up updated all the time. This results in extra work and rework.})
+Tedious and repetitive tasks should be automated, for example with scripts and tools.
+
+
+\paragraph{Create knowledge}
+A third principle is to \textbf{create knowledge}.
+Code will have comments where needed\footnote{Not all comments are good comments. Code with side effects, strange design choices or hard to read implementation may need clarification by using comments.}.
+Documentation will explain the software at a high level.
+
+
+\paragraph{Deliver fast}
+The last principle applied is to \textbf{deliver fast}.
+While there are no students to use the aritfact now, the focus is still on creating a functioning solution as early as possible.
+This is done by prioritizing the requirements in an order to get a \textit{minium viable product} (MVP).
+This is a solution that is just barely useable.
+The goal is to get it into the hands of users as quickly as possible, because this creates valuable feedback.
+
+\subsection{Tracer Bullets}
+
+\paragraph{Tracer bullets}
+Using Tracer Bullets in code is a metaphor from \citetitle{huntPragmaticProgrammerJourneyman2000}~\cite{huntPragmaticProgrammerJourneyman2000}.
+When using a machine gun, the operator does not precisely calculate where to shoot ahead of time.
+Instead, tracer bullets are occasionally loaded into the gun, which glow up and give visual feedback to the operator as to where the bullets travel.
+
+
+\paragraph{Tracer code}
+The same idea applied to coding means that uncertainty and risk is not dealt with by heavy upfront planning.
+A software solution likely has to interface with many unknown parts, adding risk for each one.
+The developer creates ``tracer code'', which has the goal of quickly connecting all the components and parts of the system, without adding lots of functionality.
+Stubs and empty code can be used so the code compiles, as long as all the actual components in the final design are integrated and running.
+If any problems are discovered, then adjust and redesign as necessary~\cite{huntPragmaticProgrammerJourneyman2000}. 
+
+
+The tracer code is real code, not a prototype.
+Therefore, it should be made with proper quality.
+It just lacks functionality.
+With a working skeleton system, more functionality can be added on top.
+
 
 \subsection{Domain Driven Design}
+
 
 * Domain driven design. Increase software quality, developer understanding and software re-use with layered architecture, domain layer and ubiquitous domain language.
 
@@ -193,8 +252,6 @@ Additionally, the supervisor will se a demo during development, to provide feedb
 
 * Test driven development, where applicable. Verify behavior of critical logic, to reduce bugs and increase developer confidence and speed.
 
-\subsection{Tracer Bullets}
-* Tracer bullets. Reduce risk from integration by connecting all the major components, before developing any component fully.
 
 \subsection{Prototyping}
 
