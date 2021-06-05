@@ -154,11 +154,28 @@ Development methodology will not follow one strict practice, but rather piece to
 
 \subsection{Agile}
 
-* Agile development. Working software over extensive documentation.
-* Working software delivered frequently.
-* Involve stakeholders
-* Simplicity and maximizing work-not-done 
-* Regular reflection on how to become more effective
+Development will follow agile values and principles, as described in \citetitle{kentbeckManifestoAgileSoftware2001} and \citetitle{PrinciplesAgileManifesto}.
+This means iterative development, rapid feedback from stakeholders, and working software.
+
+\paragraph{Agile development}
+As there are many unknown factors in development, such as third party components and services to comply and integrate with, and unknown and hard to use \glspl{API}, the plans and designs may change.
+As with software requirements, the data structures, algorithms and design in the software solution will have to change as the developer learns the systems and problem space better.
+\textbf{Responding to change} will be valued more than following a plan here.
+Also, \textbf{working software} is more valuable than extensive documentation, meaning that code comments, tests, design specifications and diagrams will be given less effort than code, particularly if done up-front before the code.
+The alternative is that this documentation is made, but the code for it quickly proves itself impossible to make, or there is not enough time to implement it, leaving only useless documentation as the result.
+This also ties in to \textbf{simplicity and maximizing work-not-done}.
+
+
+Regular reflection will be used weekly or bi-weekly, to assess if the process can be more effective.
+Sometimes tools and technologies may seem like a good fit for the development, but instead wastes more time than the developer productivity provided.
+Retrospective analysis of the development progress will try to detect this, and then expose if bad approaches are used.
+If so, these will be removed or replaced if possible.
+
+
+Stakeholder involvement is important as well.
+The development will have a stakeholder as the developer (the author), which knows how the artifact will be used.
+Additionally, the supervisor will se a demo during development, to provide feedback and help prioritize the next steps.
+
 
 \subsection{Iterative Development}
 * Iterative development. Work on one component at the time, up to a minimum level of functionality. Then come back later and add more.
