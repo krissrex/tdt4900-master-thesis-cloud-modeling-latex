@@ -47,7 +47,8 @@ There are more concepts in \gls{Ecore}, but many are only used internally as par
 When an \gls{Ecore} model is written as a text file, it needs \textit{serialization}.
 The official format for serializing Ecore is \acrfull{XMI}.
 This format is based on \acrfull{XML}.
-Model instances can also be serialized as \acrshort{XMI}.
+The file extension is usually \texttt{.ecore}.
+Model instances can also be serialized as \acrshort{XMI}, and have custom file extensions or \texttt{.xmi}.
 It is also possible to serialize \gls{Ecore} to other formats, like \gls{JSON}, using third party tools.
 % serialization, standardized EMOF, default for ecore, XML,
 
@@ -71,6 +72,7 @@ Another important \acrshort{API} is the \texttt{ResourceSet} and \texttt{Resourc
 Code generation is an important part of \acrshort{EMF}.
 The generator can be configured with its own generator model, nicknamed the \textit{GenModel}.
 This model holds options for how the code will be named, what templates should write the code, if the code can use the \acrshort{EMF} \acrshortpl{API}, and more.
+This model is itself an \gls{Ecore} model, and has an \texttt{.genmodel} file extension~\cite[p.~28]{edmerksEMFEclipseModeling2009}.
 
 
 The generator can also produce more than just a java representation of the model.
