@@ -274,16 +274,49 @@ An illustration is shown in \cref{fig:ddd-layered}.
 \end{figure}
 
 
-\subsection{Test Driven Development}
+\subsection{Test-Driven Development}
 %TODO
 
-* Test driven development, where applicable. Verify behavior of critical logic, to reduce bugs and increase developer confidence and speed.
+Test-driven development is about creating automated tests before writing the implementation~\cite[p.~105]{knibergScrumXPTrenches2015}.
+It will be used sparingly, for cases where the behavior is complex and important to get right.
+The developer will have to judge when it is needed, based on expected complexity, requirements and behavior for a unit of code.
+This may be especially relevant for some business logic in the domain model.
+Writing the tests first also creates a more testable design~\cite[p.~106]{knibergScrumXPTrenches2015}.
+
+
+The benefit of automated tests is confidence in the code against bugs.
+It also helps for when other developers join the project, as they can be confident about making changes without breaking existing code.
+A goal is to have other contributors develop this project further, and therefore avoiding ``legacy code'' is a good thing.
+The author of \citetitle{feathersWorkingEffectivelyLegacy2005} writes:
+
+\begin{quotation}
+``Legacy code is somebody else’s code. But in programmer-speak, the term means much more than that. 
+[\ldots]
+
+
+In the industry, \textit{legacy code} is often used as a slang term for difficult-to-change code that we don’t understand. 
+[\ldots]
+
+
+To me, \textit{legacy code} is simply code without tests. [\ldots]
+
+
+Code without tests is bad code. It doesn’t matter how well written it is; it doesn’t matter how pretty or object-oriented or well-encapsulated it is. With tests, we can change the behavior of our code quickly and verifiably. Without them, we really don’t know if our code is getting better or worse.''
+
+
+---~\textcite{feathersWorkingEffectivelyLegacy2005}
+\end{quotation}
 
 
 \subsection{Prototyping}
 %TODO
 
-* Pre-project with prototyping. Reduce risk by testing feasibility early. Creates more learning, validates requirements and discovers new requirements.
+Prototyping will be used to create simple implementations when there is uncertainty of the design and big risks.
+A prototype will create learning by coding in the real environment, and then prototype code is discarded afterwards.
+A prototype can test feasibility and reveal good and bad sides of a design, quickly and cheaply.
+
+
+The main bulk of prototyping has already been performed, as part of the pre-project in \cite{rekstadModelingEnvironmentCloud2020}.
 
 
 \section{Evaluation}
