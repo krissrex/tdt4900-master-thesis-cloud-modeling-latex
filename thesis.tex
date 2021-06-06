@@ -1,4 +1,5 @@
 \documentclass[american,titlepage,oneside]{ntnuthesis}
+\setlength{\parindent}{15pt}
 
 \input{listings-settings.tex} % Define new programming languages
 \input{figures/diagram.tikzitstyles}
@@ -40,8 +41,6 @@ Education}
 \input{glossary.tex} % add glossary and acronym lists before document
 
 \begin{document}
-\setlength{\parindent}{15pt}
-
 \input{chapters/0a-abstract.tex}
 \input{chapters/0b-sammendrag.tex}
 \input{chapters/1-acknowledgments.tex} 
@@ -66,7 +65,7 @@ Education}
 \chapter*{\bibname}
 \printbibliography[heading=none]
 
-
+\chapter*{Appendix}
 \appendix
 \input{appendices/pre-project-functional-requirements.tex}
 %\input{appendices/a-appendix.tex}
