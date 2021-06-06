@@ -133,6 +133,7 @@ When there are enough requirements to sufficiently solve the known use cases, de
 There is no goal to create a complete list at the start.
 The requirements are also changed, and new ones added, during the design and development.
 
+% TODO: Write how I do architecture and design?
 
 \section{Development Methodologies}
 
@@ -243,17 +244,44 @@ It just lacks functionality.
 With a working skeleton system, more functionality can be added on top.
 
 
-\subsection{Domain Driven Design}
+\subsection{Domain-Driven Design}
+
+Domain-driven design is an approach to domain modeling in software.
+The goal is to create a domain model in software that uses the same language a domain expert uses, to create better, more evolvable and understandable code.
+If the domain has for example ``trees'' and ``nodes'', the code will also use trees and nodes as names, making stakeholder discussion straight forward.
+The code will accurately model the domain, increasing understanding and capturing the details of the business logic~\cite{evansDomaindrivenDesignTackling2004}.
+The model is represented as normal, executable code.
+There is no specific file representation, and no \acrshort{MDD} framework involved.
+This is not a \acrshort{MDD} method --- it is a object oriented coding and naming method.
 
 
-* Domain driven design. Increase software quality, developer understanding and software re-use with layered architecture, domain layer and ubiquitous domain language.
+Another element from Domain-driven design is to use a layered software architecture.
+The domain model is isolated from the rest of the code.
+This makes it easy to see and reason about the behavior of the code, in terms of business logic~\cite[p.~69]{evansDomaindrivenDesignTackling2004}.
+The alternative is that business logic is spread around the system, partially in the user interface components, persistance logic, and so on.
+The layers makes every aspect of the program more cohesive and makes interpretation of the designs easier~\cite[p.~69]{evansDomaindrivenDesignTackling2004}.
+
+
+Practically, the domain model will be in its own layer, and the user interface will be in its own layer.
+The user interface will depend on the domain model.
+The domain model will be unaware of any user interface.
+An illustration is shown in \cref{fig:ddd-layered}.
+
+\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+  \centering
+  \includegraphics{figures/layered.pdf}
+  \caption[Layered Architecture]{\textbf{Layered architecture}. The components above depends on the components below, but not vice versa.}\label{fig:ddd-layered}
+\end{figure}
+
 
 \subsection{Test Driven Development}
+%TODO
 
 * Test driven development, where applicable. Verify behavior of critical logic, to reduce bugs and increase developer confidence and speed.
 
 
 \subsection{Prototyping}
+%TODO
 
 * Pre-project with prototyping. Reduce risk by testing feasibility early. Creates more learning, validates requirements and discovers new requirements.
 

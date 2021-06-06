@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Box] (0) at (0, 2.75) {Domain model};
+		\node [style=Box] (1) at (0, 4.75) {User interface};
+		\node [style=Box] (2) at (0, 0.75) {Standard library/platform};
+		\node [style=none, label={east:\tiny\textit{depends on}}] (3) at (0, 1.75) {};
+		\node [style=none, label={east:\tiny\textit{depends on}}] (4) at (0, 3.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=arrow] (3.center) to (2);
+		\draw (0) to (3.center);
+		\draw (1) to (4.center);
+		\draw [style=arrow] (4.center) to (0);
+	\end{pgfonlayer}
+\end{tikzpicture}
