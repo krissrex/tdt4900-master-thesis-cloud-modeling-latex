@@ -54,8 +54,28 @@ Lastly, a section on open source software project management follows, as they sh
 
 
 \section{\Gls{cloud} and \gls{Gitpod}}
-%TODO
 
+\paragraph{Cloud}
+The \gls{cloud} is the term used for rented computing power and data storage in data centers owned by third parties.
+This is in contrast to in-house or on-premise servers.
+An advantage of running software in the \gls{cloud} is that maintenance of hardware is out sourced.
+If a hard drive or processor breaks down, it is the cloud vendor's responsibility to fix, and to provide failover mechanisms so a customer is not impacted.
+
+
+Another advantage is the ability to scale up or down instantly on demand.
+If a on-premise server is overloaded, the organization has to purchase more servers and configure them.
+Just the shipping of hardware alone takes more time than requesting more compute power from a \gls{cloud} provider.
+The cloud providers usually have so large data centers that they never ``run out'', as long as a customer is able to pay for it.
+Some of the best known cloud providers today are Amazon with Amazon Web Services, Google with Google Cloud, and Microsoft with Azure.
+
+\paragraph{Gitpod}
+Gitpod is a \gls{cloud} based \acrfull{IDE}.
+It is provided as a service, or it can be self hosted.
+The idea behind \gls{Gitpod} is that a developer does not need to install the tools on their own machine.
+Instead, a machine is provisioned at a cloud provider, and any tools are installed there.
+The developer interfaces with this machine through a web based \acrshort{IDE}.
+For Gitpod, the default \acrshort{IDE} is \gls{Theia}.
+The source code is downloaded from an online source code host, such as \gls{GitHub}, and into a workspace on the provisioned machine. %TODO: cite?
 
 \section{\acrlong{EMF} in the \Gls{cloud}}
 %TODO
