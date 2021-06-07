@@ -1,19 +1,37 @@
 \chapter{Results}\label{chap:results}
 
-% TODO
+This chapter will present the outcomes of the development phase.
+The artifact's design will be presented from an architectural view, and a functional view.
+
+From an architectural view, the software architecture and the communication protocol are presented.
+These are of interest to developers of tree editors and similar kinds of \gls{VSCode} extensions.
+
+From a functional view, the software artifact and its features are presented.
+This is of interest for a stakeholder, and someone aiming to do further research on this design.
+
+The results will also present the measures taken for making the \gls{open source} project viable, and something a developer community may want to develop and maintain further.
+
+
+\section{Design Artifact: Architecture for Tree Language Server Systems}
+
+\input{chapters/6-results/1-architecture.tex}
+
+
 \section{Software Artifact: Tree Editor Extension for Ecore in Visual Studio Code}
 * Functioning viewer of any Ecore model in VSCode. Missing most features.
   * List of functional requirements implemented.
   * List of non-functional requirements implemented.
 * Reuses java EMF code and EMF.Cloud ModelServer. No re-implementation of EMF logic.
 
-\section{Design Artifact: Architecture for Tree Language Server Systems}
 * TLSP architecture. 3-component system (view, extension, server).
 
 \section{Design Artifact: Tree Language Server Protocol}
+% TODO
+
 * TLSP protocol. JSON-RPC based with LSP Base, with a Tree Document Model data structure. Hierarchy schemas for optimistic-view drag-n-drop. Type and id based nodes. 
 
 \section{Open Source Project: Measures Taken for Viability and Maintainability}
+% TODO
 
 * A project that may be viable and further developed.
   * Bundled IDE configuration: recommended extension, build tasks, run configurations. Reduces overhead for new developers.

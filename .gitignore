@@ -27,3 +27,5 @@ thesis.synctex*
 __latexindent_temp*
 **/__latexindent_temp*
 **/*.aux
+
+figures/plantuml/c4_plantuml/*

@@ -1,0 +1,17 @@
+@startuml Tree_editor_components
+[Tree Editor frontend] as TEf
+[VSCode extension] as VSCEx
+[EMF Tree Language Server] as TLS
+[Tree Document model js-library] as TDMlib
+[VSCode and Webview RPC js-library] as VSCWVRPC
+
+artifact "compiled frontend js" as cfs
+
+TEf -right-> cfs : compiles to
+TEf --> VSCWVRPC : imports
+TEf --> TDMlib : imports
+VSCEx --> VSCWVRPC : imports
+VSCEx --> TDMlib : imports
+VSCEx -left-> cfs : webview
+VSCEx <-> TLS : TLSP/JSON-RPC
+@enduml

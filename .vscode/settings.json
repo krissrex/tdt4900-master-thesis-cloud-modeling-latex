@@ -1,4 +1,10 @@
 {
+  "plantuml.includepaths": [
+    "figures/c4_plantuml/"
+  ],
+  "plantuml.exportOutDir": "figures/plantuml",
+  "plantuml.diagramsRoot": "figures/",
+  "plantuml.exportSubFolder": false,
   "cSpell.language": "en",
 // Latex
   "[latex]": {
@@ -121,4 +127,5 @@
   "OSGi",
   "OCL"
 ],
+"plantuml.exportFormat": "pdf",
 }

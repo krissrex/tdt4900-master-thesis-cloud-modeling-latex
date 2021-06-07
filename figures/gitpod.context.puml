@@ -1,0 +1,13 @@
+@startuml Gitpod_context
+!include C4_Context.puml
+
+Person(student, "Student", "A student attending TDT4250 that models with EMF in Gitpod")
+System(gitpod, "Gitpod", "A cloud based development environment. Allows programming, compiling and running code.")
+System_Ext(github, "GitHub", "Source code repository, hosting code versioned with git.")
+System_Ext(openvsx, "OpenVSX", "VSCode extension repository that is open for every IDE.")
+
+Rel(student, gitpod, "Perform modeling and development")
+Rel(gitpod, github, "Synchronize repo with workspace")
+Rel(gitpod, openvsx, "Download VSCode extensions")
+
+@enduml
