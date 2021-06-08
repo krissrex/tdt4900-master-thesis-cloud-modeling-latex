@@ -1,8 +1,24 @@
-% TODO
+\paragraph{Architecturally Significant Requirements}
+The high level software architecture for the tree editor was shaped mainly by three \acrfullpl{ASR}.
+The editor must be a \gls{VSCode} extension, the tree viewer must use the \gls{VSCode} Custom Editor \gls{API}, and the extension must reuse \acrshort{EMF} java code and the EMF.Cloud Model Server.
+This results in a system of three main components: a \textit{Tree editor frontend}, a \textit{Tree editor extension} and a \textit{Tree Language Server}.
 
-* Architecturally significant requirements
-* Architecture iterations
+Another \acrshort{ASR} is that the model may change, and the rest of the system must respond and be updated.
+Therefore, a bi-directional communication between components is established, and an event driven architecture is used.
+The communication is isolated and standardized in a protocol, called the \textit{Tree Language Server Protocol} (\acrshort{TLSP}).
+This protocol is presented in detail in \cref{sec:tlsp}.
+
+
+\paragraph{Changes from pre-project}
+From the pre-project, the high level architecture changed mainly by avoiding the EMF.Cloud Model Server as a separate running process, and is now embedded inside the Tree Language Server~\cite[p.~49]{rekstadModelingEnvironmentCloud2020}.
+
+\paragraph{System explanation}
+This section will explain the architecture through a series of diagrams called the \textit{C4 Model} (Context, Container, Component, Code)~\cite{simonbrownC4ModelVisualising}.
+%TODO
+
 * Final architecture. C4 diagram (context, containers, components, code)
+
+* Isolated domains. Bounded context (ddd)
 
 \begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
   \centering
@@ -42,4 +58,24 @@
   The Tree DOcument model js-library is the layer with the domain model for tree editors.
   It is used in both the frontend and the extension.
   }\label{fig:label4}
+\end{figure}
+
+\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+  \centering
+  \includegraphics[angle=90,origin=c,width=\textwidth,height=\textheight,keepaspectratio]{figures/plantuml/Tree_Editor_Frontend_code.pdf}
+  \caption[Tree Editor Frontend class diagram]{Class diagram of the Tree Editor Frontend component.}\label{fig:tree-editor-frontend-code}
+\end{figure}
+
+
+\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+  \centering
+  \includegraphics[angle=90,origin=c,width=\textwidth,height=\textheight,keepaspectratio]{figures/plantuml/Tree_Editor_Extension_code.pdf}
+  \caption[Tree Editor Extension class diagram]{Class diagram of the Tree Editor Extension component.}\label{fig:label}
+\end{figure}
+
+
+\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+  \centering
+  \includegraphics[angle=90,origin=c,width=\textwidth,height=\textheight,keepaspectratio]{figures/plantuml/Tree_Language_Server_code.pdf}
+  \caption[Tree Language Server class diagram]{Class diagram of the Tree Language Server component.}\label{fig:label}
 \end{figure}

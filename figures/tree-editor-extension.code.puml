@@ -1,0 +1,118 @@
+@startuml Tree_Editor_Extension_code
+hide empty members
+hide circle
+
+class extension {
+  + activate()
+}
+
+note right of extension : Entry point
+
+package "tree-language-server" {
+  class TreeLanguageServerRpcClient
+
+  class "start-server" as startServer
+
+  class serverCommands {
+    + registerServerCommands()
+  }
+
+  class "start-server" as startServer {
+    + startJsonRpcServer()
+  }
+
+  note right of startServer::startJsonRpcServer
+    This starts the
+    Tree Language Server jar.
+  end note
+
+
+  class TreeLanguageServerClient {
+    + initialize(params)
+    + shutdown()
+    + exit()
+    + ping()
+    + getModel(ModelRequest)
+    + getDetectedodelUris()
+  }
+
+  class VscodeJsonRPCServer {
+    ~ addMessageHandlers()
+  }
+
+  startServer --> VscodeJsonRPCServer : create >
+  TreeLanguageServerRpcClient -|> TreeLanguageServerClient : implements >
+}
+
+package "ecore-custom-editor" {
+  class registerCustomTreeEditor
+
+  class TreeCustomDocument {
+    + uri: Uri
+    + documentData : TreeDocumentModel
+  }
+
+  class CustomTreeEditorProvider {
+    + saveCustomDocument(TreeCustomDocument)
+    + openCustomDocument(Uri) : TreeCustomDocument
+    + resolveCustomEditor(TreeCustomDocument, WebviewPanel)
+    - createWebviewHtml(): string
+  }
+
+  note left of CustomTreeEditorProvider::createWebviewHtml
+    This loads the Tree editor frontend Vue app.
+  end note
+
+  frame "RPC proxy for the webview" {
+    class TreeEditorWebviewClient {
+      + setDocument(TreeDocument)
+    }
+
+    class VscodeExtensionServer {
+      + signalReady()
+      + triggerAction(ActionEvent)
+      + setNodeChildrenVisibility(NodeId, boolean visible)
+    }
+  }
+
+  CustomTreeEditorProvider .. TreeCustomDocument
+  registerCustomTreeEditor --> CustomTreeEditorProvider
+}
+
+package vscode #DDDDDD {
+  interface CustomEditorProvider
+}
+
+package vscode-jsonrpc #DDDDDD {
+  class MessageConnection
+  class WebviewPanel
+  class Webview
+
+  WebviewPanel . Webview
+}
+
+package nodejs #DDDDDD {
+  class "child_process" as childProcess
+}
+
+extension::activate --> serverCommands::registerServerCommands
+extension::activate --> registerCustomTreeEditor
+extension::activate --> TreeLanguageServerRpcClient : create >
+extension::activate --> startServer : start server >
+
+VscodeJsonRPCServer o--> MessageConnection : listen for message >
+TreeLanguageServerRpcClient o----> MessageConnection : send message >
+
+CustomTreeEditorProvider --|> CustomEditorProvider
+CustomTreeEditorProvider o--> TreeLanguageServerClient
+
+CustomTreeEditorProvider::resolveCustomEditor --> WebviewPanel : creates webview for >
+
+TreeEditorWebviewClient --> Webview : send message >
+VscodeExtensionServer --> Webview : listen to message >
+
+TreeCustomDocument --> TreeLanguageServerClient
+
+startServer::startJsonRpcServer --> childProcess : spawn child process >
+
+@enduml

@@ -1,0 +1,114 @@
+@startuml Tree_Editor_Frontend_code
+
+skinparam nodesep 20
+skinparam ranksep 40
+
+hide empty members
+hide circle
+
+class main
+note right of main : Entry point
+
+package "user interface components" {
+  class App << Vue >>
+  class MasterDetailLayout << Vue >>
+  class FormEditor << Vue >>
+
+  note bottom of FormEditor : Unfinished
+
+  package actions {
+    class ActionBar << Vue >>
+    class ActionButton << Vue >>
+
+    ActionBar o--> "0..*" ActionButton : actions
+  }
+
+  package tree {
+    class TreeEditor << Vue >>
+    class TreeRoot << Vue >>
+    class TreeNode << Vue >>
+    class ToggleCaret << Vue >>
+    class Icon << Vue >>
+
+    TreeRoot o--> "0..1" TreeNode : root node
+    TreeNode o--> ToggleCaret
+    TreeNode o--> Icon
+    TreeNode o--> "0..*" TreeNode : children
+  }
+
+
+  App o--> MasterDetailLayout
+  MasterDetailLayout o--> ActionBar
+  MasterDetailLayout o--> TreeEditor
+  MasterDetailLayout o--> FormEditor
+  TreeEditor o--> "0..*" TreeRoot
+}
+
+package "external code" #DDDDDD {
+
+  class VSCode {
+    + postMessage(any message)
+    + getState() : any
+    + setState(any state)
+  }
+
+  class Window {
+    acquireVsCodeApi(): VSCode
+  }
+
+  Window --> VSCode
+}
+
+package "state" as pkgState {
+  class Store {
+    + setTreeDocument(TreeDocument treeDocument)
+    + setSelectedNode(TreeNode node)
+    + toggleNodeChildrenVisible(TreeNode node)
+  }
+
+  interface RootState
+
+  Store o--> RootState
+}
+
+package "vscode utilities" as pkgVscodeUtils {
+  class MockVSCode
+  class "vscode-extension" as vscodeExtension {
+    + getVscodeApi(): VSCode
+  }
+
+  class ExtensionEvents {
+    + on(string event, callback)
+  }
+
+  frame "RPC proxy for the extension" {
+    class VscodeExtension {
+      + signalReady()
+      + triggerAction(ActionEvent actionEvent)
+      + setNodeChildrenVisibility(NodeId id, boolean visible)
+    }
+
+    class TreeEditorWebview {
+      + setDocument(TreeDocument document)
+      - subscribeToEvents()
+    }
+  }
+
+
+  MockVSCode -|> VSCode
+  vscodeExtension::getVscodeApi -> MockVSCode
+  vscodeExtension::getVscodeApi -> VSCode
+
+  ExtensionEvents -> Window : Listen to "message" event\n from VSCode extension
+  VscodeExtension -> VSCode::postMessage : send RPC messages >
+  TreeEditorWebview --> ExtensionEvents : subscribe to >
+  TreeEditorWebview -> Store : set tree document >
+}
+
+main o--> App
+Store::toggleNodeChildrenVisible --> VscodeExtension::setNodeChildrenVisibility : set node children visibility >
+TreeEditor --> Store : get TreeDocument >
+Store --> VSCode::getState : get initial state,\nsave state >
+VscodeExtension::triggerAction <-- ActionBar : trigger action <
+
+@enduml

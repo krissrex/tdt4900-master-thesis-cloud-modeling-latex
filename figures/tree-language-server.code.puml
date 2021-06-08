@@ -1,0 +1,116 @@
+@startuml Tree_Language_Server_code
+hide empty members
+
+class MainRpc
+note right of MainRpc : Main entrypoint
+
+package emf {
+  class EmfTreeModelController {
+    + setWorkspaceUri(String)
+    + getTreeDocument(String) : TreeDocument
+    + getDetectedModelUris() : List<String>
+  }
+
+  class EcoreToTreeDocumentModelMapper {
+    + map(ResourceSet) : TreeDocument
+  }
+
+  EcoreToTreeDocumentModelMapper <-o EmfTreeModelController
+}
+
+package model {
+  interface TreeDocument
+
+  note as noteModel
+    The model interfaces are omitted.
+    8 other interfaces are here.
+  end note
+}
+
+package jsonrpc {
+  class TLSPJsonRpcServer {
+    + start()
+    + stop()
+  }
+
+  package protocol {
+    interface Client
+    
+    note bottom of Client
+      Only to provide typing.
+      Represents the methods
+      in the VSCode extension side.
+    end note
+
+    interface Server {
+      initialize(InitializeParams)
+      shutdown()
+      exit()
+      ping()
+      getModel(ModelRequest)
+      getDetectedModelUris()
+    }
+
+    note right of Server 
+      This specifies the
+      Tree Language Server Protocol
+      in java.
+      Unfinished.
+    end note
+
+    class ServerImpl
+
+    Server <|-- ServerImpl
+
+  }
+
+  TLSPJsonRpcServer o-> Server
+  TLSPJsonRpcServer --> Client
+
+}
+
+package "org.eclipse.lsp4j.jsonrpc" #DDDDDD {
+  class Launcher
+}
+
+package "org.eclipse.emfcloud.modelserver" #DDDDDD {
+  interface ModelController
+  interface ModelRepository
+  interface ModelResourceManager
+  interface ServerConfiguration
+}
+
+package "org.eclipse.emf" #DDDDDD {
+  class ReflectiveItemProvider {
+    + getText(Object) : String
+  }
+  class EObject {
+    + eContents() : EList<EObject>
+    + eClass() : EClass
+  }
+}
+
+package config {
+  interface ModelConfiguration {
+    languageName() : String
+    actions() : Optional<ModelActions>
+    icons() : Optional<ModelIcons>
+  }
+}
+
+MainRpc --> TLSPJsonRpcServer : start >
+TLSPJsonRpcServer o--> Launcher
+
+ServerImpl --> EmfTreeModelController
+
+EcoreToTreeDocumentModelMapper o--> ModelConfiguration : mappingConfig >
+EcoreToTreeDocumentModelMapper --> TreeDocument
+
+EmfTreeModelController o-> ModelRepository
+EmfTreeModelController o->  ModelResourceManager
+EmfTreeModelController o-> ModelController
+EmfTreeModelController o-> ServerConfiguration
+EmfTreeModelController --> ReflectiveItemProvider
+EmfTreeModelController --> EObject
+
+@enduml
