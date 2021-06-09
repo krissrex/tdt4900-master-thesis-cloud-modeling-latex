@@ -1,0 +1,128 @@
+@startuml Protocol_startstop_sequence
+
+participant "Tree Editor Extension" as ext
+participant "Tree Editor Frontend" as frontend
+participant "Tree Language Server" as server
+box external #DDDDDD
+  participant VSCode as vscode
+end box
+
+== Extension startup ==
+
+ext <- vscode : activate
+ext -> server ++ : start
+return ready
+
+ext -> server ++ : initialize
+return
+ext -> server : set workspace
+
+group open .ecore document
+  ext <- vscode ++ : open document uri
+  
+  ext -> frontend ++ : create
+  return ready
+  
+  ext -> server ++ : get model
+  return tree document
+
+  ext -> frontend: set document
+  deactivate
+  
+  frontend -> frontend : render new document
+end
+
+== Stopping ==
+ext -> server ++ : shutdown
+return
+ext -> server : exit
+destroy server
+
+@enduml
+
+@startuml Protocol_action_sequence
+
+actor Student
+participant "Tree Editor Frontend" as frontend
+participant "Tree Editor Extension" as ext
+participant "Tree Language Server" as server
+
+== Perform an action ==
+
+Student -> frontend ++ : click action button
+frontend -> ext ++ : trigger action event
+deactivate frontend
+ext -> server ++ : forward action event
+server -> server : perform action
+deactivate ext
+server -> ext ++ : new document state
+deactivate server
+ext -> frontend ++: set document
+deactivate ext
+frontend -> frontend : render new document
+deactivate
+
+@enduml
+
+@startuml Protocol_form_sequence
+
+actor Student
+participant "Tree Editor Frontend" as frontend
+participant "Tree Editor Extension" as ext
+participant "Tree Language Server" as server
+
+== Select a node ==
+
+Student -> frontend ++ : select a node
+frontend -> frontend : update selected node
+frontend -> ext ++ : get node properties
+deactivate frontend
+ext -> server ++ : get node properties
+return properties and form schema
+ext -> frontend ++ : set properties and form schema
+deactivate ext
+frontend -> frontend : render new properties form
+deactivate frontend
+
+== Edit a node property ==
+
+Student -> frontend : enter new property value
+Student -> frontend ++ : apply
+frontend -> ext ++ : send "change properties of node" event
+deactivate frontend
+ext -> server ++ : send "change properties of node" event
+server -> server : create change command
+server -> server : add command to undo-history stack
+return new properties and form schema
+ext -> frontend ++ : set properties and form schema
+deactivate ext
+frontend -> frontend : render new properties form
+deactivate
+
+@enduml
+
+@startuml Protocol_changetree_sequence
+
+actor Student
+participant "Tree Editor Frontend" as frontend
+participant "Tree Editor Extension" as ext
+participant "Tree Language Server" as server
+
+== Add a tree node ==
+
+Student -> frontend ++ : open "add child" menu on a node
+frontend -> Student : show possible node types
+Student -> frontend ++: Add child to node with type X
+frontend -> ext ++: add child to node with type X
+deactivate frontend
+deactivate frontend
+ext -> server ++ : add child to node with type X
+server -> server : create change command
+server -> server : add command to undo-history stack
+return new tree document
+ext -> frontend ++ : set document
+deactivate ext
+frontend -> frontend : render new document
+deactivate frontend
+
+@enduml
