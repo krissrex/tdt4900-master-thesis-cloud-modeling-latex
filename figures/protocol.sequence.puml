@@ -78,25 +78,25 @@ frontend -> frontend : update selected node
 frontend -> ext ++ : get node properties
 deactivate frontend
 ext -> server ++ : get node properties
-return properties and form schema
-ext -> frontend ++ : set properties and form schema
+return properties\nand form schema
+ext -> frontend ++ : set properties\nand form schema
 deactivate ext
-frontend -> frontend : render new properties form
+frontend -> frontend : render new\nproperties form
 deactivate frontend
 
 == Edit a node property ==
 
-Student -> frontend : enter new property value
+Student -> frontend : enter new\nproperty value
 Student -> frontend ++ : apply
-frontend -> ext ++ : send "change properties of node" event
+frontend -> ext ++ : send "change\nproperties of\nnode" event
 deactivate frontend
-ext -> server ++ : send "change properties of node" event
-server -> server : create change command
-server -> server : add command to undo-history stack
-return new properties and form schema
-ext -> frontend ++ : set properties and form schema
+ext -> server ++ : send "change\nproperties of\nnode" event
+server -> server : create change\ncommand
+server -> server : add command to\nundo-history stack
+return new properties\nand form schema
+ext -> frontend ++ : set properties\nand form schema
 deactivate ext
-frontend -> frontend : render new properties form
+frontend -> frontend : render new\nproperties form
 deactivate
 
 @enduml
@@ -110,15 +110,15 @@ participant "Tree Language Server" as server
 
 == Add a tree node ==
 
-Student -> frontend ++ : open "add child" menu on a node
-frontend -> Student : show possible node types
-Student -> frontend ++: Add child to node with type X
-frontend -> ext ++: add child to node with type X
+Student -> frontend ++ : open "add child"\nmenu on a node
+frontend -> Student : show possible\nnode types
+Student -> frontend ++: Add child to\nnode with type X
+frontend -> ext ++: add child to\nnode with type X
 deactivate frontend
 deactivate frontend
-ext -> server ++ : add child to node with type X
+ext -> server ++ : add child to\nnode with type X
 server -> server : create change command
-server -> server : add command to undo-history stack
+server -> server : add command to\nundo-history stack
 return new tree document
 ext -> frontend ++ : set document
 deactivate ext
