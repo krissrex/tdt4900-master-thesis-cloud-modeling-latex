@@ -188,6 +188,8 @@
 \RequirePackage[acronym]{glossaries}        % create a glossary and acronym list
 \RequirePackage{tikzit}
 \RequirePackage{svg}
+\RequirePackage{placeins}
+\RequirePackage{float}
 
 %% CUSTOMISATION
 

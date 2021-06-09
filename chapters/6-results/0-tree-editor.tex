@@ -4,10 +4,10 @@ The following results are from \gls{Gitpod} using \gls{VSCode} as the editor fro
 One way to install it\footnote{The ``best'' way is to publish the extension to OpenVSX, and search for it in the extensions panel.}, is to upload the \texttt{.vsix} file to the workspace, right clicking on it and selecting ``Install Extension VSIX''.
 When installed in the \acrshort{IDE}, it is shown in the extensions panel as \textit{Ecore Tree-editor}, shown in \cref{fig:gitpod-ext-installed}.
 
-\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+\begin{figure}[H]  % order of priority: h here, t top, b bottom, p page
   \centering
   \includegraphics[width=0.6\textwidth]{figures/gitpod-vscode-extensions-installed.png}
-  \caption[title]{description.}\label{fig:gitpod-ext-installed}
+  \caption[Tree Editor Extension installed in Gitpod]{The extension is installed as \textit{Ecore Tree-editor} in Gitpod with VSCode.}\label{fig:gitpod-ext-installed}
 \end{figure}
 
 \subsection{Custom Editor}
@@ -15,10 +15,10 @@ When installed in the \acrshort{IDE}, it is shown in the extensions panel as \te
 This extension adds a new Custom Editor, which is automatically opened when the user opens a \texttt{.ecore}, \texttt{.genmodel} or \texttt{.xmi} file.
 The model file is loaded and transformed by the extension, and presented as a tree to the user.
 
-\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+\begin{figure}[H]  % order of priority: h here, t top, b bottom, p page
   \centering
   \includegraphics[width=\textwidth]{figures/gitpod-vscode-ecore-editor-studyemf.png}
-  \caption[title]{description.}\label{fig:gitpod-ext-tree-ecore}
+  \caption[Tree Editor Extension showing studies.ecore]{The Tree Editor Extension has opened a Custom Editor for the \texttt{studies.ecore} file.}\label{fig:gitpod-ext-tree-ecore}
 \end{figure}
 
 \paragraph{Example model}
@@ -56,31 +56,57 @@ The detail layout has a property sheet, currently showing a unfinished example f
 This layout should use the \textit{JSON-Forms} library to render properties, based on the node's properties and a \textit{UI schema} for that node type.
 
 
-\subsection{Custom commands}
+\subsection{IDE Commands}
 
 The extension also provides Commands to \gls{VSCode}.
-The student can invoke them from the Command Palette\footnote{Press \texttt{F1}, or \texttt{ctrl + shift + P} (command on mac), or \texttt{Menu -> View -> Command palette}} by typing ``Ecore'' or another part of the command's name.
+These are actions that can be invoked at any time.
+The student can invoke them from the Command Palette\footnote{Press \texttt{F1}, or \texttt{ctrl + shift + P} (command on mac), or \texttt{Menu $\rightarrow$ View $\rightarrow$ Command palette}} by typing ``Ecore'' or another part of the command's name.
 A screenshot is shown in \cref{fig:gitpod-ext-newmodel}, with a command to create a new model file.
 This file will have the minimum \acrshort{XMI} contents required for a blank model.
 
-\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+\begin{figure}[H]  % order of priority: h here, t top, b bottom, p page
   \centering
   \includegraphics[width=\textwidth]{figures/gitpod-vscode-newmodel.png}
-  \caption[title]{description.}\label{fig:gitpod-ext-newmodel}
+  \caption[Tree Editor Extension Custom Commands]{The Tree Editor Extension adds custom commands to the Command Palette. One of them is shown here, named \textit{Ecore: New Model file\ldots}.}\label{fig:gitpod-ext-newmodel}
 \end{figure}
 
 \subsection{Genmodel and Model Instance}
 
-\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+The editor can open a \texttt{.genmodel} file or a \texttt{.xmi} model instance file as well.
+The GenModel is shown in \cref{fig:gitpod-ext-genmodel}, and the dynamic instance in \cref{fig:gitpod-ext-dynamic}.
+This will show two roots in the editor, as the original \texttt{.ecore} model is related to the opened file.
+One root is the GenModel or model instance, and the other root is the study model.
+
+The GenModel editor is not specialized, so it renders the tree as any other \gls{Ecore} model.
+
+\begin{figure}[H]  % order of priority: h here, t top, b bottom, p page
   \centering
   \includegraphics[width=\textwidth]{figures/gitpod-vscode-genmodel.png}
-  \caption[title]{description.}\label{fig:label3}
+  \caption[Tree Editor Extension showing studies.genmodel]{The Tree Editor Extension with the \texttt{studies.genmodel} file open. It has two roots, the GenModel and the model. The GenModel is collapsed/hidden at the ``Studies'' node.}\label{fig:gitpod-ext-genmodel}
 \end{figure}
+
+\begin{figure}[H]  % order of priority: h here, t top, b bottom, p page
+  \centering
+  \includegraphics[width=\textwidth]{figures/gitpod-vscode-xmi-study-instance.png}
+  \caption[Tree Editor Extension showing a dynamic instance]{The Tree Editor Extension with the \texttt{sample_1.xmi} dynamic instance open. This is data that conforms to the model defined in \texttt{studies.ecore}.}\label{fig:gitpod-ext-dynamic}
+\end{figure}
+
+
+\subsection{Configuration and Logging}
+
+The extension has configuration options that a user can set.
+One such option is the logging level, a threshold to hide log messages in the log panel.
+The extension can also log internal events and messages to a Output panel in \gls{VSCode}, for the user to debug and identify errors.
+The configuration and output panel are shown in \cref{fig:gitpod-ext-config-log}.
 
 \begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
   \centering
-  \includegraphics[width=\textwidth]{figures/gitpod-vscode-xmi-study-instance.png}
-  \caption[title]{description.}\label{fig:label4}
+  \includegraphics[width=\textwidth]{figures/gitpod-vscode-config-and-logging.png}
+  \caption[Tree Editor Extension with configuration and logging]{The Tree Editor Extension adds configuration options to the \gls{VSCode} settings menu, shown in the top right.
+  The extension also adds log outputs to a Output panel.
+  The figure is annotated with two red circles.
+  The upper circle is indicating the configuration option to filter the output based on log level.
+  The lower circle is highlighting that same log level from a message in the output panel.}\label{fig:gitpod-ext-config-log}
 \end{figure}
 
 
@@ -99,3 +125,5 @@ This file will have the minimum \acrshort{XMI} contents required for a blank mod
 % 11. Click dynamic instance file: "sample_1.xmi"
 }
 \fi
+
+\FloatBarrier % Prevent figures running into the next section
