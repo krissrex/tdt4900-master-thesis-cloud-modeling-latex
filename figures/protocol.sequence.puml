@@ -10,12 +10,12 @@ end box
 == Extension startup ==
 
 ext <- vscode : activate
-ext -> server ++ : start
+ext -[#blue]/ server ++ : start
 return ready
 
-ext -> server ++ : initialize
+ext -[#blue]/ server ++ : initialize
 return
-ext -> server : set workspace
+ext -[#blue]/ server : set workspace
 
 group open .ecore document
   ext <- vscode ++ : open document uri
@@ -23,7 +23,7 @@ group open .ecore document
   ext -> frontend ++ : create
   return ready
   
-  ext -> server ++ : get model
+  ext -[#blue]/ server ++ : get model
   return tree document
 
   ext -> frontend: set document
@@ -33,9 +33,9 @@ group open .ecore document
 end
 
 == Stopping ==
-ext -> server ++ : shutdown
+ext -[#blue]/ server ++ : shutdown
 return
-ext -> server : exit
+ext -[#blue]/ server : exit
 destroy server
 
 @enduml
@@ -52,10 +52,10 @@ participant "Tree Language Server" as server
 Student -> frontend ++ : click action button
 frontend -> ext ++ : trigger action event
 deactivate frontend
-ext -> server ++ : forward action event
+ext -[#blue]/ server ++ : trigger action event
 server -> server : perform action
 deactivate ext
-server -> ext ++ : new document state
+server -[#blue]/ ext ++ : new document state
 deactivate server
 ext -> frontend ++: set document
 deactivate ext
@@ -77,7 +77,7 @@ Student -> frontend ++ : select a node
 frontend -> frontend : update selected node
 frontend -> ext ++ : get node properties
 deactivate frontend
-ext -> server ++ : get node properties
+ext -[#blue]/ server ++ : get node properties
 return properties\nand form schema
 ext -> frontend ++ : set properties\nand form schema
 deactivate ext
@@ -90,7 +90,7 @@ Student -> frontend : enter new\nproperty value
 Student -> frontend ++ : apply
 frontend -> ext ++ : send "change\nproperties of\nnode" event
 deactivate frontend
-ext -> server ++ : send "change\nproperties of\nnode" event
+ext -[#blue]/ server ++ : send "change\nproperties of\nnode" event
 server -> server : create change\ncommand
 server -> server : add command to\nundo-history stack
 return new properties\nand form schema
@@ -116,7 +116,7 @@ Student -> frontend ++: Add child to\nnode with type X
 frontend -> ext ++: add child to\nnode with type X
 deactivate frontend
 deactivate frontend
-ext -> server ++ : add child to\nnode with type X
+ext -[#blue]/ server ++ : add child to\nnode with type X
 server -> server : create change command
 server -> server : add command to\nundo-history stack
 return new tree document

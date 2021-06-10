@@ -21,7 +21,7 @@ package "tree-language-server" {
     + startJsonRpcServer()
   }
 
-  note right of startServer::startJsonRpcServer
+  note left of startServer::startJsonRpcServer
     This starts the
     Tree Language Server jar.
   end note
@@ -41,7 +41,9 @@ package "tree-language-server" {
   }
 
   startServer --> VscodeJsonRPCServer : create >
-  TreeLanguageServerRpcClient -|> TreeLanguageServerClient : implements >
+  TreeLanguageServerClient <|- TreeLanguageServerRpcClient  : implements <
+  TreeLanguageServerRpcClient -[hidden]u- startServer
+  VscodeJsonRPCServer -[hidden]u- TreeLanguageServerRpcClient
 }
 
 package "ecore-custom-editor" {
@@ -75,44 +77,47 @@ package "ecore-custom-editor" {
     }
   }
 
-  CustomTreeEditorProvider .. TreeCustomDocument
+  CustomTreeEditorProvider --> TreeCustomDocument : creates >
   registerCustomTreeEditor --> CustomTreeEditorProvider
-}
-
-package vscode #DDDDDD {
-  interface CustomEditorProvider
-}
-
-package vscode-jsonrpc #DDDDDD {
-  class MessageConnection
-  class WebviewPanel
-  class Webview
-
-  WebviewPanel . Webview
 }
 
 package nodejs #DDDDDD {
   class "child_process" as childProcess
 }
 
+package vscode #DDDDDD {
+  interface CustomEditorProvider
+  class WebviewPanel
+  class Webview
+
+  WebviewPanel . Webview
+}
+
+package vscode-jsonrpc as vscodeJsonrpc #DDDDDD {
+  class MessageConnection
+}
+
+
 extension::activate --> serverCommands::registerServerCommands
 extension::activate --> registerCustomTreeEditor
 extension::activate --> TreeLanguageServerRpcClient : create >
 extension::activate --> startServer : start server >
 
-VscodeJsonRPCServer o--> MessageConnection : listen for message >
-TreeLanguageServerRpcClient o----> MessageConnection : send message >
+VscodeJsonRPCServer o-> MessageConnection : listen for message >
+TreeLanguageServerRpcClient o--> MessageConnection : send message >
 
 CustomTreeEditorProvider --|> CustomEditorProvider
 CustomTreeEditorProvider o--> TreeLanguageServerClient
 
-CustomTreeEditorProvider::resolveCustomEditor --> WebviewPanel : creates webview for >
+CustomTreeEditorProvider::resolveCustomEditor -> WebviewPanel : creates webview for >
 
 TreeEditorWebviewClient --> Webview : send message >
 VscodeExtensionServer --> Webview : listen to message >
 
 TreeCustomDocument --> TreeLanguageServerClient
 
-startServer::startJsonRpcServer --> childProcess : spawn child process >
+startServer --> childProcess : spawn child process >
+
+vscode -[hidden]- "tree-language-server"
 
 @enduml
