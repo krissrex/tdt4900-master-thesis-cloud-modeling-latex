@@ -1,36 +1,60 @@
 % Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 % \usepackage{longtable}
 % Note: It may be necessary to compile the document several times to get a multi-page table to line up properly
-
-% TODO: Add test cases and evaluate.
-
-\begin{longtable}{lllll}
-\caption{Use Case-evaluation of the Tree Editor Extension artifact.}
+\begin{longtable}{@{}lp{3cm}ll@{}}
+\caption{Use Case-evaluation of the Tree Editor Extension design.}
 \label{tab:use-case-evaluation}\\
-\hline
+\toprule
 \multicolumn{1}{c}{\textbf{ID}} &
   \multicolumn{1}{c}{\textbf{Use Case}} &
-  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Can be \\ performed\\ by current \\ Tree Editor\\ Extension\end{tabular}}} &
-  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Requires \\ Eclipse IDE\end{tabular}}} &
-  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Could be\\  performed by \\ Tree Editor \\ Extension\\ with more \\ development\\ time\end{tabular}}} \\ \hline
+  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Supported?\\ {[}No/Yes/YES/Unknown{]}\end{tabular}}} &
+  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Requires \\ Eclipse IDE\end{tabular}}} \\* \midrule
 \endfirsthead
 %
-\multicolumn{5}{c}%
+\multicolumn{4}{c}%
 {{\bfseries Table \thetable\ continued from previous page}} \\
-\hline
+\toprule
 \multicolumn{1}{c}{\textbf{ID}} &
   \multicolumn{1}{c}{\textbf{Use Case}} &
-  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Can be \\ performed\\ by current \\ Tree Editor\\ Extension\end{tabular}}} &
-  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Requires \\ Eclipse IDE\end{tabular}}} &
-  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Could be\\  performed by \\ Tree Editor \\ Extension\\ with more \\ development\\ time\end{tabular}}} \\ \hline
+  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Supported?\\ {[}No/Yes/YES/Unknown{]}\end{tabular}}} &
+  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Requires \\ Eclipse IDE\end{tabular}}} \\* \midrule
 \endhead
 %
-1 & Create new model file & Yes & No & - \\
-2 & View Ecore model      & Yes & No & - \\
-3 &                       &     &    &   \\
-4 &                       &     &    &   \\
-5 &                       &     &    &   \\
-6 &                       &     &    &   \\
-7 &                       &     &    &   \\
-8 &                       &     &    &  
+\bottomrule
+\endfoot
+%
+\endlastfoot
+%
+\rowcolor[HTML]{EFEFEF} 
+1  & Create new .ecore model file                                 & Yes     & No  \\
+2  & View Ecore model by opening the .ecore file                  & YES     & No  \\
+\rowcolor[HTML]{EFEFEF} 
+3  & Create an EPackage, EClass and EAttributes and EReferences   & Yes     & No  \\
+4  & Change the properties of the package, class and attributes   & Yes     & No  \\
+\rowcolor[HTML]{EFEFEF} 
+5  & Create a new dynamic instance file from an EClass            & Yes     & No  \\
+6  & Enter dynamic instance data                                  & Yes     & No  \\
+\rowcolor[HTML]{EFEFEF} 
+7  & Change the .ecore model by adding a EAttribute to the EClass & Yes     & No  \\
+8 &
+  \begin{tabular}[p{3cm}]{@{}l@{}}Open the dynamic instance, confirm if it is marked as invalid\\ because the new attribute is not filled in.\end{tabular} &
+  Unknown &
+  Yes \\
+\rowcolor[HTML]{EFEFEF} 
+9 &
+  \begin{tabular}[c]{@{}l@{}}Open the .ecore model file, and add a new validation\\ to the EClass as an EAnnotation. Use the java validation kind,\\ not OCL.\end{tabular} &
+  Yes &
+  No \\
+10 & Create a .genmodel file based on the .ecore file.            & Yes     & No  \\
+\rowcolor[HTML]{EFEFEF} 
+11 & Generate java project with the model code                    & Unknown & Yes \\
+12 & Write a validation in the java code                          & -       & No  \\
+\rowcolor[HTML]{EFEFEF} 
+13 & Load the model code into the IDE, to use the validation      & No      & Yes \\
+14 & Edit the model and run the custom validation                 & Yes     & Yes \\
+\rowcolor[HTML]{EFEFEF} 
+15 & Generate a user interface or editor plugin                   & No      & Yes \\* \bottomrule
 \end{longtable}
