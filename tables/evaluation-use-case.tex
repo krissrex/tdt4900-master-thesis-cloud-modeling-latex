@@ -4,13 +4,11 @@
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 % \usepackage{longtable}
 % Note: It may be necessary to compile the document several times to get a multi-page table to line up properly
-\begin{longtable}{@{}lp{3cm}ll@{}}
-\caption{Use Case-evaluation of the Tree Editor Extension design.}
-\label{tab:use-case-evaluation}\\
+\begin{longtable}{@{}lp{4cm}ll@{}}
 \toprule
 \multicolumn{1}{c}{\textbf{ID}} &
   \multicolumn{1}{c}{\textbf{Use Case}} &
-  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Supported?\\ {[}No/Yes/YES/Unknown{]}\end{tabular}}} &
+  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Supported?\\ {[}No/Yes/\\ YES/Unknown{]}\end{tabular}}} &
   \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Requires \\ Eclipse IDE\end{tabular}}} \\* \midrule
 \endfirsthead
 %
@@ -19,7 +17,7 @@
 \toprule
 \multicolumn{1}{c}{\textbf{ID}} &
   \multicolumn{1}{c}{\textbf{Use Case}} &
-  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Supported?\\ {[}No/Yes/YES/Unknown{]}\end{tabular}}} &
+  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Supported?\\ {[}No/Yes/\\ YES/Unknown{]}\end{tabular}}} &
   \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Requires \\ Eclipse IDE\end{tabular}}} \\* \midrule
 \endhead
 %
@@ -40,12 +38,12 @@
 \rowcolor[HTML]{EFEFEF} 
 7  & Change the .ecore model by adding a EAttribute to the EClass & Yes     & No  \\
 8 &
-  \begin{tabular}[p{3cm}]{@{}l@{}}Open the dynamic instance, confirm if it is marked as invalid\\ because the new attribute is not filled in.\end{tabular} &
+  \begin{tabular}[c]{@{}p{4cm}@{}}Open the dynamic instance, confirm if it is marked as invalid\\ because the new attribute is not filled in.\end{tabular} &
   Unknown &
   Yes \\
 \rowcolor[HTML]{EFEFEF} 
 9 &
-  \begin{tabular}[c]{@{}l@{}}Open the .ecore model file, and add a new validation\\ to the EClass as an EAnnotation. Use the java validation kind,\\ not OCL.\end{tabular} &
+  \begin{tabular}[c]{@{}p{4cm}@{}}Open the .ecore model file, and add a new validation\\ to the EClass as an EAnnotation. Use the java validation kind,\\ not OCL.\end{tabular} &
   Yes &
   No \\
 10 & Create a .genmodel file based on the .ecore file.            & Yes     & No  \\
@@ -57,4 +55,6 @@
 14 & Edit the model and run the custom validation                 & Yes     & Yes \\
 \rowcolor[HTML]{EFEFEF} 
 15 & Generate a user interface or editor plugin                   & No      & Yes \\* \bottomrule
+\caption{Use Case-evaluation of the Tree Editor Extension design.}
+\label{tab:use-case-evaluation}\\
 \end{longtable}
