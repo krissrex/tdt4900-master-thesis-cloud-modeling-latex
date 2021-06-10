@@ -8,7 +8,7 @@
 \toprule
 \multicolumn{1}{c}{\textbf{ID}} &
   \multicolumn{1}{c}{\textbf{Use Case}} &
-  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Supported?\\ {[}No/Yes/\\ YES/Unknown{]}\end{tabular}}} &
+  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Supported?\\ {[}NA/No/Unknown/\\ Yes/YES{]}\end{tabular}}} &
   \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Requires \\ Eclipse IDE\end{tabular}}} \\* \midrule
 \endfirsthead
 %
@@ -17,7 +17,7 @@
 \toprule
 \multicolumn{1}{c}{\textbf{ID}} &
   \multicolumn{1}{c}{\textbf{Use Case}} &
-  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Supported?\\ {[}No/Yes/\\ YES/Unknown{]}\end{tabular}}} &
+  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Supported?\\ {[}NA/No/Unknown/\\ Yes/YES{]}\end{tabular}}} &
   \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Requires \\ Eclipse IDE\end{tabular}}} \\* \midrule
 \endhead
 %
@@ -55,6 +55,9 @@
 14 & Edit the model and run the custom validation                 & Yes     & Yes \\
 \rowcolor[HTML]{EFEFEF} 
 15 & Generate a user interface or editor plugin                   & No      & Yes \\* \bottomrule
-\caption{Use Case-evaluation of the Tree Editor Extension design.}
-\label{tab:use-case-evaluation}\\
+\caption{Use Case-evaluation of the Tree Editor Extension design.
+The evaluation result is in the ``Supported?'' and ``Requires Eclipse IDE'' columns.
+For tasks that are not applicable to the modeling environment, the NA (Not Applicable) is chosen.
+The `Yes' in ``Supported?'' indicates that the design should support it, possibly with further development, but not major redesign.
+The all-capital `YES' means the developed artifact has demonstrated it. }\label{tab:use-case-evaluation}\\
 \end{longtable}
