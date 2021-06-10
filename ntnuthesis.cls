@@ -190,6 +190,8 @@
 \RequirePackage{svg}
 \RequirePackage{placeins}
 \RequirePackage{float}
+\RequirePackage{rotating}
+\RequirePackage{longtable}
 
 %% CUSTOMISATION
 
