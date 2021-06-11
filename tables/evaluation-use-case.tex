@@ -27,7 +27,7 @@
 \endlastfoot
 %
 \rowcolor[HTML]{EFEFEF} 
-1  & Create new .ecore model file                                 & Yes     & No  \\
+1  & Create new .ecore model file                                 & YES     & No  \\
 2  & View Ecore model by opening the .ecore file                  & YES     & No  \\
 \rowcolor[HTML]{EFEFEF} 
 3  & Create an EPackage, EClass and EAttributes and EReferences   & Yes     & No  \\
@@ -46,18 +46,20 @@
   \begin{tabular}[c]{@{}p{4cm}@{}}Open the .ecore model file, and add a new validation\\ to the EClass as an EAnnotation. Use the java validation kind,\\ not OCL.\end{tabular} &
   Yes &
   No \\
-10 & Create a .genmodel file based on the .ecore file.            & Yes     & No  \\
+10 & Create a .genmodel file based on the .ecore file.            & Unknown     & No  \\
 \rowcolor[HTML]{EFEFEF} 
 11 & Generate java project with the model code                    & Unknown & Yes \\
-12 & Write a validation in the java code                          & -       & No  \\
+12 & Write a validation in the java code                          & NA       & No  \\
 \rowcolor[HTML]{EFEFEF} 
 13 & Load the model code into the IDE, to use the validation      & No      & Yes \\
-14 & Edit the model and run the custom validation                 & Yes     & Yes \\
+14 & Edit the model and run the custom validation                 & Yes*     & Yes \\
 \rowcolor[HTML]{EFEFEF} 
 15 & Generate a user interface or editor plugin                   & No      & Yes \\* \bottomrule
 \caption{Use Case-evaluation of the Tree Editor Extension design.
+Based on modeling in TDT4250. Each row and ID is a step in the modeling process.
 The evaluation result is in the ``Supported?'' and ``Requires Eclipse IDE'' columns.
 For tasks that are not applicable to the modeling environment, the NA (Not Applicable) is chosen.
 The `Yes' in ``Supported?'' indicates that the design should support it, possibly with further development, but not major redesign.
-The all-capital `YES' means the developed artifact has demonstrated it. }\label{tab:use-case-evaluation}\\
+The all-capital `YES' means the developed artifact has demonstrated it. }
+\label{tab:use-case-evaluation}\\
 \end{longtable}

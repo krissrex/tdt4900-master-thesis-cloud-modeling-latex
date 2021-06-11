@@ -1,0 +1,29 @@
+
+The current design (\textit{models} and \textit{constructs}) achieves the basic goals of modeling in a \gls{cloud} based \acrshort{IDE}.
+The developed artifact (\textit{instantiation}) is \textbf{not} ready to be used by students of \gls{TDT4250}, as much of the design is not implemented.
+Some important features are not yet supported by the design, mainly related to code generation and validation.
+They are not proven to be infeasible, but are unexplored. \\
+
+Another unexplored area is the special adaptation of editors to GenModel and Ecore themselves.
+The GenModel presented in \gls{Eclipse} has many options that are not present in the actual file itself.
+This may mean that there are default options presented in the \gls{Eclipse}, and only saved to the genmodel file if changed.
+The feasibility of a customized editor is unexplored. \\
+
+An important observation is that creating a Tree Editor frontend from scratch requires many ``basic'' features to be manually made.
+Keyboard shortcuts and right-click context menus are not present by default.
+For example, undoing the text entered in a property form field must also be supported explicitly by the design; the \acrshort{IDE} does not provide it for free.
+The amount of work may be substantial, to reach a high level of quality and useability.\\
+
+When designing the protocol, two different paradigms of protocol designs were encountered.
+One is the \acrshort{LSP} approach, where many methods and capabilities are explicit in the protocol.
+The other is the \acrshort{GLSP} approach, where the protocol has approximately 3 methods in total, and all the logic is encapsulated in a \texttt{ActionMessage}.
+The server will perform a \texttt{handler} lookup for the message, and thus move much of the ``surface area'' of the protocol to internal code and handlers.
+Essentially, the \acrshort{GLSP} approach is wrapping the \gls{JSON-RPC} data inside another layer of \gls{JSON-RPC} data.
+One observed advantage of this is the forwarding of \gls{JSON-RPC} calls: the \acrshort{GLSP} approach only needs to forward a \texttt{ActionMessage} and it is done.
+The \acrshort{LSP} has to ``unpack and re-call'' the forwarded message.
+One potential cause for the difference is that forwarding is much more present in \acrshort{GLSP}: it also uses a Custom Editor frontend.
+Thus messages are relayed from the frontend via the extension and to the server.
+In \acrshort{LSP}, the editor is natively supported by the \acrshort{IDE}.
+
+The design of this thesis' artifact chose the \acrshort{LSP} approach, of a large and explicit protocol.
+Without evidence, it is assumed that this approach is easier for \textit{other} developers when they want to implement a server for a domain other than \acrshort{EMF}.

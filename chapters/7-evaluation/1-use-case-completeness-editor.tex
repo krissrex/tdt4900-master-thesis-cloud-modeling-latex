@@ -1,0 +1,110 @@
+
+\paragraph{Introduction}
+The design was evaluated for completeness based on a list of modeling actions.
+The modeling actions stem from the modeling process used in \gls{TDT4250}, in \cref{par:tdt4250-methodology}.
+
+This evaluation was performed by the author, not in a class of \gls{TDT4250} students.
+Evaluation was based on an artifact at the proof-of-concept stage.
+
+\paragraph{Results}
+The list is shown in \cref{tab:use-case-evaluation}.
+Each row is a test case with a unique ID.
+The result is presented in the ``Supported?'' and ``Requires Eclipse IDE'' columns.
+The optimal result in ``Supported?'' is ``YES'', meaning the design both supported the case and the artifact implemented it.
+Next best is ``Yes'', meaning a clear approach can be seen by the author to develop the artifact further using the existing design's constructs and models, to support the case.
+A case with ``No'' indicates that the design needs to change.
+If ``Requires Eclipse IDE'' is ``Yes'', the case would need \gls{Eclipse} to be solved, requiring design changes to the artifact.
+
+\input{tables/evaluation-use-case.tex}
+
+\subsection{Test Case Details}
+The individual results will now be discussed in more detail.
+Each paragraph is denoted with the test ID in \cref{tab:use-case-evaluation}.
+The knowledge presented from the cases are interior to the design, and provide prescriptive design theories for this context and scope~\cite{sonnenbergEvaluationsScienceArtificial2012}.
+
+\paragraph{1} The design can do this with Commands in the extension.
+The command should result in a message over \acrshort{TLSP} with a file path to create the model at.
+The server should then use the EMF.Cloud Model Server to create the file, giving it a empty \gls{Ecore} model as argument.
+
+\paragraph{2} The editor should have a formal and available set of requirements for what it must do in order to comply with the \acrshort{TLSP}.
+This can help when creating new tree editor frontends for other \acrshortpl{IDE}.
+If the \acrshort{TLSP} should be reused to solve the \(m \times n\) problem (see \cref{sec:lsp}), then the protocol must also be used in other \acrshortpl{IDE} with the same kind of generic frontend.\\
+
+The mapping of \gls{Ecore} elements to nodes should use the \acrshort{EMF} \texttt{ItemProvider} mechanisms.
+For the actual \gls{Ecore} metamodel and GenModel, a specific \texttt{ItemProvider} should be used, instead of the \textit{reflective} variant.
+The reflective variant creates poor labels, from a useability standpoint, and do not match the ones seen in \gls{Eclipse}.
+
+
+\paragraph{3} Creating a new node should be done using the \texttt{HierarchySchema} construct to constrain the user interface (with regards to child types), and then use a specific command in \acrshort{TLSP} to perform the creation.
+Commands to the \acrshort{TLSP} must include enough information to identify the document, model root and node to alter.\\
+
+The existing design does not use versions for \texttt{TreeCustomDocument}, but this may be required in a new design iteration.
+The \acrshort{LSP} uses versioned documents, which can ensure actions and problems are done and reported respectively against the correct document version, where only the ``current'' version is of interest.\\
+
+The editor frontend should be as stateless as possible.
+The frontend can store (cache) the tree as internal state, but should not be responsible for changing the state, as it will cause synchronization issues because the state also exists in the extension and the server.
+Using the server for all state changes also ensures that invalid states can be prevented.
+
+Also, when state changes are done in the frontend or extension, there is a risk that domain specific knowledge (about \acrshort{EMF}) is captured there, which should instead be in the server.
+Only the server is the truly reuseable component, and must contain all such domain specific knowledge.
+
+
+\paragraph{4} Changing the properties should use the form in the detail view.
+This form may require completions for certain form fields, such as references to names of other model elements (for example an EReference can have autocompletion for the type property, suggesting EClass names).
+The \acrshort{TLSP} can be queried for property completions, given the node ID,an appropriate property identifier and the current contents of the property to complete.\\
+
+The property changes must be stored immediately in the extension (as a ``dirty'' document or similar), before being applied to the model.
+This is because the editor frontend is transient, and lost if the user changes editor tabs, having to be recreated from the extension's state and the frontend's cache.
+Storing the property changes in the extension allows the use of ``dirty'' (or unsaved) documents, as opposed to the frontend cache where it risks being lost.
+
+\paragraph{5} The \texttt{Action} construct should be sent via \acrshort{TLSP}, with data that indicates a dynamic instance must be created.
+This also needs a file name.
+The server could call back the extension over \acrshort{TLSP} to request a filename, where the extension prompts the user.
+
+\paragraph{6} Entering custom instance data should be similar to editing the \gls{Ecore} model.
+A want for customizing the label logic and the ``tree mapping rules'' has been identified, but is not designed for.
+(For example, a student would use a combination of two fields as the label, such as \texttt{firstname + `\_` + lastname}.)
+A next design should accomodate for such flexibility, using configuration files or augmenting model files in the user's project.
+(The GenModel is an augmenting model file).
+Alternatively the model could be altered with annotations that specify the label and tree mapping rules.
+
+\paragraph{7} Changing the model should also notify the extension about changes, so the dynamic instance editor tab is able to update its state.
+
+\paragraph{8} It is unknown how to handle a changing model from a model instance's perspective.
+Some suggestions are that the user server tries to correct the model instance, or the user has to edit the instance using a text editor (\acrshort{XMI}).
+Such corrective behavior would require \gls{Eclipse} for now, if \gls{Eclipse} even changes the model instance in this case (this is unknown to the author).
+
+\paragraph{9} The java validation annotations are only text, and defer the job to the code generator.
+They are easily added as child nodes.
+The \acrshort{OCL} variant should not be hard to support either, as the OCL evaluation would be performed in the server.
+Doing OCL evaluation in the frontend may need the \acrshort{EMF} runtime \acrshort{API} to be present, because the OCL evaluator traverses objects using the metamodel.
+However, the javascript based \acrshort{EMF} implementation for cross-ecore (see \cref{sec:emf-in-cloud}) was not bug free, based on an attempt to use it in this design.
+
+\paragraph{10} The GenModel needs to know about the \gls{Ecore} model, because it augments or decorates it.
+A new file is not necessarily empty; it may have some minimal data, like a \acrshort{XMI} structure with a reference to the ecore model file.
+This may need some custom logic, possibly contained in a java library used in \gls{Eclipse}.
+However, the exact details are unknown because they were not researched, due to being out of scope (time constraints).
+A new design should reuse the GenModel file creation logic, to create a new genmodel file.
+
+\paragraph{11} The \texttt{Action} construct should be sent over \acrshort{TLSP} to trigger code generation.
+However, the server implementation to trigger code generation is unknown.
+It is assumed that it exists in a reuseable java library used by \gls{Eclipse}, but there is a possibility that it relies on \gls{Eclipse} internals.
+
+\paragraph{12} Not applicable, as a text editor and java extension does this.
+
+\paragraph{13} When creating a validation in java, the model needs to be compiled and loaded into the server.
+The current design does not have a mechanism for loading a user created java project.
+The extension should provide a Command to load the model into the server.
+The server should be notified with \acrshort{TLSP}, in a new design possibly using a custom \texttt{Message} construct, specifying an action and parameters the same way \acrshort{GLSP} does in its \texttt{ActionMessage} construct (see \cref{par:glsp-actionmessage}).
+This is because loading a java project is very specific to \acrshort{EMF}, and not a general concept for all tree structure editing.
+Using a custom Message and a handler in the server will avoid polluting \acrshort{TLSP} with \acrshort{EMF} concepts.
+
+\paragraph{14} Running the custom validation is trivial, just send an \texttt{Action} over \acrshort{TLSP}.
+However, this case is marked with an asterisk, because running the validation is only trivial if the server \textit{already has the validation code loaded}.
+So task 14 depends on 13; if 13 cannot be solved then validation cannot be performed using custom code.
+
+\paragraph{15} The code generator for GenModel does not create a web based editor yet.
+It creates an \gls{Eclipse} plugin and editor.
+A new design should include a code generator that can create a cloud based editor.
+This could use \gls{Theia}, and possibly this Tree Editor Extension itself.
+Theia seems intended for this type of use.
