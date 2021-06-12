@@ -32,7 +32,7 @@ If the \acrshort{TLSP} should be reused to solve the \(m \times n\) problem (see
 
 The mapping of \gls{Ecore} elements to nodes should use the \acrshort{EMF} \texttt{ItemProvider} mechanisms.
 For the actual \gls{Ecore} metamodel and GenModel, a specific \texttt{ItemProvider} should be used, instead of the \textit{reflective} variant.
-The reflective variant creates poor labels, from a useability standpoint, and do not match the ones seen in \gls{Eclipse}.
+The reflective variant creates poor labels, from a usability standpoint, and do not match the ones seen in \gls{Eclipse}.
 
 
 \paragraph{3} Creating a new node should be done using the \texttt{HierarchySchema} construct to constrain the user interface (with regards to child types), and then use a specific command in \acrshort{TLSP} to perform the creation.
@@ -46,7 +46,7 @@ The frontend can store (cache) the tree as internal state, but should not be res
 Using the server for all state changes also ensures that invalid states can be prevented.
 
 Also, when state changes are done in the frontend or extension, there is a risk that domain specific knowledge (about \acrshort{EMF}) is captured there, which should instead be in the server.
-Only the server is the truly reuseable component, and must contain all such domain specific knowledge.
+Only the server is the truly reusable component, and must contain all such domain specific knowledge.
 
 
 \paragraph{4} Changing the properties should use the form in the detail view.
@@ -64,7 +64,7 @@ The server could call back the extension over \acrshort{TLSP} to request a filen
 \paragraph{6} Entering custom instance data should be similar to editing the \gls{Ecore} model.
 A want for customizing the label logic and the ``tree mapping rules'' has been identified, but is not designed for.
 (For example, a student would use a combination of two fields as the label, such as \texttt{firstname + `\_` + lastname}.)
-A next design should accomodate for such flexibility, using configuration files or augmenting model files in the user's project.
+A next design should accommodate for such flexibility, using configuration files or augmenting model files in the user's project.
 (The GenModel is an augmenting model file).
 Alternatively the model could be altered with annotations that specify the label and tree mapping rules.
 
@@ -88,7 +88,7 @@ A new design should reuse the GenModel file creation logic, to create a new genm
 
 \paragraph{11} The \texttt{Action} construct should be sent over \acrshort{TLSP} to trigger code generation.
 However, the server implementation to trigger code generation is unknown.
-It is assumed that it exists in a reuseable java library used by \gls{Eclipse}, but there is a possibility that it relies on \gls{Eclipse} internals.
+It is assumed that it exists in a reusable java library used by \gls{Eclipse}, but there is a possibility that it relies on \gls{Eclipse} internals.
 
 \paragraph{12} Not applicable, as a text editor and java extension does this.
 
