@@ -13,26 +13,22 @@ The course \gls{TDT4250} also uses \gls{Eclipse} as a case study for other softw
 \paragraph{Development methodology}\label{par:tdt4250-methodology}
 Students are taught a methodology or approach for how to do modeling.
 They start by specifying a problem space, for example bookkeeping an organization of employees or the courses in \acrshort{NTNU}, and then abstract the problem into a model.
-The initial model is externalized as \gls{Ecore} by using a tree editor in \gls{Eclipse}.
-
+The initial model is externalized as \gls{Ecore} by using a tree editor in \gls{Eclipse}.\\
 
 Then an \textit{model instance} is made, based on the model, and filled with example data from the domain.
 This model instance is used to test and verify that the model is appropriate for the problem space.
-Adjustments are made to the model to accommodate any problems with the model instance.
-
+Adjustments are made to the model to accommodate any problems with the model instance.\\
 
 Then validations can be created for the model, by one or both of the following approaches: writing \acrfull{OCL} into model annotations, or marking the model element with an annotation and implementing it as java code.
 \Acrshort{OCL} is a \acrlong{DSL} for navigating models and evaluating expressions, and the \gls{Eclipse} can detect annotations with \acrshort{OCL} and evaluate them against the \gls{Ecore} model.
 The other option, writing java code, requires the student to first create a new \textit{genmodel} file from the model (by using a menu in \gls{Eclipse}), generating a java code project from the model, and then writing validation logic into the generated code.
-For the java code to be picked up, \gls{Eclipse} can start a new instance which installs the generated code as a plugin~\cite{hallvardtraettebergConstraintsValidationTDT42502020}.
-
+For the java code to be picked up, \gls{Eclipse} can start a new instance which installs the generated code as a plugin~\cite{hallvardtraettebergConstraintsValidationTDT42502020}.\\
 
 Next up, when the model is deemed sufficient, and the most important validations are in place, the student can try to create a user interface.
 One of several choices here is to create an \textit{\gls{Eclipse} plugin}.
 \Acrshort{EMF} provides code generation for utilities used to integrate the model into an editor for \gls{Eclipse}.
 The student uses the genmodel to create these, and tweaks the code if wanted.
-Then everything is installed into \gls{Eclipse} by launching a new \gls{Eclipse} instance with the code installed as a plugin.
-
+Then everything is installed into \gls{Eclipse} by launching a new \gls{Eclipse} instance with the code installed as a plugin.\\
 
 Lastly, the user interface can be tested.
 The student creates a new model instance file, enters some example data from the domain, and runs validation logic.

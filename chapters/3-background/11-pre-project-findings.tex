@@ -41,8 +41,7 @@ The pre-project identified the key stakeholders in \cite[p.~3]{rekstadModelingEn
 The pre-project tried to establish the software requirements for a tree editor.
 A literature review failed to find related works that listed the requirements for a tree editor.
 The literature review also failed to find related works for modeling in the cloud with the purpose of creating \gls{Ecore} models.
-The related works either \textit{deployed} \gls{Ecore} models to the cloud, were textual editors, or did not use \gls{Ecore}~\cite[p.~3]{rekstadModelingEnvironmentCloud2020}.
-
+The related works either \textit{deployed} \gls{Ecore} models to the cloud, were textual editors, or did not use \gls{Ecore}~\cite[p.~3]{rekstadModelingEnvironmentCloud2020}.\\
 
 Without literature to suggest requirements, and without users to test on (except the author and supervisor), the best option was to analyze the existing tree editors in \gls{Eclipse}.
 Common modeling tasks were performed (see \cref{par:tdt4250-confluence}), and detected functionality was recorded.
@@ -190,11 +189,9 @@ The content section will specify the remote procedures to be called, and the con
 This protocol can use the data structures to contain generic tree structures, proposed in Code listing 5.3 in \cite[p.~43,44]{rekstadModelingEnvironmentCloud2020}. %TODO: add code listing to appendix?
 The protocol can not contain any specific references to \acrshort{EMF}, except as values in the generic data structures.
 The central properties in the tree strucure was \textit{name}, \textit{type}, \textit{id} and \textit{children}.
-The \textit{type} would for \gls{Ecore} be one of for example: \text{EClass}, \textit{EPackage}, \textit{EReference} and so on.
+The \textit{type} would for \gls{Ecore} be one of for example: \text{EClass}, \textit{EPackage}, \textit{EReference} and so on.\\
 
-
-The action bar should be populated based on a ``action schema'' data structure (Code listing 5.4 and 5.5 in \cite[p.~45]{rekstadModelingEnvironmentCloud2020}), passed from the TLS to the extension in the protocol.
-
+The action bar should be populated based on a ``action schema'' data structure (Code listing 5.4 and 5.5 in \cite[p.~45]{rekstadModelingEnvironmentCloud2020}), passed from the TLS to the extension in the protocol.\\
 
 The hierarchy should be constrained by using a ``hierarchy schema'' (Code listing 5.6 in \cite[p.~45]{rekstadModelingEnvironmentCloud2020}).
 This would whitelist the allowed children for a node based on the \textit{type} property.

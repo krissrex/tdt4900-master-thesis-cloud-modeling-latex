@@ -92,14 +92,12 @@ Preliminary searches online did not find such an editor created by anyone outsid
 The period of work was constrained to the pre-project and master's thesis, which is from August 2020 to June 2021.
 This constraint made it a goal to reduce the amount of unnecessary work and reduce re-implementation of existing solutions.
 For example, the \acrlong{EMF} is big, with many years worth of experience ingrained in its implementation details.
-Therefore, a non-functional requirement emerged: \textbf{the editor should re-use as much of the existing \acrshort{EMF} java code as possible.}
-
+Therefore, a non-functional requirement emerged: \textbf{the editor should re-use as much of the existing \acrshort{EMF} java code as possible.}\\
 
 Another non-functional requirement was that \textbf{it should run inside \gls{VSCode} as an extension}.
 Gitpod was at the time was using \gls{Theia} as the editor, which was compatible with \gls{VSCode} extensions~\cite{rekstadModelingEnvironmentCloud2020}.
 \Gls{Theia} has two extension mechanisms, but only the \gls{VSCode} extension mechanism could be installed during runtime by students~\cite{rekstadModelingEnvironmentCloud2020}.
-Because a goal was to use the Gitpod service for \gls{TDT4250}, this compatibility was needed.
-
+Because a goal was to use the Gitpod service for \gls{TDT4250}, this compatibility was needed.\\
 
 The third non-functional requirement was that \textbf{the project should be \gls{open source} and designed to live longer than the period of work.}
 A goal is to include all or most of the functionality already present in \gls{Eclipse}, which was estimated to be more work than what was possible to do during the pre-project and master's thesis.
@@ -107,8 +105,7 @@ Therefore, the development will need to be taken over by someone else afterwards
 Either the Eclipse ecosystem, or a master's thesis by another student.
 An \gls{open source} project needs some additional care if it wants to succeed.
 For the Eclipse ecosystem to handle it, the software should have a compatible license, and not copy or use code with incompatible licenses.
-The code should also be well structured, documented and easy to contribute to for others.
-
+The code should also be well structured, documented and easy to contribute to for others.\\
 
 The initial, unrefined functional requirement was that \textbf{\gls{VSCode} should be able to view, edit and save \gls{Ecore} models and model instances in ``.ecore'' and ``.xmi'' files.}
 The pre-project did further work to refine this functional requirement into multiple smaller requirements, and discovered many new ones, by requirements extraction~\cite[p.~47,48]{rekstadModelingEnvironmentCloud2020}.
@@ -122,8 +119,7 @@ This could result in a customized plugin for each editor.
 That problem is also seen in programming languages: every editor needs a plugin for every programming language.
 Microsoft has tried to solve this combinatorial ``\(m{\times}n\)'' problem in \gls{VSCode} by introducing the \acrfull{LSP}.
 This architecture was also used as inspiration for a Eclipse ecosystem project, the \acrfull{GLSP}.
-A similar protocol design could benefit this tree editor, where the \gls{Ecore} language details are isolated in a component reusable across \acrshortpl{IDE}~\cite{rekstadModelingEnvironmentCloud2020}.
-
+A similar protocol design could benefit this tree editor, where the \gls{Ecore} language details are isolated in a component reusable across \acrshortpl{IDE}~\cite{rekstadModelingEnvironmentCloud2020}.\\
 
 The architecture was also inspired by \acrshort{GLSP} in terms of components for the \gls{VSCode} extension.
 A ``generic'' frontend that handles all kinds of tree structures is hosted in a webview inside \gls{VSCode}, and talks to the \gls{VSCode} extension.
@@ -188,7 +184,7 @@ The artifact should be in a \gls{open source} project, to fit in with the expect
 \iffalse
 \section{Contribution}
 The solution's design will provide knowledge on how existing protocols and architectures can be applied to new domains and use cases.
-The design will explain how a generic tree editor may be implemented for a cloud based \acrshort{IDE}, and specialized for the domain of \gls{EMF} models, providing a reuseable set of components and protocol for specialization and use in other domains suited for tree structure editing.
+The design will explain how a generic tree editor may be implemented for a cloud based \acrshort{IDE}, and specialized for the domain of \gls{EMF} models, providing a reuseable set of components and protocol for specialization and use in other domains suited for tree structure editing.\\
 
 Another contribution will be the software artifact, which can be built upon further, to provide an editor for \acrshort{EMF} that students in \gls{TDT4250} may use.
 The artifact will be contributed as a \gls{open source} project.

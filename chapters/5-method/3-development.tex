@@ -1,16 +1,13 @@
 
 The case for software development is the same as with requirements engineering: Design Science Research has little guidance.
-And again, the software engineering field has the answers.
-
+And again, the software engineering field has the answers.\\
 
 The goal for the development methodology is to \textbf{create the right solution}, which solves the identified problem and fulfils the software requirements.
 The methodology also aims to \textbf{avoid or reduce risks} for project failure, by tackling it as early as possible.
-Research often deviates from routine design here, by going for the risks first instead of delaying or hiding them, as this may lead to new knowledge~\cite[p.~114]{oatesResearchingInformationSystems2006}.
-
+Research often deviates from routine design here, by going for the risks first instead of delaying or hiding them, as this may lead to new knowledge~\cite[p.~114]{oatesResearchingInformationSystems2006}.\\
 
 Another goal for the development process is to create ``good'', high quality software, so the project can be accepted by the \gls{open source} developer ecosystem for further development and maintenance.
-Bad code or a bad design may result in a full rewrite by the next interested developer, or the developer may try to contribute but find it hard and give up.
-
+Bad code or a bad design may result in a full rewrite by the next interested developer, or the developer may try to contribute but find it hard and give up.\\
 
 Development methodology will not follow one strict practice, but rather piece together many different practices and values, which have lead to good results in the author's past.
 
@@ -26,14 +23,12 @@ As with software requirements, the data structures, algorithms and design in the
 \textbf{Responding to change} will be valued more than following a plan here.
 Also, \textbf{working software} is more valuable than extensive documentation, meaning that code comments, tests, design specifications and diagrams will be given less effort than code, particularly if done up-front before the code.
 The alternative is that this documentation is made, but the code for it quickly proves itself impossible to make, or there is not enough time to implement it, leaving only useless documentation as the result.
-This also ties in to \textbf{simplicity and maximizing work-not-done}.
-
+This also ties in to \textbf{simplicity and maximizing work-not-done}.\\
 
 Regular reflection will be used weekly or bi-weekly, to assess if the process can be more effective.
 Sometimes tools and technologies may seem like a good fit for the development, but instead wastes more time than the developer productivity provided.
 Retrospective analysis of the development progress will try to detect this, and then expose if bad approaches are used.
-If so, these will be removed or replaced if possible.
-
+If so, these will be removed or replaced if possible.\\
 
 Stakeholder involvement is important as well.
 The development will have a stakeholder as the developer (the author), which knows how the artifact will be used.
@@ -45,8 +40,7 @@ Additionally, the supervisor will see a demo during development, to provide feed
 The software system will be developed iteratively.
 This means the components will be implemented up to a threshold of functionality, and executed to evaluate the behavior.
 The evaluation is not a formal and rigorous one, but rather informal and aims to quickly confirm if the software has the correct behavior.
-Then the components are developed some more, in a loop until the project ends.
-
+Then the components are developed some more, in a loop until the project ends.\\
 
 The components are also developed incrementally.
 It also means a component will be worked on until it reaches \textit{some} functionality, and then the next component will be worked on until it is on par.
@@ -97,8 +91,7 @@ The same idea applied to coding means that uncertainty and risk is not dealt wit
 A software solution likely has to interface with many unknown parts, adding risk for each one.
 The developer creates ``tracer code'', which has the goal of quickly connecting all the components and parts of the system, without adding lots of functionality.
 Stubs and empty code can be used so the code compiles, as long as all the actual components in the final design are integrated and running.
-If any problems are discovered, then adjust and redesign as necessary~\cite{huntPragmaticProgrammerJourneyman2000}. 
-
+If any problems are discovered, then adjust and redesign as necessary~\cite{huntPragmaticProgrammerJourneyman2000}.\\
 
 The tracer code is real code, not a prototype.
 Therefore, it should be made with proper quality.
@@ -114,15 +107,13 @@ If the domain has for example ``trees'' and ``nodes'', the code will also use tr
 The code will accurately model the domain, increasing understanding and capturing the details of the business logic~\cite{evansDomaindrivenDesignTackling2004}.
 The model is represented as normal, executable code.
 There is no specific file representation, and no \acrshort{MDD} framework involved.
-This is not a \acrshort{MDD} method --- it is a object oriented coding and naming method.
-
+This is not a \acrshort{MDD} method --- it is a object oriented coding and naming method.\
 
 Another element from Domain-driven design is to use a layered software architecture.
 The domain model is isolated from the rest of the code.
 This makes it easy to see and reason about the behavior of the code, in terms of business logic~\cite[p.~69]{evansDomaindrivenDesignTackling2004}.
 The alternative is that business logic is spread around the system, partially in the user interface components, persistance logic, and so on.
-The layers makes every aspect of the program more cohesive and makes interpretation of the designs easier~\cite[p.~69]{evansDomaindrivenDesignTackling2004}.
-
+The layers makes every aspect of the program more cohesive and makes interpretation of the designs easier~\cite[p.~69]{evansDomaindrivenDesignTackling2004}.\\
 
 Practically, the domain model will be in its own layer, and the user interface will be in its own layer.
 The user interface will depend on the domain model.
@@ -143,8 +134,7 @@ Test-driven development is about creating automated tests before writing the imp
 It will be used sparingly, for cases where the behavior is complex and important to get right.
 The developer will have to judge when it is needed, based on expected complexity, requirements and behavior for a unit of code.
 This may be especially relevant for some business logic in the domain model.
-Writing the tests first also creates a more testable design~\cite[p.~106]{knibergScrumXPTrenches2015}.
-
+Writing the tests first also creates a more testable design~\cite[p.~106]{knibergScrumXPTrenches2015}.\\
 
 The benefit of automated tests is confidence in the code against bugs.
 It also helps for when other developers join the project, as they can be confident about making changes without breaking existing code.
@@ -174,7 +164,6 @@ Code without tests is bad code. It doesn’t matter how well written it is; it d
 
 Prototyping will be used to create simple implementations when there is uncertainty of the design and big risks.
 A prototype will create learning by coding in the real environment, and then prototype code is discarded afterwards.
-A prototype can test feasibility and reveal good and bad sides of a design, quickly and cheaply.
-
+A prototype can test feasibility and reveal good and bad sides of a design, quickly and cheaply.\\
 
 The main bulk of prototyping has already been performed, as part of the pre-project in \cite{rekstadModelingEnvironmentCloud2020}.
