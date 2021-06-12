@@ -5,24 +5,91 @@ viable and maintainable as an \gls{open source} project.
 
 \subsection{Code Availability}
 
-* Github, public project.
+Possibly the most important part of \gls{open source}, is available source code.
+The project is hosted%
+\footnote{Project source: \href{https://github.com/krissrex/tdt4900-master-thesis-ecore-tree-editor}{\nolinkurl{https://github.com/krissrex/tdt4900-master-thesis-ecore-tree-editor}}.}
+on a public website for collaboration on \gls{open source} software: \gls{GitHub}.
+
+Also important, is the project visibility being \textit{public}, not private.
+
+The project has the supervisor added as a contributor, in case one project maintainer is unavailable.
 
 \subsection{Documentation}
-* Readme-files for all components and modules.
+
+\paragraph{Readme}
+The main project has a ``Readme'' file with an overview of the project's components.
+
+The components named ``tree-document-model-js'', ``tree-editor-frontend'', ``vscode-ecore-tree-editor-extension'' and ``vscode-webview-tree-editor-rpc'' have a Readme.
+The ``model-server'' component does not have a Readme.\\
+
+All the readme files are either very minimal, or the default Readme from a project generator.
+
+
+\paragraph{Source code}
+All the modules contain some comments inside the source code.
+Not all the source code is documented, only where the author deemed it necessary.
+A code base search%
+\footnote{
+\texttt{
+ag --stats -c --ignore-dir dist '\textbackslash{}Q/**\textbackslash{}E\textbackslash{}s' .
+}}
+\lstinline{ag --stats -c --ignore-dir dist '\Q/**\E\s' .}
+returned that 58 files of 169 files had comments, with a total of 128 comments.
 
 \subsection{Automation}
-* Build-scripts and npm/maven for building.
-* Bundled IDE configuration: recommended extension, build tasks, run configurations. Reduces overhead for new developers.
-* NOT: CI/CD. Easily added later when needed. Overhead for 1-man project.
+
+\paragraph{Package manager}
+A package manager is used for installing dependencies and compiling each module individually.
+For the TypeScript modules, \texttt{npm} (Node Package Manager) is used, and dependencies are tracked in a \texttt{package.json}.
+For the java module, \texttt{mvn} (Apache Maven) is used, and dependencies are tracked in a \texttt{pom.xml}.
+
+\paragraph{Build}
+Build scripts using \texttt{bash} are provided, that compile the modules (using npm or mvn) and copy the outputs to the correct path.
+They also build in the correct order, regarding inter-module dependencies.
+
+\paragraph{IDE configuration}
+Files are added to automatically configure a contributor's \acrshort{IDE}, if they use \gls{VSCode} for the TypeScript modules and IntelliJ for the java module.
+When using \gls{VSCode}, a list of recommended extensions is provided as well, which can be automatically installed.
+There are \textit{Tasks} defined for \gls{VSCode} that can trigger the different npm builds, and \textit{Run configurations} to start the modules.
+
+\paragraph{CI/CD}
+There is no Continuous Integration (CI) and Continuous Deployment (CD) configured.
+This can be added later when needed; for 1 developer it is overhead.
 
 \subsection{Licensing}
 
-* MIT. Not explicit enough in own files and readme. Only in package.json/pom.xml.
-* Some copied code from third parties. License included, but not very transparent.
+\paragraph{Module license}
+The modules use the MIT license\footnote{https://opensource.org/licenses/MIT}.
+It is a very simple and permissive licence, compatible with \gls{open source}, and commonly used.
+The licenses are not in separate files or the readme.
+They are instead mentioned in the \texttt{package.json} and \texttt{pom.xml} files.
 
-\subsection{Code Style}
-* Commonly used programming languages and (official) dependencies
+\paragraph{Copied code}
+Some code is copied from other sources.
+The original license has been included in these cases.
+No code is copied from incompatible or strict licenses that contradict MIT.
+
+\paragraph{Third party dependencies}
+No proprietary dependencies are used%
+\footnote{TypeScript modules were scanned with: \lstinline{npx license-checker --production}.}
+, and none with incompatible or intrusive licenses.
+
+\subsection{Code}
+
+\paragraph{Code style}
+The code uses readable names and small files.
+The programming languages (TypeScript and Java) are common, especially in this context.
+The code is formatted with automatic code formatters\footnote{Prettier and IntelliJ format the code.}, ensuring a consistent style.
+
+\paragraph{Dependencies}
+The dependencies and libraries used are common and in some cases official, in this context.
+Effort has been put into using the same dependencies as related works (such as \acrshort{LSP} and EMF.Cloud projects).
+
 
 \subsection{Issue Tracking}
-* Github issues and Discussions
+
+An issue tracker is available on \gls{GitHub}.
+A user is required, but signup is free.
+A discussion forum is available as well on \gls{GitHub}.
+There is no Wiki, but it is easy to create one on \gls{GitHub} if demand arises.
 
