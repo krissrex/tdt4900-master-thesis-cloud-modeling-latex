@@ -105,12 +105,12 @@ ServerImpl --> EmfTreeModelController
 
 EcoreToTreeDocumentModelMapper o--> ModelConfiguration : mappingConfig >
 EcoreToTreeDocumentModelMapper --> TreeDocument
+EcoreToTreeDocumentModelMapper --> ReflectiveItemProvider
 
 EmfTreeModelController o-> ModelRepository
 EmfTreeModelController o->  ModelResourceManager
 EmfTreeModelController o-> ModelController
 EmfTreeModelController o-> ServerConfiguration
-EmfTreeModelController --> ReflectiveItemProvider
 EmfTreeModelController --> EObject
 
 @enduml
