@@ -4,7 +4,24 @@ The design was evaluated for completeness based on a list of modeling actions.
 The modeling actions stem from the modeling process used in \gls{TDT4250}, in \cref{par:tdt4250-methodology}.
 
 This evaluation was performed by the author, not in a class of \gls{TDT4250} students.
-Evaluation was based on an artifact at the proof-of-concept stage.
+Evaluation was based on an artifact at the proof-of-concept stage.\\
+
+\paragraph{Setup}
+To perform the evaluation, a \gls{Gitpod} workspace was created with \gls{VSCode} as the editor of choice.
+A \gls{Gitpod} user can choose between \gls{Theia} and \gls{VSCode} in their preferences before creating the workspace.
+\Gls{VSCode} was used because an issue in Theia gave error messages when uploading extensions.
+The message indicated a problem with the current version of theia, instead of the extension.
+Regardless, the developers of \gls{Gitpod} have stated that \gls{VSCode} will become the default \acrshort{IDE} at some point anyways~\cite{georgetsiolisMenuEntryGitpod2019,svenefftingeProductRoadmapQ1}.\\
+
+A \gls{Gitpod} Workspace using \href{https://github.com/krissrex/ntnu-tdt4250-study-emf}{\nolinkurl{https://github.com/krissrex/ntnu-tdt4250-study-emf}} was used.
+This contains the model from a 2019 run of \gls{TDT4250}.\\
+
+The Ecore Tree Editor extension was build locally on the author's machine.
+The resulting \texttt{.vsix} extension installer was uploaded to the workspace.
+Right clicking on this file inside \gls{VSCode} allowed installation, by selecting ``Install Extension VSIX''.\\
+
+The existing model files reside in the \lstinline{no.ntnu.tdt4250.oving1.model/model} directory.
+
 
 \paragraph{Results}
 The list is shown in \cref{tab:use-case-evaluation}.
