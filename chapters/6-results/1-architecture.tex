@@ -43,7 +43,7 @@ When a Student wants to install an extension to the \acrshort{IDE} in \gls{Gitpo
 The instantiated artifact from this thesis could be uploaded to OpenVSX.
 
 
-\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+\begin{figure}[H]  % order of priority: h here, t top, b bottom, p page
   \centering
   \includegraphics[width=\textwidth]{figures/plantuml/Gitpod_context.pdf}
   \caption[System context diagram for Gitpod]{A system context diagram for Gitpod. The extension will run inside the Gitpod service, used by a student to do modeling and developing. Gitpod uses git to synchronize code with GitHub. The extensions in Gitpod are downloaded from a service called OpenVSX.}\label{fig:gitpod-system-context}
@@ -60,7 +60,7 @@ The extension runs in the environment provided by the Workspace.
 For example, the operating system and the available programs are provided by the Workspace, as well as the student's project files.
 If the extension wants to run a java program, the Workspace must have a Java Runtime installed.
 
-\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+\begin{figure}[H]  % order of priority: h here, t top, b bottom, p page
   \centering
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{figures/plantuml/Tree_Editor_Extension_container.pdf}
   \caption[Gitpod container diagram]{Container diagram for gitpod. The Gitpod system from \cref{fig:gitpod-system-context} is expanded to show its internal components. The \acrshort{IDE} used by Gitpod is \gls{Theia}.
@@ -79,7 +79,7 @@ The last component is the \textit{Tree Language Server} (TLS, or ``server''), a 
 This is shown in a deployment diagram in \cref{fig:gitpod-deployment-diagram}.\\
 
 
-\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+\begin{figure}[H]  % order of priority: h here, t top, b bottom, p page
   \centering
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{figures/plantuml/Tree_Editor_Extension_deployment.pdf}
   \caption[Gitpod deployment diagram]{Deployment diagram of Gitpod. The student will use their computer to load the Gitpod website.
@@ -113,7 +113,7 @@ The frontend and extension both use the Tree Document model and the RPC library.
 This is shown in \cref{fig:extension-code-modules}.
 All the modules are coded with \gls{TypeScript}, except the server, which uses Java.\\
 
-The server also ``uses'' the Tree Document model, but by re-implementing it in java.
+The server also ``uses'' the Tree Document model, but by re-implementing\footnote{Not ideal, but no good transpiling (programming language translating) software was found in a reasonable amount of time, to automate this.} it in java.
 The Tree Document model module is the result of using Domain Driven Design and a layered architecture (by \textcite{evansDomaindrivenDesignTackling2004}).
 It encapsulates the concepts and business logic related to editing tree structures.
 
@@ -131,7 +131,22 @@ It encapsulates the concepts and business logic related to editing tree structur
 \end{figure}
 
 \paragraph{Classes}
+Three \gls{UML} class diagrams are presented, one each for the frontend, extension and server.
+These are not complete, meaning some classes, properties, methods and relationships are not shown.
+This is intentional, to increase the clarity, comprehension and the essence of the diagrams.
 
+\paragraph{Frontend classes}
+A diagram of the frontend is shown in \cref{fig:tree-editor-frontend-code}.
+The execution environment for this is a web browser frame, meaning it has access to the HTML Document Object Model (DOM).
+It has a view layer using a framework called \textit{Vue.js}.
+The tree document state is held in a state storage called ``Store'', using a library called \textit{Vuex}.
+This state can only be changed through explicit mutations and actions.
+This is so the store can intercept changes, and send them to the server via the extension, over the \acrlong{TLSP}.
+The frontend talks to the extension using a \texttt{VSCode} interface, where the actual \gls{VSCode} \acrshort{IDE} injects an implementation.
+A mocked version (\texttt{MockVSCode}) is provided as an implementation when testing and developing the frontend outside of the \gls{VSCode} \acrshort{IDE}.
+Two classes help the communication between the extension and frontend: \texttt{TreeEditorWebview} and \texttt{VscodeExtension}.
+These utilize a \gls{JSON-RPC}-like protocol, over the \texttt{VSCode} method called \texttt{postMessage} and the javascript \texttt{Window}'s \texttt{addEventListener}.
+The \texttt{FormEditor} view is intended to use the JSON-Forms library, but this view is not finished.
 
 \begin{sidewaysfigure}[htbp]  % order of priority: h here, t top, b bottom, p page
   \centering
@@ -140,11 +155,42 @@ It encapsulates the concepts and business logic related to editing tree structur
 \end{sidewaysfigure}
 
 
+\paragraph{Extension classes}
+A diagram of the \gls{VSCode} extension is shown in \cref{fig:tree-editor-extension-code}.
+The execution environment for this is \gls{Nodejs}.
+The \texttt{extension} file is activated by \gls{VSCode} when particular triggers specified in the extension's \texttt{package.json} manifest occur.
+One such trigger is opening a \texttt{.ecore} file.
+The \texttt{extension} then registers commands and the custom editor.
+The \texttt{CustomTreeEditorProvider} is asked by \gls{VSCode} to create a document and editor for the \texttt{.ecore} file.
+The editor uses the compiled outputs of the frontend, and puts it inside a \texttt{WebView}.
+A \texttt{WebView} is an isolated execution context provided by \gls{VSCode} (analogous to an \texttt{IFrame} in HTML), where a custom user interface can be shown.
+An extension is otherwise not allowed to modify the user interface in \gls{VSCode}.\\
+
+The extension also starts a java process with the executable \texttt{.jar} file for the server.
+It then attaches to the \textit{standard in} and \textit{standard out} as communication channels for the \acrshort{TLSP}.
+The communication and protocol parsing uses the \texttt{vscode-jsonrpc} library from Microsoft, also used in the official \acrshort{LSP} implementation for \gls{VSCode}.
+
 \begin{sidewaysfigure}[htbp]  % order of priority: h here, t top, b bottom, p page
   \centering
   \includegraphics[width=\textwidth,height=1.2\textheight,keepaspectratio]{figures/plantuml/Tree_Editor_Extension_code.pdf}
   \caption[Tree Editor Extension class diagram]{Class diagram of the Tree Editor Extension component.}\label{fig:tree-editor-extension-code}
 \end{sidewaysfigure}
+
+
+\paragraph{Server classes}
+A diagram of the server is shown in \cref{fig:tree-editor-server-code}.
+The \acrshort{TLSP} server for \acrshort{EMF} starts a \gls{JSON-RPC} server listening to \textit{standard in} and \textit{standard out}, to communicate with the extension.
+The protocol is defined with two annotated java interfaces: \texttt{Server} and \texttt{Client}.
+The \texttt{Server} represent this server itself, while the \texttt{Client} is the \gls{VSCode} extension side.
+An implementation of the \texttt{Server} interface is central, as it does the actual logic in the \acrlong{TLSP}.
+The \texttt{ServerImpl} and \texttt{Client} are handed to a \texttt{Launcher}, which comes from the \textit{LSP4J} project.
+This is an Eclipse Foundation project which provides a Java \acrshort{LSP}.
+Here, the \gls{JSON-RPC} component is standalone, and reused here, with the \acrshort{TLSP} as protocol instead of \acrshort{LSP}.\\
+
+The \texttt{ServerImpl} delegates most of the work to an \texttt{EmfTreeModelController}, which in turn delegates to the EMF.Cloud Model Server or a \texttt{EcoreToTreeDocumentMapper}.
+The latter uses the \acrshort{EMF} runtime \acrshort{API} and \texttt{ReflectiveItemProvider} from the \texttt{.edit} \acrshort{EMF} package.
+The \texttt{EcoreToTreeDocumentMapper} maps a \acrshort{EMF} \texttt{Resource} to a \texttt{TreeDocument} data structure, compatible with the one in the Tree Document model library component for javascript.
+
 
 
 \begin{sidewaysfigure}[htbp]  % order of priority: h here, t top, b bottom, p page
