@@ -1,7 +1,7 @@
 The software architecture may be of interest to developers of tree editors and similar kinds of \gls{VSCode} extensions.
 There is potential to directly reuse components from this design.
 
-\paragraph{Architecturally Significant Requirements}
+\subsection{Architecturally Significant Requirements}
 The high level software architecture for the tree editor was shaped mainly by three \acrfullpl{ASR}.
 The editor must be a \gls{VSCode} extension, the tree viewer must use the \gls{VSCode} Custom Editor \gls{API}, and the extension must reuse \acrshort{EMF} java code and the EMF.Cloud Model Server.
 This results in a system of three main components: a \textit{Tree editor frontend}, a \textit{Tree editor extension} and a \textit{Tree Language Server}.
@@ -12,22 +12,53 @@ The communication is isolated and standardized in a protocol, called the \textit
 This protocol is presented in detail in \cref{sec:tlsp}.
 
 
-\paragraph{Changes from pre-project}
-From the pre-project, the high level architecture changed mainly by avoiding the EMF.Cloud Model Server as a separate running process, and is now embedded inside the Tree Language Server~\cite[p.~49]{rekstadModelingEnvironmentCloud2020}.
+\subsection{Changes from pre-project}
+From the pre-project, the high level architecture changed mainly by avoiding the EMF.Cloud Model Server as a separate running process, and is now embedded inside the Tree Language Server~\cite[p.~49]{rekstadModelingEnvironmentCloud2020}.\\
 
-\paragraph{System explanation}
-This section will explain the architecture through a series of diagrams called the \textit{C4 Model} (Context, Container, Component, Code)~\cite{simonbrownC4ModelVisualising}.
-%TODO
+On the code level, only the extension code and tree document model are similar.
+The tree document model has changed to accommodate multiple roots, by introducing the \textit{TreeRoot} and moving the \textit{ArchitectureSchema} and \textit{IconConfiguration} as children of these root, instead of the \textit{TreeDocument}.
+This allows configurations to be different on a per-root basis, which is needed when for example opening both a GenModel and \gls{Ecore} model in the same document.\\
 
-* Final architecture. C4 diagram (context, containers, components, code)
+The frontend is different from the pre-project prototype by using the \textit{Vue.js} framework, and implementing actual features.
+The pre-project was only an example viewer, not communicating with the extension.\\
 
-* Isolated domains. Bounded context (ddd)
+For the EMF.Cloud Model Server, this is now bundled inside the Tree Language Server, instead of a separate component.
+The pre-project used \gls{REST} to communicate, while now it happens in java by using the classes of the EMF.Cloud Model Server, then relaying the answers over \acrshort{TLSP}.
+The pre-project did not implement any real logic inside the server either.
+
+
+\subsection{System explanation}
+This section will explain the software architecture through a series of diagrams called the \textit{C4 Model} (Context, Container, Component, Code)~\cite{simonbrownC4ModelVisualising}.
+This is a top-down approach where one ``zooms'' in on the system components, so the wider context is clear.
+
+
+\subsubsection{Context}
+At a high level, the system has students interacting with \gls{Gitpod}.
+The developed system runs inside \gls{Gitpod} as an extension.
+This is illustrated in \cref{fig:gitpod-system-context}.
+The student use \gls{Gitpod} as a development environment, where they use the \acrshort{IDE}, change files in a Workspace, and runs programs in a terminal.
+\Gls{Gitpod} uses \gls{git} to retrieve the student's code from \gls{GitHub}, and pushes changes back to it.
+
+When a Student wants to install an extension to the \acrshort{IDE} in \gls{Gitpod}, it can either let the Student upload an extension file, or search the publicly available extensions in the OpenVSX extension registry.
+The instantiated artifact from this thesis could be uploaded to OpenVSX.
+
 
 \begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
   \centering
   \includegraphics[width=\textwidth]{figures/plantuml/Gitpod_context.pdf}
   \caption[System context diagram for Gitpod]{A system context diagram for Gitpod. The extension will run inside the Gitpod service, used by a student to do modeling and developing. Gitpod uses git to synchronize code with GitHub. The extensions in Gitpod are downloaded from a service called OpenVSX.}\label{fig:gitpod-system-context}
 \end{figure}
+
+\subsubsection{Containers}
+
+Inside the \gls{Gitpod} system, there is a \acrshort{IDE}, the \textit{Ecore Tree Editor Extension} from this thesis, and the Workspace.
+This is shown in \cref{fig:gitpod-container-diagram}.
+The \acrshort{IDE} can be \gls{Theia} or \gls{VSCode}.
+This \acrshort{IDE} is responsible for providing the user interface to the student.
+It also has the responsibility of installing and activating the extension.
+The extension runs in the environment provided by the Workspace.
+For example, the operating system and the available programs are provided by the Workspace, as well as the student's project files.
+If the extension wants to run a java program, the Workspace must have a Java Runtime installed.
 
 \begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
   \centering
@@ -37,6 +68,16 @@ This section will explain the architecture through a series of diagrams called t
   This extension will also provide a user interface, which the student uses for modeling.
   This extension reads files from the Gitpod workspace, and uses the runtime provided by the workspace such as a Java Runtime Environment.}\label{fig:gitpod-container-diagram}
 \end{figure}
+
+
+\subsubsection{Components}
+
+The Ecore Tree Editor Extension itself consists of three main components.
+It is the \textit{Tree editor extension} (or simply ``extension''), which integrates with \gls{VSCode} or \gls{Theia}.
+Then there is the \textit{Tree editor frontend} (or ``frontend''), which provides a user interface with the hierarchical tree structure, labels and icons to the student.
+The last component is the \textit{Tree Language Server} (TLS, or ``server''), a java based server with knowledge about \acrshort{EMF} and the EMF.Cloud Model Server.
+This is shown in a deployment diagram in \cref{fig:gitpod-deployment-diagram}.\\
+
 
 \begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
   \centering
@@ -51,6 +92,32 @@ This section will explain the architecture through a series of diagrams called t
   The Tree Language Server uses the Workspace to read and write \texttt{.ecore} files.}\label{fig:gitpod-deployment-diagram}
 \end{figure}
 
+The Tree editor extension and Tree Language Server talk together using a protocol named \acrfull{TLSP}.
+This protocol is another design artifact from this thesis, and is described later in \cref{sec:tlsp}.
+This protocol knows nothing about \acrshort{EMF}, and the same with the Tree editor frontend.
+These two parts of the design only work on generic tree structures, as described in \cref{sec:tree-structures}.\\
+
+The Tree editor extension is the component responsible for providing both the Tree editor frontend, and the Tree Language Server.
+It also knows about \acrshort{EMF}, because it registers the \texttt{ecore}, \texttt{genmodel} and \texttt{xmi} file extensions to \gls{VSCode} and \gls{Theia}.
+The custom Commands from the \acrshort{IDE}'s Command Palette are provided by this Tree editor extension as well.\\
+
+Any changes to the student's model files are saved to disk by the Tree Language Server.
+The Tree editor frontend is close to stateless, and the Tree editor extension only bridges the Tree editor frontend and the TLS.
+
+\subsubsection{Code}
+
+\paragraph{Modules}
+At a code module level, the Ecore Tree Editor extension is made of 5 modules.
+The extension, frontend, server, and two shared libraries: \textit{Tree Document model} and \textit{VSCode and Webview RPC} (or simply RPC library).
+The frontend and extension both use the Tree Document model and the RPC library.
+This is shown in \cref{fig:extension-code-modules}.
+All the modules are coded with \gls{TypeScript}, except the server, which uses Java.\\
+
+The server also ``uses'' the Tree Document model, but by re-implementing it in java.
+The Tree Document model module is the result of using Domain Driven Design and a layered architecture (by \textcite{evansDomaindrivenDesignTackling2004}).
+It encapsulates the concepts and business logic related to editing tree structures.
+
+
 \begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
   \centering
   \includegraphics[width=\textwidth]{figures/plantuml/Tree_editor_components.pdf}
@@ -60,8 +127,11 @@ This section will explain the architecture through a series of diagrams called t
   This extension bundles the compiled frontend javascript artifact, and the compiled EMF Tree Language Server java jar-file.
   The Tree DOcument model js-library is the layer with the domain model for tree editors.
   It is used in both the frontend and the extension.
-  }\label{fig:label4}
+  }\label{fig:extension-code-modules}
 \end{figure}
+
+\paragraph{Classes}
+
 
 \begin{sidewaysfigure}[htbp]  % order of priority: h here, t top, b bottom, p page
   \centering
