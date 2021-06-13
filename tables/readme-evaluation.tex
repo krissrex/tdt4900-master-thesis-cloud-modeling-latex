@@ -1,0 +1,58 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+% \usepackage{longtable}
+% Note: It may be necessary to compile the document several times to get a multi-page table to line up properly
+\begin{longtable}{@{}lll@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{ID}} &
+  \multicolumn{1}{c}{\textbf{Requirement}} &
+  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Present\\ {[}No/Yes{]}\end{tabular}}} \\* \midrule
+\endfirsthead
+%
+\multicolumn{3}{c}%
+{{\bfseries Table \thetable\ continued from previous page}} \\
+\toprule
+\multicolumn{1}{c}{\textbf{ID}} &
+  \multicolumn{1}{c}{\textbf{Requirement}} &
+  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Present\\ {[}No/Yes{]}\end{tabular}}} \\* \midrule
+\endhead
+%
+\bottomrule
+\endfoot
+%
+\endlastfoot
+%
+\rowcolor[HTML]{EFEFEF} 
+OSR1                         & The project has a name.                           & Yes \\
+OSR2 &
+  \begin{tabular}[c]{@{}l@{}}Badges or icons (e.g. CI build status, npm version,\\ open-vsix store page, vscode store page)\end{tabular} &
+  No \\
+\rowcolor[HTML]{EFEFEF} 
+OSR3                         & Description of what the project does.             & No* \\
+OSR4                         & List of suported features.                        & No  \\
+\rowcolor[HTML]{EFEFEF} 
+OSR5                         & \cellcolor[HTML]{EFEFEF}Project background story. & No* \\
+OSR6                         & How can a user use this project?                  & No  \\
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{EFEFEF}OSR7 & Where can a user get more help?                   & No  \\
+OSR8                         & Is the project ready for use?                     & No  \\
+\rowcolor[HTML]{EFEFEF} 
+OSR9                         & Feature roadmap                                   & No  \\
+OSR10                        & Contributing description.                         & No  \\
+\rowcolor[HTML]{EFEFEF} 
+OSR11                        & Getting started with contributing.                & No  \\
+OSR12                        & Authors and acknowledgement                       & No  \\
+\rowcolor[HTML]{EFEFEF} 
+OSR13                        & Project license                                   & No  \\
+OS14 &
+  \begin{tabular}[c]{@{}l@{}}Project status (e.g. active, lost interest,\\ discontinued, deprecated, looking for new owner, migrated)\end{tabular} &
+  No \\* \bottomrule
+\caption{Evaluation of an \gls{open source} project's Readme.
+The requirements are sourced from \textcite{mikelinksvayerStartingOpenSource2020}, \textcite{dannyguoMakeREADME2020}, \textcite{beatonThirdPartyContent2017} and \textcite{waynebeatonEclipseProjectHandbook2020}.
+The results are in the ``Present'' column.
+A result with an asterisk (*) is explained further in the text.
+}
+\label{tab:readme-evaluation}\\
+\end{longtable}

@@ -1,0 +1,59 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+% \usepackage{longtable}
+% Note: It may be necessary to compile the document several times to get a multi-page table to line up properly
+\begin{longtable}{@{}lp{9cm}l@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{ID}} &
+  \multicolumn{1}{c}{\textbf{Requirement}} &
+  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Present\\ {[}No/Yes{]}\end{tabular}}} \\* \midrule
+\endfirsthead
+%
+\multicolumn{3}{c}%
+{{\bfseries Table \thetable\ continued from previous page}} \\
+\toprule
+\multicolumn{1}{c}{\textbf{ID}} &
+  \multicolumn{1}{c}{\textbf{Requirement}} &
+  \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Present\\ {[}No/Yes{]}\end{tabular}}} \\* \midrule
+\endhead
+%
+\bottomrule
+\endfoot
+%
+\endlastfoot
+%
+\rowcolor[HTML]{EFEFEF} 
+OS1                         & Open source license                                                              & Yes  \\
+OS2                         & Readme                                                                           & Yes  \\
+\rowcolor[HTML]{EFEFEF} 
+OS3                         & Contributing guidelines                                                          & No   \\
+OS4                         & Code of conduct                                                                  & No   \\
+\rowcolor[HTML]{EFEFEF} 
+OS5                         & \cellcolor[HTML]{EFEFEF}LICENSE file                                             & No   \\
+OS6                         & NOTICE file                                                                      & No   \\
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{EFEFEF}OS7 & Easy to remember project name                                                    & Yes  \\
+OS8                         & Changelog file                                                                   & No*  \\
+\rowcolor[HTML]{EFEFEF} 
+OS9                         & No sensitive material in the commit history (passwords etc)                      & Yes  \\
+OS10                        & You have a marketing plan for announcing and promoting the project               & No*  \\
+\rowcolor[HTML]{EFEFEF} 
+OS11                        & A person is committed to managing community interactions (issues, pull requests) & Yes* \\
+OS12                        & Consistent code conventions and clear function/method/variable names             & Yes  \\
+\rowcolor[HTML]{EFEFEF} 
+OS13                        & Wiki or documentation website                                                    & No   \\
+OS14                        & GitHub Issue templates for bugs and feature requests                             & No   \\
+\rowcolor[HTML]{EFEFEF} 
+OS15                        & GitHub Pull Request templates                                                    & No   \\
+OS16                        & Semantic release versioning (using \texttt{major.minor.patch}, like \texttt{1.4.1})                & Yes  \\
+\rowcolor[HTML]{EFEFEF} 
+OS17 & Code dependencies (and transitive dependencies) do not use GPL or Sun BCLA & Yes \\
+OS18                        & Commented and documented code, explaining intentions and edge cases              & Yes* \\* \bottomrule
+\caption{Evaluation of the project as \gls{open source}.
+The requirements are sourced from \textcite{mikelinksvayerStartingOpenSource2020}, \textcite{dannyguoMakeREADME2020}, \textcite{beatonThirdPartyContent2017} and \textcite{waynebeatonEclipseProjectHandbook2020}.
+The results are in the ``Present'' column.
+A result with an asterisk (*) is explained further in the text.}
+\label{tab:open-source-evaluation}\\
+\end{longtable}
