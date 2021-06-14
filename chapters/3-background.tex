@@ -40,10 +40,62 @@ Lastly, a section on open source software project management follows, as they sh
 
 \input{chapters/3-background/6-emf.tex}
 
+\section{Visual Studio Code and Theia}
+
+The two \acrshortpl{IDE} relevant for this thesis are Visual Studio Code (\gls{VSCode}) and \gls{Theia}.
+Both are available as editors in \gls{Gitpod} as cloud based \acrshortpl{IDE}.
+
+\subsection{Visual Studio Code}
+
+\Gls{VSCode} is a very popular \gls{open source} \acrshort{IDE} created by Microsoft~\cite{stackoverflowStackOverflowDeveloper2019}.
+A screenshot is shown in \cref{fig:vscode-ui}.
+It uses web technologies like javascript, \gls{Nodejs} and \gls{Electron} to provide an advanced text editor and tools for programming on a desktop.
+Originally made only for desktop, \gls{VSCode} was later adapted to also work in a browser when \gls{GitHub}\footnote{GitHub is owned by Microsoft.} launched Codespaces~\cite{svenefftingeProductRoadmapQ1}.
+\Gls{VSCode} is extensible, and allows third party developers to create extensions.
+These are distributed from Microsoft's extension store: Visual Studio Marketplace\footnote{Marketplace website: \href{https://marketplace.visualstudio.com/vscode}{\nolinkurl{https://marketplace.visualstudio.com/vscode}}.}.
+
+\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+  \centering
+  \includegraphics[width=\textwidth]{figures/pre-project/vscode-ui.png}
+  \caption[VSCode User Interface]{The \gls{VSCode} user interface, annotation with the different components (A-E).}\label{fig:vscode-ui}
+\end{figure}
+
+\subsection{Theia}
+
+Theia is based on the \gls{open source} components from \gls{VSCode}, without a proprietary component that Microsoft added for telemetry.
+Theia is managed by the Eclipse Foundation, and was created to be web based from the start (before Codespaces launched, when \gls{VSCode} was desktop only).
+A screenshot is shown in \cref{fig:theia-ui}.
+The main uses of Theia are workspace services like \gls{Gitpod} and Eclipse Che, but it is also intended to be a ``web based version'' of the Eclipse Rich Client Platform.
+This means tools can create their own distribution of Theia, where they are deeply integrated~\cite{helmingEclipseTheiaIDE2019a}.
+
+\paragraph{Extensions}
+Theia can load extensions using the same \acrfull{API} as \gls{VSCode}.
+Theia calls these ``Theia Plugins''.
+Another way to extend Theia is using ``Theia Extensions''.
+These have full control over the \acrshortpl{IDE}, and can modify practically anything.
+Installing a Theia Extension requires the user to perform a full compilation of \gls{Theia} itself~\cite{helmingHowAddExtensions2019}.
+A Theia Plugin (or \gls{VSCode} extension) however, can be installed at runtime.
+
+
+\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+  \centering
+  \includegraphics[width=\textwidth]{figures/pre-project/theia-screenshot.png}
+  \caption[Theia User Interface]{The \gls{Theia} user interface.}\label{fig:theia-ui}
+\end{figure}
 
 \section{Visual Studio Code's Custom Editor API}\label{sec:vscode-custom-editor}
-%TODO
-* VSCode Custom Editor API enables any type of graphical editor to be made, not just text.
+
+A \gls{VSCode} extension is allowed to use a set of \acrlongpl{API} provided by \gls{VSCode}.
+One such \acrshort{API} is the \textit{Custom Editor API}.
+This allows an extension developer to create \textbf{custom editors other than text editors}.
+This could be diagrams, pictures, graphs, or \textbf{trees}, for example.
+The developer has the full freedom of a web browser, as they are given their own isolated frame.
+Normally, an extension cannot modify the user interface outside of the provided \acrshortpl{API}.
+This is in contrast to inside the provided \texttt{WebView}, where the developer has to \textit{create and manage} the entire user interface.
+In addition to a user facing \texttt{WebView}, the developer must create their own document model.
+By default, \gls{VSCode} uses a document model for text documents, with selections, edits, versions and more.
+The \texttt{CustomDocument} only has a uri pointing to the file.
+Another central part is the \texttt{CustomEditorProvider}, with a few methods to fill in, like opening, undoing and saving a document.
 
 
 \section{Language Server Protocol Architecture}\label{sec:lsp}
