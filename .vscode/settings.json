@@ -155,7 +155,8 @@
   "vsix",
   "ctrl",
   "ASR",
-  "C4"
+  "C4",
+  "serializable"
 ],
 "plantuml.exportFormat": "pdf",
 }

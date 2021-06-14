@@ -10,8 +10,8 @@ end box
 == Extension startup ==
 
 ext <- vscode : activate
-ext -[#blue]/ server ++ : start
-return ready
+ext -> server ++ : start
+return ready << side channel >>
 
 ext -[#blue]/ server ++ : initialize
 return
