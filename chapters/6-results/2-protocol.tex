@@ -3,7 +3,11 @@
 All communication between the Tree Language Server (TLS) and the \gls{VSCode} extension happens over a protocol.
 This protocol is part of the artifact design from this thesis, and is called the \acrlong{TLSP}.\\
 
-The protocol builds on top the the \textit{Base Protocol} described in \cref{sec:base-protocol}.
+Because the original \acrshort{EMF} editors are being moved from \gls{Eclipse} to \gls{VSCode}, the protocol draws inspiration from \acrlong{LSP}.
+If \gls{Eclipse} already used a \acrshort{LSP}-like language server, the migration would be much easier.
+And since it moved once to \gls{VSCode}, it may move again later, for example to IntelliJ (or some other \acrshort{IDE}).\\
+
+The TLSP protocol builds on top the the \textit{Base Protocol} described in \cref{sec:base-protocol}.
 That means it sends a header section followed by a content section.
 The content has \gls{JSON-RPC} data, being requests, responses, errors, and notifications.
 As a reminder: a request must be responded to with a response or error, while a notification does not get an answer.
