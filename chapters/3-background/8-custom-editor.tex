@@ -1,0 +1,12 @@
+A \gls{VSCode} extension is allowed to use a set of \acrlongpl{API} provided by \gls{VSCode}.
+One such \acrshort{API} is the \textit{Custom Editor API}.
+This allows an extension developer to create \textbf{custom editors other than text editors}.
+This could be diagrams, pictures, graphs, or \textbf{trees}, for example.
+The developer has the full freedom of a web browser, as they are given their own isolated frame.
+Normally, an extension cannot modify the user interface outside of the provided \acrshortpl{API}.
+This is in contrast to inside the provided \texttt{WebView}, where the developer has to \textit{create and manage} the entire user interface.
+In addition to a user facing \texttt{WebView}, the developer must create their own document model.
+By default, \gls{VSCode} uses a document model for text documents, with selections, edits, versions and more.
+The \texttt{CustomDocument} only has a uri pointing to the file.
+Another central part is the \texttt{CustomEditorProvider}, with a few methods to fill in, like opening, undoing and saving a document.
+
