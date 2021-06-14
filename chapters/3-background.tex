@@ -51,10 +51,35 @@ Lastly, a section on open source software project management follows, as they sh
 
 
 \section{Language Server Protocol Architecture}\label{sec:lsp}
+
+There are many programming languages, and many \acrlongpl{IDE}.
+Traditionally, every \acrshort{IDE} would have a special integration for every language it supported.
+Extracting tokens, keywords, providing auto completion, code formatting and so on.
+This leads to a lot of rework every time a new \acrshort{IDE} comes around, and duplication of work every time a new programming language is supported.
+Essentially, every $m$ number of \acrshortpl{IDE} that support an $n$ number of programming languages result in $m\times{}n$ different integrations.
+This is illustrated in the left side of \cref{fig:lsp-m-times-n}.\\
+
+A solution to this $m\times{}n$ problem is the \textit{\acrlong{LSP}} (\acrshort{LSP}).
+If instead, every \acrshort{IDE} has a generic text editor for all languages, they only need to support the \acrshort{LSP}.
+Once an editor ``talks'' \acrshort{LSP}, it can support \textbf{all programming languages} that have a \acrshort{LSP} \textit{language server}.
+Likewise, a programming language only needs to develop \textbf{one language server}, and it supports all \acrshortpl{IDE} that use \acrshortpl{LSP}.
+This is shown in the right side of \cref{fig:lsp-m-times-n}.
+
+\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+  \centering
+  \includegraphics[width=\textwidth]{figures/pre-project/lsp-languages-editors.png}
+  \caption[The Language Server Protocol Benefits]{The benefits of using the \acrshort{LSP}. The left side shows all the integrations (as arrows) required for 3 languages and 3 editors, without the \acrshort{LSP}.
+  The right side shows how the \acrshort{LSP} can reduce the amount of work by unifying the common elements of programming language editors into a standard protocol. Figure copied from~\textcite{microsoftLanguageServerExtension2020}.}\label{fig:lsp-m-times-n}
+\end{figure}
+
+\subsection{Base Protocol}\label{sec:base-protocol}
+%TODO
+
+\subsection{Language Server Protocol}
 %TODO
 * LSP from VSCode solves language-to-editor m*n combinations. There is already a need to move EMF from Eclipse to VSCode, it might need to move to IntelliJ etc. in the future.
 * Monaco general frontend. Also Eclipse uses LSP with JDT? IntelliJ??
-* Base protocol \label{sec:base-protocol}
+* Base protocol 
 
 \section{JSON-RPC}
 %TODO
