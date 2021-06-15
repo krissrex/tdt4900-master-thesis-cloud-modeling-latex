@@ -1,0 +1,38 @@
+
+\Gls{JSON-RPC} is a stateless and lightweight protocol for doing \acrlongpl{RPC} (\acrshort{RPC}).
+It works over any transport mechanism that can send and receive text.
+The data in \gls{JSON-RPC} is sent as \gls{JSON}, an object structure serialization format originally from javascript~\cite{json-rpcworkinggroupJSONRPCSpecification2010}.\\
+
+\acrshort{RPC} is a technique to start a procedure on a remote server, as the name suggests.
+A procedure is synonymous with a function or method in programming.
+In \gls{JSON-RPC}, they are called by specifying the name and the parameters in a \textit{Request object}.
+A request object must have the properties \texttt{jsonrpc} and \texttt{method}, and \texttt{id} if it is not a notification.
+It may have \texttt{params}.
+Notifications, as explained for \acrshort{LSP}, do not need a response.
+The \textit{Response object} must have the properties \texttt{jsonrpc}, \texttt{id}, and either \texttt{result} or \texttt{error}.
+The result is the return value for the called procedure.
+The error is an \textit{Error object}, with \texttt{code}, \texttt{message} and \texttt{data}~\cite{json-rpcworkinggroupJSONRPCSpecification2010}.\\
+
+The request parameters in \texttt{params} are either a list of positional parameters, or an object with named parameters.
+If there are no parameters, they can be omitted~\cite{json-rpcworkinggroupJSONRPCSpecification2010}.
+An example of several \gls{JSON-RPC} messages are shown in \cref{lst:json-rpc-example}.
+The arrows indicate the direction.
+
+\begin{lstlisting}[caption={JSON-RPC examples copied from \cite{json-rpcworkinggroupJSONRPCSpecification2010}.}, label={lst:json-rpc-example}]
+Syntax:
+--> data sent to Server
+<-- data sent to Client
+
+RPC call with positional parameters:
+--> {"jsonrpc": "2.0", "method": "subtract", "params": [42, 23], "id": 1}
+<-- {"jsonrpc": "2.0", "result": 19, "id": 1}
+
+RPC call with named parameters:
+--> {"jsonrpc": "2.0", "method": "subtract", 
+     "params": {"subtrahend": 23, "minuend": 42}, "id": 3}
+<-- {"jsonrpc": "2.0", "result": 19, "id": 3}
+
+Notifications:
+--> {"jsonrpc": "2.0", "method": "update", "params": [1,2,3,4,5]}
+--> {"jsonrpc": "2.0", "method": "foobar"}
+\end{lstlisting}
