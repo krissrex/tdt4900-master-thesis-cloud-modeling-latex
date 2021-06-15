@@ -68,7 +68,7 @@ Only the server is the truly reusable component, and must contain all such domai
 
 \paragraph{4} Changing the properties should use the form in the detail view.
 This form may require completions for certain form fields, such as references to names of other model elements (for example an EReference can have autocompletion for the type property, suggesting EClass names).
-The \acrshort{TLSP} can be queried for property completions, given the node ID,an appropriate property identifier and the current contents of the property to complete.\\
+The \acrshort{TLSP} should be queried for property completions, given the node ID, an appropriate property identifier and the current contents of the property to complete.\\
 
 The property changes must be stored immediately in the extension (as a ``dirty'' document or similar), before being applied to the model.
 This is because the editor frontend is transient, and lost if the user changes editor tabs, having to be recreated from the extension's state and the frontend's cache.
