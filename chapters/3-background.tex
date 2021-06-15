@@ -65,6 +65,59 @@ Lastly, a section on open source software project management follows, as they sh
 
 
 \section{\acrlong{EMF} in the \Gls{cloud}}\label{sec:emf-in-cloud}
+
+\paragraph{The Eclipse Cloud Development project}
+As mentioned in the introduction (\cref{sec:intro-eclipse-cloud}), the Eclipse ecosystem is interested in running software in the \gls{cloud}.
+This means that they have spent the last few years creating tools to support \gls{cloud} oriented deployments for software built on \acrlong{EMF}.
+The Eclipse Foundation has an umbrella project called \textit{Eclipse Cloud Development}.
+In the Eclipse Foundation, a project is not a single codebase, but rather a home for frameworks, tools and components.
+Under this umbrella exists projects like \textit{EMF.cloud}, \textit{Eclipse Che}, \textit{Eclipse GLSP}, \textit{Eclipse Theia}, \textit{Eclipse OpenVSX} and more~\cite{beatonEclipseCloudDevelopment2014}.
+
+\subsection{EMF.cloud}
+The Eclipse ecosystem found it suitable to create a new project under this umbrella, and called it \textit{Eclipse EMF.cloud}.
+The description for Eclipse EMF.cloud starts with the following:
+\begin{quote}
+  ``\textit{Eclipse EMF.cloud comprises a set of components that facilitate and simplify the adoption of the Eclipse Modeling Framework (EMF) in cloud-based applications.\\
+  \textelp{}\\
+  As a consequence, by its nature, EMF.cloud is open to any software project that aims to address the challenges and specific requirements of using any aspect of EMF in a browser-based setting or cloud deployment.}''\\
+  ---~\textcite{smithEclipseEMFCloud2019}
+\end{quote}
+
+\paragraph{EMF.cloud software}
+% TODO
+\begin{itemize}
+  \item modelserver
+  \item modelserver-theia
+  \item model-validation
+  \item coffee.editor
+  \item ecore-glsp
+  \item theia-tree-editor
+  \item json-forms-property-view
+  \item modelserver-glsp-integration
+  \item emf-jackson
+\end{itemize}
+
+\subsection{Graphical Language Server Platform (GLSP)}
+% TODO
+* Another under ECD.
+* Protocol like LSP
+
+\subsection{Other Tools by the Eclipse Ecosystem}
+% TODO
+
+\paragraph{JSON-Forms}
+% TODO
+* By EclipseSource.
+
+\paragraph{Crossecore}
+% TODO
+* Multiplatform, typescript codegen.
+* Javascript EMF Runtime.
+
+\paragraph{ecore.js}
+% TODO
+* Under emfjson
+
 %TODO
 * Recent development, EMF.Cloud Model Server, EMF.Cloud EMFJson, GLSP, GLSP Ecore Editor (and ActionMessage\label{par:glsp-actionmessage}), GLSP Coffee Editor, JSON Forms.
 Theia Tree Editor\label{par:theia-tree-editor} (source: \cref{EclipseemfcloudTheiatreeeditor2020}. Schemas and child mapping at \cref{EclipseemfcloudCoffeeeditor2021}. Tutorial: \cref{helmingHowBuildTree2021}) and coffee-example, for those able to compile Theia.
