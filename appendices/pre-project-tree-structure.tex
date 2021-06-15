@@ -1,0 +1,35 @@
+\chapter{Pre-project Data Structure Code}\label{app:pre-project-tree-structure}
+
+The data structure for containing a tree, designed in the pre-project during prototype number two, is shown in \cref{lst:prototype2-node-tree}.\\
+
+The structure for Actions are shown in \cref{lst:prototype2-action-list} and \cref{lst:prototype2-action-schema}.\\
+
+The structure for defining a node hierarchy is shown in \cref{lst:prototype2-hierarchy-schema}.
+
+\lstinputlisting[
+    caption={Javascript code from the WebView for a data model describing the tree nodes. This listing is copied from ``Code listing 5.3'' in~\cite[p.43,44]{rekstadModelingEnvironmentCloud2020}.},
+    label=lst:prototype2-node-tree,
+    language=JavaScript
+]{listings/pre-project/node-tree.js}
+
+\lstinputlisting[
+    caption={Javascript code from the WebView to specify the available actions.
+    This listing is copied from ``Code listing 5.4'' in~\cite[p.45]{rekstadModelingEnvironmentCloud2020}.},
+    label=lst:prototype2-action-list,
+    language=JavaScript
+]{listings/pre-project/available-actions.js}
+
+\lstinputlisting[
+    caption={Javascript code from the WebView to specify default actions and per-node actions.
+    This listing is copied from ``Code listing 5.5'' in~\cite[p.45]{rekstadModelingEnvironmentCloud2020}.},
+    label=lst:prototype2-action-schema,
+    language=JavaScript
+]{listings/pre-project/action-schema.js}
+
+
+\lstinputlisting[
+    caption={Javascript code from the WebView to specify what children a node type can have.
+    This listing is copied from ``Code listing 5.6'' in~\cite[p.45]{rekstadModelingEnvironmentCloud2020}.},
+    label=lst:prototype2-hierarchy-schema,
+    language=JavaScript
+]{listings/pre-project/hierarchy-schema.js}
