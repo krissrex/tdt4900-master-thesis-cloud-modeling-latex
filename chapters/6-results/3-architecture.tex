@@ -13,7 +13,7 @@ This protocol is presented in detail in \cref{sec:tlsp}.
 
 
 \subsection{Changes from pre-project}
-From the pre-project, the high level architecture changed mainly by avoiding the EMF.Cloud Model Server as a separate running process, and is now embedded inside the Tree Language Server~\cite[p.~49]{rekstadModelingEnvironmentCloud2020}.\\
+From the pre-project, the high level architecture (see \cref{fig:pre-project-tree-editor-architecture}) changed mainly by avoiding the EMF.Cloud Model Server as a separate running process, and is now embedded inside the Tree Language Server~\cite[p.~49]{rekstadModelingEnvironmentCloud2020}.\\
 
 On the code level, only the extension code and tree document model are similar.
 The tree document model has changed to accommodate multiple roots, by introducing the \textit{TreeRoot} and moving the \textit{ArchitectureSchema} and \textit{IconConfiguration} as children of these root, instead of the \textit{TreeDocument}.
