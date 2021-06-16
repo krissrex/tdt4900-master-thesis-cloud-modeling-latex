@@ -1,0 +1,201 @@
+A central design result is the constructs used to represent trees in an editor.
+These constructs are referred to as the \textbf{domain model} or simply \textbf{model} in this section (not to be confused with an \acrshort{Ecore} model).
+This representation is what the frontend presents to a user, and what the extension and server is using to communicate over \acrfull{TLSP}.
+Knowing this model is essential for communicating how the design works.
+This is because it is used as the ``ubiquitous language'' formed by Domain-driven design (see \cref{sec:ddd} and \cite{evansDomaindrivenDesignTackling2004}).
+Note that \textbf{the domain model is generic for all trees and unaware of \acrshort{EMF}}.
+This is because it aims to be a domain model for the \acrshort{TLSP}, reuseable for other use cases than \acrshort{EMF} editing.
+This section will explain where some of the names come from, and what these data structures look like.\\
+
+\subsection{Borrowed Terms}
+
+\paragraph{Trees}
+When words like tree, node, root and children are used, they refer to the concepts for tree structures described in \cref{sec:tree-structures}.
+A tree has exactly one root.
+The root can have nodes as children, and these can have children again.
+A node has a name and an icon that can represent it in a hierarchical tree structure.
+
+\paragraph{Icon}
+An icon is a visual representation --- a picture, illustration, symbol --- that represents some information about a node.
+An icon can show how one node differs from another, like what type it is, or it can show if a node is invalid or not.
+
+\paragraph{DataUri}
+This is a more technical term.
+The trees will be displayed on the web, with icons.
+A way to store icons as text is using the HTML data-uri scheme.
+It is just text, but has a semantic meaning.
+When set as the image source in a web browser, it will be displayed as a picture.
+A data-uri starts with a prefix which specifies the scheme, the content type and the encoding, for example: \lstinline|data:image/gif;base64,|.
+Then, it is followed by the encoded image.
+
+\paragraph{Document}
+Because this is for an editor, the concept of documents are borrowed from \gls{VSCode}.
+A document is the editor's representation of a file that the user wants to modify.
+When a editor window is open in an \acrshort{IDE}, this editor shows a single document.
+The document can be opened, modified, saved, renamed and so on.
+
+
+\subsection{The Domain Model}
+
+The domain model is specified in this thesis by using \gls{TypeScript}, but it can be translated to other languages, such as java.\\
+
+A brief summary of the more exotic features of \gls{TypeScript} may be helpful for the reader:
+Note that the `?' means optional or nullable.
+\gls{TypeScript} can also ``alias'' types, meaning a new type can be defined by simply renaming an existing type.
+This can put more meaning into types like \texttt{string} and \texttt{number}, especially when they are reused in multiple places.
+Some builtin interfaces are used, like \texttt{Array} (a list) and \texttt{Record} (an object, or dictionary/map-like structure with keys and values).\\
+
+The domain model will now be presented.
+It consists of the following elements: \texttt{TreeDocument}, \texttt{TreeRoot}, \texttt{TreeNode}, \texttt{NodeIcon}, \texttt{IconConfiguration}, \texttt{HierarchyConfiguration}, \texttt{Action}, \texttt{ActionEvent}, \texttt{ActionConfiguration} and \texttt{EditorState}.
+It also defines the following aliases for strings: \texttt{ActionId}, \texttt{IconDataUri}, \texttt{NodeId} and \texttt{NodeType}.
+These concepts are explained below.
+
+\paragraph{TreeDocument}
+The main data structure is the \texttt{TreeDocument}, in \cref{lst:result-tree-document}.
+This holds a list of \texttt{TreeRoot}s.
+A document can have multiple roots, because there can be related trees.
+For example in \acrshort{EMF}, the \texttt{.genmodel} file has a related \texttt{.ecore} file.
+Opening the GenModel would also show the \gls{Ecore} model, in an editor with two roots.
+
+\begin{lstlisting}[language=Typescript, label={lst:result-tree-document}, caption={[TreeDocument]TreeDocument TypeScript code.}]
+interface TreeDocument {
+  roots: Array<TreeRoot>;
+}
+\end{lstlisting}
+
+\paragraph{TreeRoot}
+The \texttt{TreeRoot} in \cref{lst:result-tree-root} holds references to the tree's root node.
+It also holds the configurations for how the nodes should be given icons, what actions a user can perform on the nodes, and what a valid node hierarchy looks like.
+The actions, hierarchy and icons use the \texttt{type} property of \texttt{TreeNode} to enforce this.
+The \texttt{TreeRoot} has an id as well, to separate it from other roots.
+This id must be unique inside the TreeDocument.\\
+
+A \texttt{TreeRoot} does not require a root node, for example in the case the \texttt{TreeRoot} was just created or the node was deleted.
+
+\begin{lstlisting}[language=Typescript, label={lst:result-tree-root}, caption={[TreeRoot]TreeRoot TypeScript code.}]
+interface TreeRoot {
+  id: string;
+  rootNode?: TreeNode;
+  actions: ActionConfiguration;
+  hierarchy: HierarchyConfiguration;
+  icons?: IconConfiguration;
+}
+\end{lstlisting}
+
+
+\paragraph{TreeNode}
+For representing the nodes themselves, there is the \texttt{TreeNode} in \cref{lst:result-tree-node}.
+It has an id that is unique in the \texttt{TreeDocument}.
+The id is a string, but aliased to \texttt{NodeId} in \gls{TypeScript}.\\
+
+Next, the \texttt{TreeNode} has a \texttt{type}, which is very important.
+This type is a string, for example ``EClass'' or ``EAttribute'', and decides the icon, the allowed child nodes, and the possible actions a user can perform on this node.
+The string is aliased as \texttt{NodeType} in the model.\\
+
+The \texttt{name} is what shows up in the hierarchical tree structure when presented to the user.
+It also reflects a property the user can edit.
+The name can for example be ``MyClass'', ``Organization'' or ``NTNU''.\\
+
+To help inform the user what a node represents, the \texttt{documentation} property can hold a help string.
+The user interface could show this on hover, or when a node is selected in a designated help area.\\
+
+The \texttt{TreeNode} holds instances of other \texttt{TreeNode}s in the \texttt{children}-property.
+This is what enables the tree structure to be represented.\\
+
+Sometimes, a node can be special, for example invalid.
+To indicate this, the optional \texttt{iconOverride} can specify a new icon instead of the one from the \texttt{TreeRoot}'s icon configuration.\\
+
+The last property is the \texttt{EditorState}.
+This has the properties \texttt{selected} and \texttt{collapsed}, used to hold presentation information about the node.
+Being collapsed means that the children are not shown.
+
+\begin{lstlisting}[language=Typescript, label={lst:result-tree-node}, caption={[TreeNode]TreeNode TypeScript code.}]
+interface TreeNode {
+  id: NodeId;
+  type: NodeType;
+  name?: string;
+  documentation?: string;
+  children: Array<TreeNode>;
+  iconOverride?: IconDataUri | NodeIcon;
+  editorState?: EditorState;
+}
+\end{lstlisting}
+
+
+\paragraph{Action}
+As mentioned, a user can perform actions.
+These can be validating an \gls{Ecore} model, creating a new dynamic instance, and so on.
+This is represented by an \texttt{Action} in \cref{lst:results-action}.
+The purpose of the \texttt{Action} is to show the user something they can perform, but only contain enough information so it can be sent back to the Tree Language Server to be performed there.
+Essentially, an \texttt{Action} is like a reference to a procedure on the server.\\
+
+The action has an \texttt{id}, which is unique in the \texttt{TreeRoot}.
+This is what the server uses to know which procedure should be executed.
+The \texttt{name} and optional \texttt{icon} are for presenting the \texttt{Action} to the user.
+
+\begin{lstlisting}[language=Typescript, label={lst:results-action}, caption={[Action]Action TypeScript code.}]
+interface Action {
+  id: ActionId;
+  name: string;
+  icon?: IconDataUri;
+}
+\end{lstlisting}
+
+\paragraph{ActionConfiguration}
+The list of all \texttt{Action}s live under the \texttt{TreeRoot}, inside the \texttt{ActionConfiguration}.
+The intention is that the user is presented with an action bar, or other list of actions, which can change depending on the selected \texttt{TreeNode}.
+This \texttt{ActionConfiguration} in \cref{lst:result-action-config} also specifies what actions are always shown in such an action bar, in the \texttt{defaultActionbarActions}.\\
+
+The mapping of \texttt{ActionId}s to lists of \texttt{NodeType}s in \texttt{nodeActions} is used when a node is selected.
+Each id can be examined to see if it supports the given \texttt{NodeType}.
+The type is supported if it is present in that \texttt{ActionId}'s list.
+
+
+\begin{lstlisting}[language=Typescript, label={lst:result-action-config}, caption={[ActionConfiguration]ActionConfiguration TypeScript code.}]
+interface ActionConfiguration {
+  availableActions: Array<Action>;
+  defaultActionbarActions?: Array<ActionId>;
+  nodeActions?: Record<ActionId, Array<NodeType>>;
+}
+\end{lstlisting}
+
+
+\paragraph{ActionEvent}
+When the user triggers an action from the frontend, it is sent as an \texttt{ActionEvent} to the server.
+The \texttt{ActionEvent} is shown in \cref{lst:result-action-event}.
+To reference which \texttt{Action} was triggered, the \texttt{ActionId} is set in the \texttt{action} property.
+The server may also want to know what \texttt{TreeRoot} the selected node was in, at the time of triggering the action.
+Because actions can operate on specific nodes, like creating a new dynamic instance in \acrshort{EMF}, the currently selected \texttt{TreeNode}'s id are set as the \texttt{targetNodes}.
+
+\begin{lstlisting}[language=Typescript, label={lst:result-action-event}, caption={[ActionEvent]ActionEvent TypeScript code.}]
+interface ActionEvent {
+  targetNodes?: Array<NodeId>;
+  action: ActionId;
+  targetRoot: TreeRoot;
+}
+\end{lstlisting}
+
+\paragraph{NodeIcon and IconDataUri}
+A \texttt{TreeNode} and an \texttt{Action} can have icons.
+There are also icons in the \texttt{TreeRoot}'s \texttt{IconConfiguration}.
+A single image is specified as \texttt{IconDataUri}, which is just an alias to a string type.\\
+However, for more complex icons like the nodes', an editor may want to layer or alter the icons.
+It could be to add multiplicity information, validity state, or other variants of an icon.
+This is supported through composition with the \texttt{NodeIcon}.
+It defines a list of \texttt{IconDataUri}s, which are drawn from bottom to top, stacked on each other.
+
+\paragraph{HierarchyConfiguration}
+The final element presented is the \texttt{HierarchyConfiguration} in \cref{lst:result-hierarchy-config}.
+The \texttt{roots} specify what is allowed to be a \texttt{TreeRoot}'s \texttt{rootNode}.
+For example, ``EPackage'' could be such a \texttt{NodeType}.\\
+
+The \texttt{allowedChildren} specifies a mapping between a parent's \texttt{NodeType} and its possible children's \texttt{NodeType}.
+This is designed with node creation an drag-and-drop in mind.
+A mapping could for example be ``EClass'' to ``EAttribute'', ``EAnnotation'' and ``EReference''\footnote{This mapping is an example, and not complete.}.
+
+\begin{lstlisting}[language=Typescript, label={lst:result-hierarchy-config}, caption={[HierarchyConfiguration]HierarchyConfiguration TypeScript code.}]
+interface HierarchyConfiguration {
+  roots: Array<NodeType>;
+  allowedChildren: Record<NodeType, Array<NodeType>>;
+}
+\end{lstlisting}
