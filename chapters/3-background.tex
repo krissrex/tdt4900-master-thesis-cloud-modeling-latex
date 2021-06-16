@@ -71,11 +71,11 @@ As mentioned in the introduction (\cref{sec:intro-eclipse-cloud}), the Eclipse e
 This means that they have spent the last few years creating tools to support \gls{cloud} oriented deployments for software built on \acrlong{EMF}.
 The Eclipse Foundation has an umbrella project called \textit{Eclipse Cloud Development}.
 In the Eclipse Foundation, a project is not a single codebase, but rather a home for frameworks, tools and components.
-Under this umbrella exists projects like \textit{EMF.cloud}, \textit{Eclipse Che}, \textit{Eclipse GLSP}, \textit{Eclipse Theia}, \textit{Eclipse OpenVSX} and more~\cite{beatonEclipseCloudDevelopment2014}.
+Under this umbrella exists projects like \textit{EMF.Cloud}, \textit{Eclipse Che}, \textit{Eclipse GLSP}, \textit{Eclipse Theia}, \textit{Eclipse OpenVSX} and more~\cite{beatonEclipseCloudDevelopment2014}.
 
-\subsection{EMF.cloud}
-The Eclipse ecosystem found it suitable to create a new project under this umbrella, and called it \textit{Eclipse EMF.cloud}.
-The description for Eclipse EMF.cloud starts with the following:
+\subsection{EMF.Cloud}
+The Eclipse ecosystem found it suitable to create a new project under this umbrella, and called it \textit{Eclipse EMF.Cloud}.
+The description for Eclipse EMF.Cloud starts with the following:
 \begin{quote}
   ``\textit{Eclipse EMF.cloud comprises a set of components that facilitate and simplify the adoption of the Eclipse Modeling Framework (EMF) in cloud-based applications.\\
   \textelp{}\\
@@ -83,8 +83,16 @@ The description for Eclipse EMF.cloud starts with the following:
   ---~\textcite{smithEclipseEMFCloud2019}
 \end{quote}
 
-\paragraph{EMF.cloud software}
-% TODO
+\paragraph{EMF.Cloud software}
+The components provided by EMF.Cloud are still in active development.
+Most of them center around building a modeling environment in \gls{Theia}, for existing \acrshort{EMF} models.
+The example case that is used is a ``Coffee brewing model''.
+Because much of the work targets Theia, the Eclipse ecosystem uses Theia Extensions.
+This means they can not be used in \gls{Gitpod}, because the \acrshort{IDE} has to be replaced with their customized Theia.
+However, much of the work here is still relevant, as components to use in a \gls{VSCode} extension, and as design to draw inspiration from.\\
+
+The EMF.Cloud project currently provides these components, according to \cite{tobiasortmayrEclipseemfcloudEmfcloud2021}:
+
 \begin{itemize}
   \item modelserver
   \item modelserver-theia
@@ -97,24 +105,58 @@ The description for Eclipse EMF.cloud starts with the following:
   \item emf-jackson
 \end{itemize}
 
-\subsection{Graphical Language Server Platform (GLSP)}
-% TODO
-* Another under ECD.
-* Protocol like LSP
+The most relevant components for this thesis are detailed in the following subsections.
+
+\subsubsection{Model Server}
+The EMF.Cloud Model Server provides a web server for working with \acrshort{EMF} models.
+While \acrshort{EMF} already support model loading, manipulation and serialization in the \acrshort{EMF} runtime \acrshort{API}, this server exposes these to the web.
+It does so by providing a \gls{REST} \acrshort{API} for working with models, and \gls{WebSocket} channels for subscribing to change events.
+The Model Server also manages a ``shared editing domain'' for the loaded models, and changes models using \acrshort{EMF} \texttt{Command}s~\cite{foundationEMFCloud}.\\
+
+This Model Server is already used in other EMF.Cloud components, like the coffee editor and ecore-glsp~\cite{eugenneufeldEclipseemfcloudCoffeeeditor2021,ninadoschekEclipseemfcloudEcoreglsp2021}.
+
+\subsubsection{Theia Tree Editor}
+Theia Tree Editor is a framework for creating master-detail tree editors~\cite{foundationEMFCloud}.
+It uses the Theia extension mechanism, and uses core components of \gls{Theia} itself~\cite{rekstadModelingEnvironmentCloud2020}.
+This hinders reuse in other \acrshortpl{IDE} like \gls{VSCode}.
+However, the data structures and configuration schemas used in the Theia Tree Editor are good sources for design inspiration.
+
+\subsubsection{Coffee Editor}
+The Coffee Editor is an example application, trying to demonstrate the use of EMF.Cloud components in a real \gls{cloud} deployment.
+This editor uses \gls{Theia}, JSON-Forms, \acrshort{GLSP}, a code generator, and the Model Server~\cite{foundationEMFCloud}.
+This editor is interesting because it applies the technologies, demonstrating their use, purpose and value.
+It also demonstrates the use of a Model Server shared among multiple editing components, like the GLSP and Theia Tree Editor working on the same backing coffee \acrshort{EMF} model instances.
+
+\subsection{Graphical Language Server Platform (GLSP)}\label{sec:glsp}
+
+This is another project under the Eclipse Cloud Development project.
+The \acrfull{GLSP} is a framework for building diagram editors in the web.
+The editors can either be standalone or integrated into \gls{Theia} and \gls{VSCode}.
+The \acrshort{GLSP} defines its own \acrfull{LSP} for diagrams~\cite{eclipsefoundationGLSP2020}.
+A figure from the official website is shown in \cref{fig:glsp-overview}.\\
+
+This is a good source of design inspiration, because it both works with \acrshort{EMF} models, and it applies the \acrlong{LSP} architecture to a new domain other than text editing.
+
+\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+  \centering
+  \includegraphics[width=\textwidth]{figures/pre-project/glsp-overview.png}
+  \caption[GLSP Overview]{A diagram of GLSP. A web based diagram editor shows the diagram obtained from a Graphical Model Editor Client. This client talks to a graphical model server over the Graphical Language Server Protocol. Copied from \cite{eclipsefoundationGLSP2020}.}\label{fig:glsp-overview}
+\end{figure}
+
 
 \subsection{Other Tools by the Eclipse Ecosystem}
 % TODO
 
-\paragraph{JSON-Forms}
+\subsubsection{JSON-Forms}\label{sec:json-forms}
 % TODO
 * By EclipseSource.
 
-\paragraph{Crossecore}
+\subsubsection{Crossecore}
 % TODO
 * Multiplatform, typescript codegen.
 * Javascript EMF Runtime.
 
-\paragraph{ecore.js}
+\subsubsection{ecore.js}
 % TODO
 * Under emfjson
 
