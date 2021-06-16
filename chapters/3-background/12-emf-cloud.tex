@@ -53,6 +53,14 @@ Theia Tree Editor is a framework for creating master-detail tree editors~\cite{f
 It uses the Theia extension mechanism, and uses core components of \gls{Theia} itself~\cite{rekstadModelingEnvironmentCloud2020}.
 This hinders reuse in other \acrshortpl{IDE} like \gls{VSCode}.
 However, the data structures and configuration schemas used in the Theia Tree Editor are good sources for design inspiration.
+A diagram of its \texttt{Node} interface (for tree nodes) is shown in \cref{fig:theia-tree-editor-nodes}.
+
+
+\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+  \centering
+  \includegraphics[width=\textwidth]{figures/pre-project/theia-tree-editor-node.png}
+  \caption[Class Hierarchy of Theia Tree Editor Nodes]{A class hierarchy of the tree nodes in Theia Tree Editor. Class properties and methods are not shown. The \texttt{Node} interface extends several different interfaces, picking up various properties from each. Only the \texttt{Node} interface is in the Theia Tree Editor library itself. The other interfaces are in the core \gls{Theia} codebase. Adopted from ``Figure 2.7'' in \cite[p.~15]{rekstadModelingEnvironmentCloud2020}}\label{fig:theia-tree-editor-nodes}
+\end{figure}
 
 \subsubsection{Coffee Editor}
 The Coffee Editor is an example application, trying to demonstrate the use of EMF.Cloud components in a real \gls{cloud} deployment.
