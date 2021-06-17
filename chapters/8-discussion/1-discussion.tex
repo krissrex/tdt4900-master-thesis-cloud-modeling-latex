@@ -33,6 +33,28 @@ However, this code needs to communicate across processes to integrate it into a 
 \gls{VSCode} itself has no way of reaching inside the process, but can use standard mechanisms like streams (\textit{stdin/stdout}), sockets, and HTTP requests.
 This makes it possible to avoid re-implementing all of \acrshort{EMF} for a javascript runtime.
 
+\section{Reuse of EMF java code}
+
+Using a server component in the tree editor allows implementing it with java.
+This in turn opens for reuse of the existing \acrshort{EMF} java runtime \acrshort{API}, related \acrshort{EMF} libraries and the components used in \gls{Eclipse}.
+
+\paragraph{Java server that reuses EMF}
+Because \gls{VSCode} extensions can run compiled programs, and not only javascript extension code, java can be used.
+This in turn opens for using the official \acrshort{EMF} runtime \acrshort{API}, and the official \gls{Ecore} metamodel implementation.
+These allow reflective access to any \acrshort{EMF} models.
+It also saves effort, because it reuses existing code.
+A contributing \gls{open source} developer already familiar with \acrshort{EMF} will also find it intuitive to contribute on such a server component.
+It also removes the risk of using third party \gls{EMF} runtime \acrshort{API} implementations, like CrossEcore, which are not as battle tested as the java one\footnote{This solution tried using CrossEcore-generated TypeScript in the editor frontend, but scrapped it because the underlying library and code generator had bugs.}.\\
+
+Additionally, it lets the server implementation use any \acrshort{EMF} tools already developed for java, like solutions for storage, change management, change-transactions and so on.
+
+\paragraph{The EMF.Cloud Model Server can be embeded in the server}
+Instead of adding another process, another communication step, and another components to manage, the EMF.Cloud Model Server can be used from java.
+The server is itself made with java, and has an extensible design.
+The design implementation in this thesis demonstrated that this kind of use is possible.
+Instead of having a \gls{REST} \acrshort{API} library control the EMF.Cloud Model Server, the internally used components are extracted and put behind the server's \acrshort{TLSP} implementation.
+These components implement several editing-related features, like scanning for al model files, loading \acrshort{EMF} \texttt{Resource}s and other useful features\footnote{It provides \texttt{EditingDomain}s, and processes \acrshort{EMF} \texttt{Command}s It also provides UI Schemas for models, to use with JSON-Forms.}.
+
 
 \section{Creating a Tree Editor for VSCode Requires Substantial Effort}
 
@@ -134,9 +156,3 @@ The editor frontend can be reused by an unrelated tree editing project.
 The \acrshort{EMF} \acrshort{TLSP} server can be reused as an alternative to EMF.Cloud Model Server.
 If the server contains the core of \acrshort{EMF} editing, the external interface (\acrshort{TLSP}) could be replaced if not needed\footnote{Just like the implemented server did with EMF.Cloud Model Server's \gls{REST} \acrshort{API}.}.
 
-
-\section{Reuse of EMF}
-* By using a java server, the java code written for EMF is reused.
-* The EMF.Cloud Model Server can be used from java code, without REST.
-* The ReflectiveItemProvider can be used on all \acrshort{EMF} models, but does not always produce good labels.
-* Reusing Eclipse IDE editing functionality for EMF is not obvious.
