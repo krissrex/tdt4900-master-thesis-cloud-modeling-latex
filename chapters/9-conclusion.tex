@@ -1,10 +1,20 @@
 \chapter{Conclusion}\label{chap:conclusion}
 
-% TODO
+This thesis started by finding a way to enable modeling using \acrlong{EMF} in the \gls{cloud}, to solve Objective 1.
+A pre-project suggested creating a tree editor for \gls{Gitpod}, by creating a \gls{VSCode} extension.
+This thesis then designed an extension which used a software architecture and protocol that drew inspiration from the \acrlong{LSP} and \acrlong{GLSP} designs.
+The thesis also presented a way to implement a tree editor with this architecture, and a method which extracts functional requirements from the existing \acrshort{EMF} tree editors in \gls{Eclipse} through use cases.
+The architecture is a three component system: a generic tree editor frontend, a \gls{VSCode} extension, and an \acrshort{EMF}-specific server.
+This architecture also entailed using a protocol, dubbed the \acrfull{TLSP}, between the \gls{VSCode} extension and the server.
+This design was implemented up to the point it could successfully render \acrshort{EMF} models in \gls{Gitpod} with \gls{VSCode}.\\
 
-* Identified tree editor as core for editing EMF in pre-project.
-* (Objective 1) Developed a design for vscode extension using TLSP to edit EMF models in the cloud.
-* TLSP can become the next of the LSP variants, after GLSP.
-* The amount of work is substantial, and real value of TLSP comes after adoption in IDEs and other languages.
-* (Objective 3) A TLSP architecture eases migration and creates reusable software components.
-* (Objective 2) Publishing online is only the beginning of open sourcing, more effort is needed before contributions come.
+The successful design and implementation of this architecture means it can be the basis of a new sibling protocol to \acrshort{LSP} and \acrshort{GLSP}: the \acrshort{TLSP}.
+This can be used by other tools that undergo a similar migration to the \gls{cloud}. 
+This design also created encapsulated and reusable components.
+It can also ease future migration of \acrshort{EMF} to another \acrlong{IDE}, because the \acrshort{EMF} logic is contained in a reusable server, independent of \gls{VSCode}.
+This means it solves Objective 3: An architecture to enable future related IDE migrations.\\
+
+Lastly, this thesis produced an \gls{open source} project for the editor and \acrshort{TLSP}.
+However, open sourcing software requires more effort than what is currently done to attract contributions.
+Gaining traction online for \gls{open source} is similar to product marketing.
+The amount of effort required to create a viable solution for \gls{cloud} based tree editing in \gls{VSCode} is substantial.
