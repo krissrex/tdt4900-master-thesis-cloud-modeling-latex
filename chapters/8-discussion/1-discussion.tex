@@ -80,21 +80,60 @@ Only after all this, comes the direct payoffs for the project itself.\\
 
 However, there is another benefit of being \gls{open source}.
 Even if no one wants to contribute, the project can be used as inspiration, code can be copied or ``scavenged for parts'' into other projects.
-This project did this itself, by taking the Base Protocol jsonrpc implementation components from the LSP4J and VSCode LSP projects.
+This project did this itself, by taking the Base Protocol jsonrpc implementation from the \gls{open source} LSP4J and VSCode LSP projects.
 
 
 \section{Designing a Standardized Tree Language Server Protocol}
-* Tree editors can use a standardized and common protocol.
-* Tree editing fits into a xLSP protocol.
-* LSP has a reusable Base Protocol which is easy to use and customize.
-* The Base Protocol has reusable software components, like LSP4J and vscode-jsonrpc.
-* Base Protocol is fit as a bi-directional protocol to support changing models and querying the extension for more info.
-* The language server is stateful.
-* An EMF server may require tweaking from a user to be just right.
-* Designing with small, focused and reusable components can benefit other projects unintentionally. (LSP Base Protocol vscode-jsonrpc, LSP4J jsonrpc)
-* TLSP supports cloud modeling with reusable components
-* Effort is only saved with xLSP if the editor supports it natively, or existing frontend/extension components and server framework exists.
-* It is possible to map EMF models to a generic tree model.
+
+When \acrshort{EMF} first is in the process of moving from \gls{Eclipse} to \gls{VSCode}, choices to make another future migration easier may pay off.
+Standardizing on a protocol for all \gls{cloud} based tree editors, and also isolating all \acrshort{EMF} editing to a single server component can support this.
+
+\paragraph{Tree editors can use a standardized protocol}
+The design work in this thesis has shown that \acrshort{EMF} can be mapped to a generic tree structure.
+This tree structure is free of all \acrshort{EMF} concepts, and thus other domains with tree structures\footnote{For example HTML, XML, JSON and file systems.} could map to the same generic tree structure, and immediately fit into the developed tree editor frontend.
+This tree editor frontend is also demonstrated to be instructed about domain specifics (\acrshort{EMF}) using a generic tree editor protocol: \acrshort{TLSP}.
+Standardizing on such a protocol can give the same benefits seen in \acrshort{LSP} in solving the $m\times{}n$ language--\acrshort{IDE} problem, and more out-of-the-box support for a language when moving to a new \acrshort{IDE} which supports \acrshort{LSP}.
+Eventually, with good adoption, such a protocol could reduce migrations of \acrshort{EMF} to different \acrshortpl{IDE} to become trivial.
+
+\paragraph{EMF may need to migrate IDE again}
+New \acrshortpl{IDE} show up.
+Trends change.
+\gls{VSCode} itself launched in 2015.
+\gls{Eclipse} launched in 2001, while \acrshort{EMF}\footnote{The earliest version the author could find in the Eclipse EMF release page was v1.0.2 in 2003.} launched in 2003.
+While it has been 14 years between \gls{Eclipse} and \gls{VSCode}, it was only 2 years between \gls{VSCode} and \gls{Theia}.
+When \acrshortpl{IDE} become more component-based and reuseable, the available \acrshortpl{IDE} in the market may increase\footnote{A parallel is seen in web browsers, where Google's open source Chromium also is the basis for Microsoft Edge, Vivaldi, Brave, and others.}.
+\gls{Gitpod} itself changed from \gls{Theia} to \gls{VSCode}.
+If a solution had implemented \acrshort{EMF} editing in \gls{Gitpod} a year earlier, tightly coupled to \gls{Theia}, it would already need to transition to \gls{VSCode}.
+There are also non-cloud \acrshortpl{IDE} where \acrshort{EMF} could be integrated.
+For example, IntelliJ is a popular \acrshortpl{IDE} for Java, without any \acrshortpl{EMF} support.
+A premise for this migration, however, is that the other \acrshortpl{IDE} can implement \acrshort{TLSP} and a tree editor frontend.
+
+\paragraph{LSP has a suitable Base Protocol}
+While the \acrlong{LSP} is designed for text editing, its Base Protocol is generic and reusable.
+This Base Protocol can be specialized to support a tree editor protocol.
+A big win for this protocol is that it is proven to work for both \acrshort{LSP} and \acrshort{GLSP}, for text and diagrams respectively, \textbf{and} it has readily available components to create new software.
+The extension in this design reused the \texttt{vscode-jsonrpc} component, directly from the \acrshort{LSP} project.
+The server used the java version of this, from the \texttt{Eclipse LSP4J} project.
+Getting started with the Base Protocol has essentially no upfront development cost.
+If the design is similarly component-based and \acrshort{LSP} independent for the other programming languages supported by \acrshort{LSP}, the Base Protocol may already be available as a dependency/library in other programming languages too.\\
+
+Another advantage of using the Base Protocol, is that it is bi-directional.
+This allows the server to initiate a request to the client.
+When working with \acrshort{EMF}, the model can be changed by the server or other editors (like a diagram editor).
+This bi-directional protocol then allows the server to notify any editor of changes.
+
+\paragraph{Tree editors can use TLSP}
+The standardized protocol can be created on the Base Protocol and become analogous to \acrshort{LSP} for trees.
+The design created in this thesis demonstrates that this is feasible.
+Thus, tree editors can standardize around the \acrfull{TLSP}.
+The current protocol design may need changes, but it should be sufficient as a starting point.
+
+\paragraph{TLSP design creates reusable software}
+Regardless of a wider adoption of \acrshort{TLSP} or not, its design when applied to \acrshort{EMF} tree editing will create more reusable software.
+The editor frontend can be reused by an unrelated tree editing project.
+The \acrshort{EMF} \acrshort{TLSP} server can be reused as an alternative to EMF.Cloud Model Server.
+If the server contains the core of \acrshort{EMF} editing, the external interface (\acrshort{TLSP}) could be replaced if not needed\footnote{Just like the implemented server did with EMF.Cloud Model Server's \gls{REST} \acrshort{API}.}.
+
 
 \section{Reuse of EMF}
 * By using a java server, the java code written for EMF is reused.
