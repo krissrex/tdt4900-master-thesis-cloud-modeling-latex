@@ -38,29 +38,3 @@ This can cause a researcher to create an evaluation which is ultimately positive
 The author has attempted to keep the evaluations related to the original research goals, and grounded in existing practice.
 Regardless, the weakness of unguided evaluation design is there.
 
-
-\section{Further Work}
-
-This thesis has uncovered some new potential areas of research.
-
-\paragraph{Theia or VSCode as a deployment platform}
-The GenModel and code generator can target \gls{Eclipse} as a deployment platform.
-The model gets a plugin generated, and an editor in \gls{Eclipse} for model instances.
-A similar approach can be interesting for deploying a tree editor for model instances, but using \gls{Theia} or \gls{VSCode} instead of \gls{Eclipse}.
-These could potentially reuse the \acrshort{TLSP} as well.
-Doing this would increase the value of \acrshort{EMF}, and further illustrate the values of \acrlong{MDD} and code generation.
-
-\paragraph{Collaborative modeling}
-Modeling is a collaborative task.
-With the move to cloud, and with the increased amount of work from home\footnote{Due to covid-19.}, collaboration can move online as well.
-This is already normal for things like Google Docs, and Jetbrains just added ``Code With Me''.
-Obeo is also developing this for their cloud based Sirius modeling tool.
-When all the editing is done through a protocol like \acrshort{TLSP}, the data could be redirected to multiple clients, meaning multiple students' computers.
-
-\paragraph{Completing the EMF editor}
-A lot of the remaining work is routine design, not research.
-But some remaining parts may be more challenging, such as getting the GenModel working and specializing the editor to properly show a \texttt{.genmodel} file like in \gls{Eclipse}.
-There are also challenges to loading the generated code back into the server, for validations and custom \texttt{ItemProviders}.
-Completing this will make the editor more useful, and also move it closer to a solution suited for industry use, beyond just education.
-
-
