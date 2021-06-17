@@ -1,0 +1,103 @@
+The discussion will look at the implications of the results and their evaluations in a bigger picture.
+Arguments will be presented based on these results, eventually leading to the conclusions in the next chapter.
+
+\section{VSCode as an EMF Tree Editor in the Cloud}
+When moving the \acrlong{EMF} to the cloud, \gls{VSCode} is a suitable \acrshort{IDE} for this.
+It can run as a \gls{cloud} \acrshort{IDE} in \gls{Gitpod}.
+\gls{VSCode} also provides enough mechanisms to build a tree editor, without unreasonable amounts of effort.
+
+\paragraph{VSCode is a better choice than Theia}
+While \gls{Theia} is a product of the Eclipse ecosystem's efforts, it remains a deployment target rather than a standalone \acrshort{IDE}.
+Theia is replaced in \gls{Gitpod} with \gls{VSCode} as the default \acrshort{IDE}.
+The developers struggle to keep feature parity with \gls{VSCode}, as they have to catch up whenever \gls{VSCode} moves forward, while at the same time managing their other tools and components\footnote{The main developers behind \gls{Theia} are the same as those behind \gls{Gitpod} and \gls{Che}, meaning they are spreading their efforts thinly.}.
+The Custom Editor \acrshort{API} for example, came much later to \gls{Theia}\footnote{The API was added in March 2021 to Theia. VSCode released it to the public in March 2020.}.
+Even if \gls{Theia} have more tools from the Eclipse ecosystem for deploying \acrshort{EMF} models, these mostly rely on the Theia Extension mechanism, incompatible with \gls{Gitpod}\footnote{Deploying a Theia Extension requires compilation of Theia, and replacing the entire IDE in Gitpod. Remember that a Theia \textit{Plugin} is equivalent to the VSCode extension concept. A Theia Extension is different and not compatible at all with VSCode.}.
+
+\paragraph{VSCode is extensible enough}
+\gls{VSCode} does not provide tools for creating tree editors.
+However, the extension \acrshort{API} provided by \gls{VSCode} has enough features to build a tree editor.
+The different file extensions can be associated with a customized document editor.
+There are \acrshortpl{API} to perform Commands, such as requesting the extension to create a new file, or some other arbitrary action.
+Developed extensions can be distributed and installed without extra work, bureaucracy or fees/costs.
+This makes \gls{VSCode} a good candidate for extending with \acrshort{EMF} editor capabilities.
+
+\paragraph{VSCode extensions can show a tree editor}
+The Custom Editor \acrshort{API} from \gls{VSCode} allows an extension to freely render an editor using web technologies like HTML, javascript and CSS.
+This is enough flexibility to create a custom tree editor to show hierarchical tree structures with labels and icons, and a property sheet.
+The tree editors in \gls{Eclipse} can be re-implemented on a functional level as a Custom Editor in \gls{VSCode}.
+
+\paragraph{VSCode extensions can run compiled programs}
+The \acrlong{EMF} relies heavily on java as it exists now.
+Because \gls{VSCode} can run compiled programs such as executable \texttt{.jar} files, the existing \acrshort{EMF} code can be ran under \gls{VSCode}.
+However, this code needs to communicate across processes to integrate it into a \gls{VSCode} extension.
+\gls{VSCode} itself has no way of reaching inside the process, but can use standard mechanisms like streams (\textit{stdin/stdout}), sockets, and HTTP requests.
+This makes it possible to avoid re-implementing all of \acrshort{EMF} for a javascript runtime.
+
+
+\section{Creating a Tree Editor for VSCode Requires Substantial Effort}
+
+Even if \gls{VSCode} is \textit{able} to support a tree editor for \acrshort{EMF}, the editor itself has to be created.
+With the current situation, this is a lot of effort.
+
+\paragraph{Many functional requirements}
+No good source can provide all the functional requirements needed for a \acrshort{EMF} tree editor, in a clear and concise manner.
+Existing literature does not provide it, so it must be extracted.
+And because this thesis did not have it as an objective, little effort was spent on formally capturing and describing the requirements.
+The thesis did however attempt to find requirements as an input to the design process, by simulating use cases.
+The discovery is that the amount of requirements is high, and it is hard to separate between necessities and nice-to-haves.
+A proper effort to create \textit{the} tree editor component for all tree editing uses, other than \acrshort{EMF}, needs to do the requirements engineering more formally.
+Especially when the functionality needs to be replicated for other \acrshortpl{IDE} if they are to support \acrshort{TLSP}.
+
+\paragraph{Little comes out of the box}
+Regarding the development of a tree editor in \gls{VSCode}, even the most basic features must be implemented.
+For example, a text input field in a browser will normally let a user right click and select ``undo'', or press \texttt{ctrl Z} to undo.
+In a \gls{VSCode} custom editor, this is not there.
+No context menu shows up at all when right clicking.
+The reasoning might be that the Custom Editor is a blank slate, for any kind of editor.
+But as a developer, one would prefer if an existing framework could provide most of the common and trivial functionality.
+Luckily, the custom editor is still able to use any javascript libraries and frameworks that target a web browser.
+If any existing components can provide a context menu or framework for building editors, they can be used.
+A catch is that they have to conform to the stateless and remote-controlled nature of the Custom Editor's WebView.
+
+\paragraph{High usability demands high effort}
+Because so little comes out of the box, many rudimentary features that are assumed and expected by a user will have to be implemented.
+The existing \gls{Eclipse} and its tools for \acrshort{EMF} were disliked partially for problems with the tools.
+A tree editor in the cloud might not be judged on any ``lighter'' terms by a student, and can be perceived equally bad or worse.
+Installation issues and problems with the cloud based editor need to be minimized, to provide a good user experience.
+And the functionality may have to match the existing high standards of quality that are seen elsewhere on the web and \acrshort{IDE} space.
+Neglecting this may just create another inferior editor, which works against the purpose of increasing \acrshort{MDD} and \acrshort{EMF} adoption.
+
+\paragraph{Open sourcing requires investment before payoff}
+Publishing a project online is not ``open sourcing'' it.
+And developers will not flock to the project as free manpower.
+As evident in the evaluation, a lot of work has to be done on the Readme and project documentation.
+\Gls{open source} projects almost have to be ``sold'' to developers, like commercial products.
+The Readme must clearly convey the purpose, the novelty and usefulness, the functionality and guide the contribution setup for the \gls{open source} project.
+The project also needs a good, memorable name.
+Then it has to be marketed to interested developers, so they can discover it.
+And once contributors come, the project needs a person to manage it, processing any new issues and feature requests, reviewing incoming contribution code and merging pull requests.
+Only after all this, comes the direct payoffs for the project itself.\\
+
+However, there is another benefit of being \gls{open source}.
+Even if no one wants to contribute, the project can be used as inspiration, code can be copied or ``scavenged for parts'' into other projects.
+This project did this itself, by taking the Base Protocol jsonrpc implementation components from the LSP4J and VSCode LSP projects.
+
+
+\section{Designing a Standardized Tree Language Server Protocol}
+* Tree editors can use a standardized and common protocol.
+* Tree editing fits into a xLSP protocol.
+* LSP has a reusable Base Protocol which is easy to use and customize.
+* The Base Protocol has reusable software components, like LSP4J and vscode-jsonrpc.
+* Base Protocol is fit as a bi-directional protocol to support changing models and querying the extension for more info.
+* The language server is stateful.
+* An EMF server may require tweaking from a user to be just right.
+* Designing with small, focused and reusable components can benefit other projects unintentionally. (LSP Base Protocol vscode-jsonrpc, LSP4J jsonrpc)
+* TLSP supports cloud modeling with reusable components
+* Effort is only saved with xLSP if the editor supports it natively, or existing frontend/extension components and server framework exists.
+* It is possible to map EMF models to a generic tree model.
+
+\section{Reuse of EMF}
+* By using a java server, the java code written for EMF is reused.
+* The EMF.Cloud Model Server can be used from java code, without REST.
+* The ReflectiveItemProvider can be used on all \acrshort{EMF} models, but does not always produce good labels.
+* Reusing Eclipse IDE editing functionality for EMF is not obvious.

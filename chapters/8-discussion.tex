@@ -1,22 +1,18 @@
 \chapter{Discussion}\label{chap:discussion}
 
+\input{chapters/8-discussion/1-discussion.tex}
+
+
+\section{Limitations}
 % TODO
+* The agile development methodology does not create a protocol quickly. Cannot present a full and finished protocol.
+* Design Science is not strict with regards to evaluation.
+* Design Science have few concrete guidelines for evaluation.
+* Can the evaluation be trusted? How to separate opinion from knowledge?
+* Much of the design is not instantiated, so it cannot be fully trusted.
+* Not developed with contact with \gls{TDT4250} students (except author).
+* Not developed with contact with Eclipse ecosystem.
 
-* Uncertain if the LSP or GLSP has the best approach (many vs few procedures, action handler, message-relaying)
-
-* Some ideas of LSP are not carried on, like "capability querying". Is it needed? Agile says not yet (YAGNI).
-
-* Suggestions to how the protocol should look or be developed.
-
-* Is the method correct?
-
-* Can the evaluation be trusted?
-
-* Is a tree editor the correct thing to build? EMF adoption may be hindered by:
-  * Bad or missing documentation+guides+examples
-  * Missing genmodel towards web (typescript. cross-ecore tries to address this, but is not stable yet and not configurable with genmodel)
-  * Generated Ecore java API is cumbersome, unintuitive, poorly documented, not fluent.
-  * Ecore is too oriented towards Eclipse as the runtime, with Eclipse specific Design Patterns (Adapter, ItemProvider etc).
 
 \section{Further Work}
 
@@ -24,4 +20,14 @@
 * Move the other aspects of MDD to cloud: dsl, 1
 * Complete the protocol specification
 * Create a fully functional tree editor frontend
-* 
+* Uncertain if the LSP or GLSP has the best approach (many vs few procedures, action handler, message-relaying)
+* Some ideas of LSP are not carried on, like "capability querying". Is it needed? Agile says not yet (YAGNI).
+* Expanding the design for collaborative multi-client editing (ala google docs and Obeo Cloud). 
+* Git and versioning integration?
+* Theia can be used as a deployment environment by customizing it with Theia extensions
+
+* Is a tree editor the correct thing to build? EMF adoption may be hindered by:
+  * Bad or missing documentation+guides+examples
+  * Missing genmodel towards web (typescript. cross-ecore tries to address this, but is not stable yet and not configurable with genmodel)
+  * Generated Ecore java API is cumbersome, unintuitive, poorly documented, not fluent.
+  * Ecore is too oriented towards Eclipse as the runtime, with Eclipse specific Design Patterns (Adapter, ItemProvider etc).
