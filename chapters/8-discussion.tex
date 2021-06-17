@@ -4,30 +4,63 @@
 
 
 \section{Limitations}
-% TODO
-* The agile development methodology does not create a protocol quickly. Cannot present a full and finished protocol.
-* Design Science is not strict with regards to evaluation.
-* Design Science have few concrete guidelines for evaluation.
-* Can the evaluation be trusted? How to separate opinion from knowledge?
-* Much of the design is not instantiated, so it cannot be fully trusted.
-* Not developed with contact with \gls{TDT4250} students (except author).
-* Not developed with contact with Eclipse ecosystem.
+
+Research is not always perfect, and creative design is hard to do in an objective manner.
+This section addresses some limitations, shortcomings and uncertainties of this thesis.
+
+\paragraph{An unufinished instantiation leaves risk in the design}
+Because development takes longer time than what is allocated for a master's thesis, a substantial amount the protocol design is left on a theoretical design stage.
+Many challenges and constrains appear first when the design is implemented, imposed by the surrounding frameworks, \acrshortpl{API} and tools used to create the software.
+Although the author is confident in this thesis' use case evaluation, the results cannot be guaranteed with the utmost certainty before they are all implemented.
+Regardless, the overarching design and protocol should still be valid and contribute new knowledge.
+Most obstacles encountered from here on, are assumed to be possible to work around with minor changes to the protocol.
+
+\paragraph{Agile development causes a protocol to emerge slowly}
+Doing an Agile approach means creating software that works.
+It also means postponing work, instead of having a lot of unfinished work in progress.
+This is good for delivering working software to customers and users, but not for developing a full and complete protocol specification.
+While an agile approach can always back up the validity and usefulness of protocol elements with a working implementation, it may leave unidentified risks for later, contrary to how research aims to tackle risk early.
+It can be argued, however, that Design Science Research uses the build-evaluate cycle exactly to produce correct knowledge, instead of drafts and unproven hypotheses.
+
+\paragraph{Lacking contact with stakeholders and Eclipse ecosystem}
+The developers of tools like Theia Tree Editor, ecore-glsp, JSON-Forms etc. may have deeper insights and knowledge than the author.
+They may be able to suggest better, more pragmatic and effective design solutions.
+They can also verify or disprove, or at least indicate, the need for generic tree editors and protocols for \acrshort{EMF}.
+The author did not actively communicate with the Eclipse ecosystem, outside of two private chats during EclipseCon 2020.
+There has also not been contact with other students of \gls{TDT4250}.
+The main reason is that the course is taught in the autumn, while the master thesis is done during the spring semester.
+However, the author has been a student of \gls{TDT4250} and talked to other classmates during the semester for their opinion on \acrshort{EMF} and \gls{Eclipse}.
+
+\paragraph{Design Science Research methodologies can cause ad-hoc evaluations}
+The literature on Design Science Research says little on how to evaluate.
+There are only abstract, high level recommendations to the forms of evaluation, such as action research, case study, simulation and so on.
+This can cause a researcher to create an evaluation which is ultimately positive of their view, or disregards important aspects.
+The author has attempted to keep the evaluations related to the original research goals, and grounded in existing practice.
+Regardless, the weakness of unguided evaluation design is there.
 
 
 \section{Further Work}
 
-* Develop further to solve: codegen, validation, deployment
-* Move the other aspects of MDD to cloud: dsl, 1
-* Complete the protocol specification
-* Create a fully functional tree editor frontend
-* Uncertain if the LSP or GLSP has the best approach (many vs few procedures, action handler, message-relaying)
-* Some ideas of LSP are not carried on, like "capability querying". Is it needed? Agile says not yet (YAGNI).
-* Expanding the design for collaborative multi-client editing (ala google docs and Obeo Cloud). 
-* Git and versioning integration?
-* Theia can be used as a deployment environment by customizing it with Theia extensions
+This thesis has uncovered some new potential areas of research.
 
-* Is a tree editor the correct thing to build? EMF adoption may be hindered by:
-  * Bad or missing documentation+guides+examples
-  * Missing genmodel towards web (typescript. cross-ecore tries to address this, but is not stable yet and not configurable with genmodel)
-  * Generated Ecore java API is cumbersome, unintuitive, poorly documented, not fluent.
-  * Ecore is too oriented towards Eclipse as the runtime, with Eclipse specific Design Patterns (Adapter, ItemProvider etc).
+\paragraph{Theia or VSCode as a deployment platform}
+The GenModel and code generator can target \gls{Eclipse} as a deployment platform.
+The model gets a plugin generated, and an editor in \gls{Eclipse} for model instances.
+A similar approach can be interesting for deploying a tree editor for model instances, but using \gls{Theia} or \gls{VSCode} instead of \gls{Eclipse}.
+These could potentially reuse the \acrshort{TLSP} as well.
+Doing this would increase the value of \acrshort{EMF}, and further illustrate the values of \acrlong{MDD} and code generation.
+
+\paragraph{Collaborative modeling}
+Modeling is a collaborative task.
+With the move to cloud, and with the increased amount of work from home\footnote{Due to covid-19.}, collaboration can move online as well.
+This is already normal for things like Google Docs, and Jetbrains just added ``Code With Me''.
+Obeo is also developing this for their cloud based Sirius modeling tool.
+When all the editing is done through a protocol like \acrshort{TLSP}, the data could be redirected to multiple clients, meaning multiple students' computers.
+
+\paragraph{Completing the EMF editor}
+A lot of the remaining work is routine design, not research.
+But some remaining parts may be more challenging, such as getting the GenModel working and specializing the editor to properly show a \texttt{.genmodel} file like in \gls{Eclipse}.
+There are also challenges to loading the generated code back into the server, for validations and custom \texttt{ItemProviders}.
+Completing this will make the editor more useful, and also move it closer to a solution suited for industry use, beyond just education.
+
+
