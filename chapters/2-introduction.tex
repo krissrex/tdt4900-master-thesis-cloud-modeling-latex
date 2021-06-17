@@ -188,15 +188,29 @@ Therefore, the solution should apply a software architecture that allows easier 
 The software architecture should also provide guidance or be directly applicable to other tools that work in a similar fashion.
 A bonus objective is if this design can provide instantiated components (artifacts) that are reuseable outside of \acrshort{EMF}.
 
-\iffalse
-\section{Contribution}
-The solution's design will provide knowledge on how existing protocols and architectures can be applied to new domains and use cases.
-The design will explain how a generic tree editor may be implemented for a cloud based \acrshort{IDE}, and specialized for the domain of \gls{EMF} models, providing a reusable set of components and protocol for specialization and use in other domains suited for tree structure editing.\\
-
-Another contribution will be the software artifact, which can be built upon further, to provide an editor for \acrshort{EMF} that students in \gls{TDT4250} may use.
-The artifact will be contributed as a \gls{open source} project.
-\fi
-
 \section{Thesis Structure}
-% Thesis structure ?
-%TODO
+
+The thesis starts by introducing the core problems and context in \cref{chap:introduction}.\\
+
+Next, a substantial amount of background material is presented in \cref{chap:background}.
+This introduces \acrlong{MDD} and how it's practically done in an education context.
+Existing tools for working with \acrshort{EMF} are presented, as they are prior art and crucial for a solution's design.
+Some terminology and theory is presented for trees and tree editors.
+Then \acrshort{EMF} is described in more detail.
+After that, the \gls{VSCode} and \gls{Theia} \acrshortpl{IDE} are introduced, as they are central to the solution.
+Some existing protocols are presented, because they solve analogous problems to what this thesis identifies.
+A section will then follow, describing how the Eclipse ecosystem is itself targeting the \gls{cloud}, and some relevant tools they provide.
+Lastly, the findings of the pre-project are presented.
+The pre-project laid a lot of the initial foundations for this master's thesis.\\
+
+The next chapter details the method used to develop a solution.
+It explains the overarching methodology of Design Science Research, and the finer grained methods used for requirements engineering, development and artifact evaluation.\\
+
+The following results section presents a developed software artifact, a software architecture and a related protocol.
+It also explains the efforts done to increase the likelyhood of success as a \gls{open source} project.\\
+
+After the results, a chapter of evaluation follows.
+This sees how valuable, fit and complete the designs are, as well as how well the project follows \gls{open source} project guidelines.\\
+
+A discussion chapter argues for the implications of the results and evaluation,
+and the final chapter concludes this thesis.
