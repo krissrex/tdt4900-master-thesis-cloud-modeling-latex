@@ -1,0 +1,52 @@
+
+The software architecture has been designed to keep \acrshort{EMF} out of the tree editor frontend and \acrshort{TLSP} protocol.
+The server has been designed to function independently of the \acrshort{IDE}, when it comes to \acrshort{EMF} editing.
+The server also reuses software from \acrshort{EMF} to avoid reimplementation.\\
+
+\subsection{Reusable Components for Related Migrations}
+
+\paragraph{Frontend}
+The frontend instantiation can be further developed to become a high quality component.
+This should provide enough utility and value that other \gls{VSCode} extension developers use it when they need to implement tree editors.\\
+Currently, the tree editor frontend is not good enough for this.
+It is missing a context menu (right click), keyboard navigation, drag-and-drop of nodes, navigation from the \gls{VSCode} problems menu and log\footnote{Text editors can navigate to a specific file and line when the user clicks a specific URI. These are used to link to stack trace source locations, warnings and problems.}.
+The current styling is visually unpleasing, and the user experience is poor.
+None of these are unsolvable problems, but do require substantial effort.
+That is where the value of a single, reuseable and standard tree editor lies: avoiding the effort when it has already been done.
+
+\paragraph{Protocol}
+The protocol is designed independent of \acrshort{EMF}, on the same ideas of the editor frontend.
+When the protocol is specified enough, so it is near complete and highly functional, different \acrshortpl{IDE} can start to support it natively.
+The benefits of \acrshort{LSP} lies in this native \acrshort{IDE} support: the text editors are already made and high quality; the language server implementer only needs to create one component.
+Currently, the protocol is underdeveloped.
+The specified methods have matching functionality in the editor, but do not go further in ``fear'' of specifying invalid or unusable methods.\\
+
+The protocol does not have an official specification document or website.
+The \acrshort{LSP} has this, which serves as the authoritative source for the specification, along with Microsoft's implementation for \gls{VSCode}.
+A protocol should be specified in clear, unambiguous language, and have a clear indication of who the authors and maintainers of the specification is.
+A protocol should also be versioned and have a changelog.
+The current design only specifies the protocol in source code.
+
+\paragraph{Component distribution}
+The current open source project is not very reuseable.
+While the components have a design and architecture to support reusability, they are not published to artifact repositories like maven central and npm.
+This is crucial for reusability in other extension developers' projects, as copying code or downloading compiled binaries is deemed ``dirty'', wrong, and likely to become outdated.
+
+\subsection{Components for Migrating EMF to Other IDEs}
+
+\paragraph{Reusable server}
+The server is developed independent of \gls{VSCode}.
+The only external dependencies are the Java 11 Runtime and a client for the \acrlong{TLSP}.
+The server should contain all the logic related to \acrshort{EMF}.
+The current instantiation has some knowledge inside the \gls{VSCode} extension, like the file types and \gls{VSCode} Command names.
+This is because they must be known before extension activation.
+A future and more complete first party integration of \acrshort{TLSP} into \acrshort{VSCode} could move this knowledge to the protocol instead.
+Regardless, it is a small amount of \acrshort{EMF} knowledge, compared to what the server holds.
+Transition to other \acrshort{IDE} will be easy, if they support \acrshort{TLSP} and can run the server component.
+
+\paragraph{EMF code reuse}
+The server is successfully able to reuse parts of the \acrshort{EMF} framework.
+The \acrshort{EMF} runtime \acrshort{API}, the \gls{Ecore} metamodel, the \texttt{ReflectiveItemProvider} and the EMF.Cloud Model Server are all used.
+A server should reuse other components as well, like the code generator, \gls{OCL} compiler/interpreter, validation framework and so on.
+These are not reused in the instantiation yet, but because of time constraints.
+They are not re-implemented either, which is the ``worst case scenario''.\\

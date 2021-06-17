@@ -166,20 +166,27 @@ Tackling all the aspects of \acrshort{MDD} and \gls{TDT4250} in this thesis is u
 The scope is therefore limited to \textbf{creating and editing \acrshort{EMF} model files}.
 This thesis is also limited in scope in terms of how far a design for a solution is developed and instantiated as code.
 The aim is to prove feasibility of such a design and instantiation, but not to create a fully functional editor with all the features needed to do modeling.
-Instead, \textbf{a software foundation will be established}, where the design and principles can guide \textit{other developer's} further development towards a complete solution.
+Instead, \textbf{a software foundation will be established}, where the design and principles can guide \textit{other developers'} further development towards a complete solution.
 
 \subsection{Objectives}
 
-There are two objectives for this thesis.
+There are three objectives for this thesis.
 
 \paragraph{Objective 1: EMF Modeling in the Cloud}
-The first objective is to perform \acrfull{MDD} by using \acrfull{EMF} in a cloud based \acrshort{IDE}.
-\Gls{Gitpod} with \gls{Theia} is chosen as the \acrshort{IDE}.
-A solution should be able to perform all the tasks needed to teach \acrshort{MDD}, and \gls{Eclipse} should not need to be installed on a student's computer.
+The first objective is to design a solution to enable \acrfull{MDD} with the \acrfull{EMF} in a cloud based \acrshort{IDE}.
+\Gls{Gitpod} with \gls{VSCode} is chosen as the \acrshort{IDE}.
+A solution should be able to support all the modeling tasks needed to teach \acrshort{MDD}, and \gls{Eclipse} should not need to be installed on a student's computer.
 
 \paragraph{Objective 2: Open Source project}
 The artifact should exist longer than the period of work for the master's thesis, and be developed further by contributors other than this thesis' author.
 The artifact should be in a \gls{open source} project, to fit in with the expectations of the Eclipse ecosystem, current trends and expectations of students.
+
+\paragraph{Objective 3: An Architecture to Enable Future Related Migrations to the Cloud}
+This may not be the last time \acrshort{EMF} will be used in a new \acrshort{IDE}.
+And other tools and frameworks may need the same type of migration, as \gls{cloud} adoption increases.
+Therefore, the solution should apply a software architecture that allows easier migration to another \acrshort{IDE}, by providing more reuseable and ``higher abstraction level'' components than what \acrshort{EMF} currently has.
+The software architecture should also provide guidance or be directly applicable to other tools that work in a similar fashion.
+A bonus objective is if this design can provide instantiated components (artifacts) that are reuseable outside of \acrshort{EMF}.
 
 \iffalse
 \section{Contribution}
