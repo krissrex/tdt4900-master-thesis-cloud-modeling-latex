@@ -1,7 +1,7 @@
 @startuml Protocol_startstop_sequence
 
-participant "Tree Editor Extension" as ext
 participant "Tree Editor Frontend" as frontend
+participant "Tree Editor Extension" as ext
 participant "Tree Language Server" as server
 box external #DDDDDD
   participant VSCode as vscode
