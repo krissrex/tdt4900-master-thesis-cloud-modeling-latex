@@ -1,3 +1,23 @@
 \chapter*{Abstract}
 
-% TODO
+Software engineering has an approach called Model-Driven Development (MDD).
+This is taught to students in higher education.
+The approach is reliant on tools, and one such tool is the Eclipse Modeling Framework (EMF).
+While EMF can be used to teach students about MDD, it is unpopular because of its ties to the Eclipse Integrated Development Environment (IDE), causing students to resist learning MDD.
+Cloud based alternatives exist for the Eclipse IDE, like Gitpod with VSCode, which provide benefits in an educational organization.
+However, the EMF tools used in education are not available in these alternatives.
+This thesis tries to enable the cloud based alternatives to support EMF.
+
+The thesis' approach is based on Design Science Research, where a design is created and a software artifact is implemented.
+The design draws inspiration from the Language Server Protocol (LSP) and Graphical Language Server Platform (GLSP), protocols for text and diagram editing.
+These protocols already work in VSCode.
+
+The result is a Tree Editor extension for VSCode.
+EMF models can be edited as trees.
+This extension uses a three component design: a generic tree editor user interface, a VSCode extension, and an EMF specific server.
+The extension and server communicate with a newly designed protocol, the \acrfull{TLSP}.
+
+The resulting implementation can be built upon to work with \acrshort{EMF} modeling in the cloud.
+The \acrshort{TLSP} protocol and software architecture can be used by other tools that need tree editors, that aim to support multiple IDEs as well.
+A wider adoption of \acrshort{TLSP} in IDEs will make migrations of tree editors to other IDEs easy.
+Regardless, the design provides a reusable server for EMF, which can ease migrations of EMF to other IDEs.

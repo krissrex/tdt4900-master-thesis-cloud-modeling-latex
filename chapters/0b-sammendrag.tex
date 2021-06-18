@@ -1,3 +1,23 @@
 \chapter*{Sammendrag}
 
-% TODO
+Programvareutvikling har en tilnærming som kalles Model-Dreven Utvikling (MDD).
+Dette undervises til studenter i høyere utdanning.
+Tilnærmingen er avhengig av verktøy, og et slikt verktøy er Eclipse Modeling Framework (EMF).
+Selv om EMF kan brukes for å lære studenter om MDD, er det upopulært på grun av sin tilknytning til Eclipse Integrated Development Environment (IDE), som gjør at studenter stritter i mot å lære MDD.
+Skybaserte alternativer til Eclipse IDE eksisterer, som Gitpod med VSCode, og de har nyttige egenskaper for en utdanningsorganisasjon.
+Verktøyene i EMF finnes derimot ikke for disse alternativene.
+Denne masteroppgaven prøver å legge til rette for å støtte EMF i de skybaserte alternativene.
+
+Fremgangsmåten i masteroppgaven er basert på Design Science Research, hvor et design blir lagd og en programvare blir utviklet.
+Designet drar inspirasjon fra Language Server Protocol (LSP) og Graphical Language Server Platform (GLSP), protokoller for tekst- og diagramredigering.
+Disse protokollene brukes allerede i VSCode.
+
+Resultatet er en utvidelse for VSCode for redigering av tre-strukturer.
+EMF-modeller kan redigeres som trær.
+Denne utvidelsen består av tre komponenter: et generisk brukergrensesnitt for tre-redigering, en utvidelse for VSCode, og en EMF-spesifikk tjener (server).
+Utvidelsen og serveren snakker med en nylig designet protokoll: \acrfull{TLSP}.
+
+Den resulterende programvaren kan bygges på videre, for å bruke EMF-modellering i skyen.
+TLSP-protokollen og programvarearkitekturen kan brukes av også andre verktøy som trenger tre-redigering, og som sikter på å støtte flere IDE-er.
+En utbredt bruk av TLSP i IDE-er vil gjøre at migrering av tre-redigeringsverktøy til andre IDE-er enkelt.
+Uavhengig av dette, så gir designet en gjenbrukbar server for EMF, som kan forenkle migreringen av EMF til andre IDE-er.
