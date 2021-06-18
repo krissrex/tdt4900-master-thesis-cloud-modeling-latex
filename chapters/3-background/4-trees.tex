@@ -50,3 +50,10 @@ A data structure can be mapped to a tree if it has separate objects with a refer
 The references can not be circular (where a node has a child which is also a parent or grandparent etc.).
 There can be different ways to map to a tree, depending on what properties are used (or not used).
 The labels can also come from various object properties, be derived from them or combine multiple properties into one label.
+
+\paragraph{Editing a tree}
+Common operations on trees either modify the structure, or modify the properties of a node.
+Structural modifications can be to add a new child, to delete a child, or to move a child from one parent to another.
+Nodes can be copied, and pasted on the same parent or other parents, or themselves.
+Less common operations are inserting a new node between a parent and child, turning the latter into a grandchild.
+Likewise, a node can be removed, merging its children into its parent, making them effectively siblings to the removed node.
