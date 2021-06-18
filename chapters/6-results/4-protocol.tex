@@ -89,6 +89,8 @@ The server should create a \texttt{Command} from the \texttt{.edit} framework, i
 The new document state is returned afterwards.
 This is shown in \cref{fig:protocol-changetree}.
 
+Other structural edits, like deleting nodes and moving children to a new parent have a similar sequence, although not shown for brevity.
+
 \begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
   \centering
   \includegraphics[width=\textwidth]{figures/plantuml/Protocol_changetree_sequence.pdf}
