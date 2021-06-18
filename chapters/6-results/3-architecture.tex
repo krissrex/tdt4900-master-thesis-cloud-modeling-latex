@@ -6,7 +6,7 @@ The high level software architecture for the tree editor was shaped mainly by th
 The editor must be a \gls{VSCode} extension, the tree viewer must use the \gls{VSCode} Custom Editor \gls{API}, and the extension must reuse \acrshort{EMF} java code and the EMF.Cloud Model Server.
 This results in a system of three main components: a \textit{Tree editor frontend}, a \textit{Tree editor extension} and a \textit{Tree Language Server}.
 
-Another \acrshort{ASR} is that the model may change, and the rest of the system must respond and be updated.
+Another \acrshort{ASR} is that the underlying document may change, and the rest of the system must respond and be updated.
 Therefore, a bi-directional communication between components is established, and an event driven architecture is used.
 The communication is isolated and standardized in a protocol, called the \textit{Tree Language Server Protocol} (\acrshort{TLSP}).
 This protocol is presented in detail in \cref{sec:tlsp}.
@@ -15,8 +15,8 @@ This protocol is presented in detail in \cref{sec:tlsp}.
 \subsection{Changes from pre-project}
 From the pre-project, the high level architecture (see \cref{fig:pre-project-tree-editor-architecture}) changed mainly by avoiding the EMF.Cloud Model Server as a separate running process, and is now embedded inside the Tree Language Server~\cite[p.~49]{rekstadModelingEnvironmentCloud2020}.\\
 
-On the code level, only the extension code and tree document model are similar.
-The tree document model has changed to accommodate multiple roots, by introducing the \textit{TreeRoot} and moving the \textit{ArchitectureSchema} and \textit{IconConfiguration} as children of these root, instead of the \textit{TreeDocument}.
+On the code level, only the extension code and \texttt{TreeDocument} domain model are similar.
+The \texttt{TreeDocument} has changed to accommodate multiple roots, by introducing the \textit{TreeRoot} and moving the \textit{ArchitectureSchema} and \textit{IconConfiguration} as children of these root, instead of the \textit{TreeDocument}.
 This allows configurations to be different on a per-root basis, which is needed when for example opening both a GenModel and \gls{Ecore} model in the same document.\\
 
 The frontend is different from the pre-project prototype by using the \textit{Vue.js} framework, and implementing actual features.
