@@ -43,11 +43,13 @@ When a Student wants to install an extension to the \acrshort{IDE} in \gls{Gitpo
 The instantiated artifact from this thesis could be uploaded to OpenVSX.
 
 
-\begin{figure}[H]  % order of priority: h here, t top, b bottom, p page
+\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
   \centering
   \includegraphics[width=\textwidth]{figures/plantuml/Gitpod_context.pdf}
   \caption[System context diagram for Gitpod]{A system context diagram for Gitpod. The extension will run inside the Gitpod service, used by a student to do modeling and developing. Gitpod uses git to synchronize code with GitHub. The extensions in Gitpod are downloaded from a service called OpenVSX.}\label{fig:gitpod-system-context}
 \end{figure}
+
+\FloatBarrier
 
 \subsubsection{Containers}
 
@@ -60,7 +62,7 @@ The extension runs in the environment provided by the Workspace.
 For example, the operating system and the available programs are provided by the Workspace, as well as the student's project files.
 If the extension wants to run a java program, the Workspace must have a Java Runtime installed.
 
-\begin{figure}[H]  % order of priority: h here, t top, b bottom, p page
+\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
   \centering
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{figures/plantuml/Tree_Editor_Extension_container.pdf}
   \caption[Gitpod container diagram]{Container diagram for gitpod. The Gitpod system from \cref{fig:gitpod-system-context} is expanded to show its internal components. The \acrshort{IDE} used by Gitpod is \gls{VSCode}.
@@ -69,6 +71,7 @@ If the extension wants to run a java program, the Workspace must have a Java Run
   This extension reads files from the Gitpod workspace, and uses the runtime provided by the workspace such as a Java Runtime Environment.}\label{fig:gitpod-container-diagram}
 \end{figure}
 
+\FloatBarrier
 
 \subsubsection{Components}
 
@@ -79,7 +82,7 @@ The last component is the \textit{Tree Language Server} (TLS, or ``server''), a 
 This is shown in a deployment diagram in \cref{fig:gitpod-deployment-diagram}.\\
 
 
-\begin{figure}[H]  % order of priority: h here, t top, b bottom, p page
+\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
   \centering
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{figures/plantuml/Tree_Editor_Extension_deployment.pdf}
   \caption[Gitpod deployment diagram]{Deployment diagram of Gitpod. The student will use their computer to load the Gitpod website.
@@ -103,6 +106,8 @@ The custom Commands from the \acrshort{IDE}'s Command Palette are provided by th
 
 Any changes to the student's model files are saved to disk by the Tree Language Server.
 The Tree editor frontend is close to stateless, and the Tree editor extension only bridges the Tree editor frontend and the TLS.
+
+\FloatBarrier
 
 \subsubsection{Code}
 
