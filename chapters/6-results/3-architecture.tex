@@ -137,9 +137,9 @@ This is intentional, to increase the clarity, comprehension and the essence of t
 
 \paragraph{Frontend classes}
 A diagram of the frontend is shown in \cref{fig:tree-editor-frontend-code}.
-The execution environment for this is a web browser frame, meaning it has access to the HTML Document Object Model (DOM).
+The execution environment for this is a web browser frame, meaning it has access to the HTML DOM\footnote{Document Object Model, which is how a web browser represents web pages.}.
 It has a view layer using a framework called \textit{Vue.js}.
-The tree document state is held in a state storage called ``Store'', using a library called \textit{Vuex}.
+The frontend's state (\texttt{TreeDocument}) is held in a state storage called ``Store'', using a library called \textit{Vuex}.
 This state can only be changed through explicit mutations and actions.
 This is so the store can intercept changes, and send them to the server via the extension, over the \acrlong{TLSP}.
 The frontend talks to the extension using a \texttt{VSCode} interface, where the actual \gls{VSCode} \acrshort{IDE} injects an implementation.
