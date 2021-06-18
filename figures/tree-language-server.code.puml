@@ -34,7 +34,9 @@ package jsonrpc {
   }
 
   package protocol {
-    interface Client
+    interface Client {
+      setModel(TreeDocument)
+    }
     
     note bottom of Client
       Only to provide typing.
@@ -46,9 +48,11 @@ package jsonrpc {
       initialize(InitializeParams)
       shutdown()
       exit()
-      ping()
       getModel(ModelRequest)
-      getDetectedModelUris()
+      triggerAction(ActionEvent)
+      getNodeProperties(NodeId)
+      changeNodeProperties(PropertyChangeEvent)
+      addChild(AddRequest): TreeDocument
     }
 
     note right of Server 
