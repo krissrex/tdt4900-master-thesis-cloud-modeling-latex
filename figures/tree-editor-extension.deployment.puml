@@ -4,22 +4,22 @@
 Deployment_Node(studentPc, "Student's computer", "windows, mac or linux"){
   Deployment_Node(browser, "Web browser", "Google Chrome, Mozilla Firefox, Apple Safari etc."){
     Container_Boundary(gitpod, "Gitpod website"){
-      Container(treeEditorFrontend, "Tree editor frontend", "TypeScript, HTML, CSS, Vue.js", "The custom rendering of trees, and user interactions happen here. Presented in Theia with the WebView API.")
-      Container_Ext(theiaFrontend, "Theia frontend", "TypeScript, HTML, CSS")
+      Container(treeEditorFrontend, "Tree editor frontend", "TypeScript, HTML, CSS, Vue.js", "The custom rendering of trees, and user interactions happen here. Presented in VSCode with the WebView API.")
+      Container_Ext(vscodeFrontend, "VSCode frontend", "TypeScript, HTML, CSS")
 
-      Rel(theiaFrontend, treeEditorFrontend, "Set tree state")
-      Rel(treeEditorFrontend, theiaFrontend, "Send user modifications on the tree")
+      Rel(vscodeFrontend, treeEditorFrontend, "Set tree state")
+      Rel(treeEditorFrontend, vscodeFrontend, "Send user modifications on the tree")
     }
   }
 }
 
 Deployment_Node(gitpodWorkspace, "Gitpod cloud workspace", "linux, kubernetes, docker"){
-  Container_Boundary(theia, "Theia"){
-    Container_Ext(theiaBackend, "Theia backend", "TypeScript, nodejs")
+  Container_Boundary(vscode, "VSCode"){
+    Container_Ext(vscodeBackend, "VSCode backend", "TypeScript, nodejs")
     Container(treeEditorExtension, "Tree editor extension", "TypeScript, nodejs")
     Container(treeLanguageServer, "Tree Language Server", "java, EMF, EMF.Cloud Model Server")
 
-    Rel(theiaBackend, treeEditorExtension, "Activate")
+    Rel(vscodeBackend, treeEditorExtension, "Activate")
     Rel(treeEditorExtension, treeLanguageServer, "Run as child process")
     BiRel(treeEditorExtension, treeLanguageServer, "Change Ecore model. Get new state", "JSON-RPC, TLSP")
   }
@@ -28,6 +28,6 @@ Deployment_Node(gitpodWorkspace, "Gitpod cloud workspace", "linux, kubernetes, d
   Rel(treeLanguageServer, workspace, "Read and write Ecore models", "EMF Resource, EMF.Cloud Model Server")
 }
 
-BiRel_R(theiaFrontend, theiaBackend, "Remote procedures", "JSON-RPC, WebSockets")
+BiRel_R(vscodeFrontend, vscodeBackend, "Remote procedures", "JSON-RPC, WebSockets")
 
 @enduml

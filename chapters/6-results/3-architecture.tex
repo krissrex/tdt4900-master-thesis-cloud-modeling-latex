@@ -63,8 +63,8 @@ If the extension wants to run a java program, the Workspace must have a Java Run
 \begin{figure}[H]  % order of priority: h here, t top, b bottom, p page
   \centering
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{figures/plantuml/Tree_Editor_Extension_container.pdf}
-  \caption[Gitpod container diagram]{Container diagram for gitpod. The Gitpod system from \cref{fig:gitpod-system-context} is expanded to show its internal components. The \acrshort{IDE} used by Gitpod is \gls{Theia}.
-  The student will interact with Theia, and install the Ecore Tree Editor Extension created from this thesis.
+  \caption[Gitpod container diagram]{Container diagram for gitpod. The Gitpod system from \cref{fig:gitpod-system-context} is expanded to show its internal components. The \acrshort{IDE} used by Gitpod is \gls{VSCode}.
+  The student will interact with VSCode, and install the Ecore Tree Editor Extension created from this thesis.
   This extension will also provide a user interface, which the student uses for modeling.
   This extension reads files from the Gitpod workspace, and uses the runtime provided by the workspace such as a Java Runtime Environment.}\label{fig:gitpod-container-diagram}
 \end{figure}
@@ -84,9 +84,9 @@ This is shown in a deployment diagram in \cref{fig:gitpod-deployment-diagram}.\\
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{figures/plantuml/Tree_Editor_Extension_deployment.pdf}
   \caption[Gitpod deployment diagram]{Deployment diagram of Gitpod. The student will use their computer to load the Gitpod website.
   The Gitpod service will start a computer in a cloud provider, to create a cloud workspace.
-  The student only loads the Theia frontend and Tree editor frontend into their browser.
-  Theia has a backend which runs inside the Workspace, and communicates to the frontend over WebSockets, using JSON-RPC\@.
-  The Theia backend will activate the Tree editor extension, which in turn will start a Tree Language Server.
+  The student only loads the VSCode frontend and Tree editor frontend into their browser.
+  VSCode has a backend which runs inside the Workspace, and communicates to the frontend over WebSockets, using JSON-RPC\@.
+  The VSCode backend will activate the Tree editor extension, which in turn will start a Tree Language Server.
   This Tree Language Server runs java, and reuses the \acrshort{EMF} tooling.
   The Tree editor extension communicates to the Tree Language Server over a well defined protocol, where it asks to read model files, and execute commands to change the models.
   The Tree Language Server uses the Workspace to read and write \texttt{.ecore} files.}\label{fig:gitpod-deployment-diagram}

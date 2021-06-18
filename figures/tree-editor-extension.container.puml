@@ -6,13 +6,13 @@ System_Ext(github, "GitHub")
 System_Ext(openvsx, "OpenVSX")
 
 System_Boundary(gitpod, "Gitpod"){
-  Container_Ext(theia, "Theia", "TypeScript", "IDE")
+  Container_Ext(vscode, "VSCode", "TypeScript", "IDE")
   Container(treeEditor, "Ecore Tree Editor Extension", "TypeScript, java", "The tree editor that modifies Ecore models.")
   ContainerDb_Ext(filesystem, "Workspace", "linux", "The project source code and runtime environment. Ecore model files live here.")
 
-  Rel(student, theia, "Manage project files. Trigger commands. Install extensions")
-  Rel_R(theia, treeEditor, "Install and activate")
-  Rel_L(treeEditor, theia, "Provide editor view. Provide custom commands.")
+  Rel(student, vscode, "Manage project files. Trigger commands. Install extensions")
+  Rel_R(vscode, treeEditor, "Install and activate")
+  Rel_L(treeEditor, vscode, "Provide editor view. Provide custom commands.")
   Rel(student, treeEditor, "View and edit models")
   Rel(filesystem, github, "Clone from and push to")
   Rel(treeEditor, filesystem, "Executes inside, and operates the files")
