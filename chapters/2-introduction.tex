@@ -27,7 +27,7 @@ There are two main types of editors: hierarchical tree editors and graphical dia
 There are also multiple different implementation on the tree editors, based on different underlying frameworks.
 
 \paragraph{The reliance on \gls{Eclipse} is a problem for students.}
-Students don't like to work in Eclipse, because of various issues with usability, errors or stability. %TODO: cite?
+Students don't like to work in Eclipse, because of various issues with usability, errors or stability~\cite{rekstadModelingEnvironmentCloud2020}.
 If a student wants to use \acrshort{EMF} afterwards in their job, they would have to use \gls{Eclipse}, and also convince their team to do it as well.
 Some students see \acrshort{EMF} as being too \gls{Eclipse} related, as well, and incorrectly see it as a tool for only developing Eclipse plugins.
 This results in students resisting to learn \acrshort{EMF}, and also \acrshort{MDD} by implication, because no \acrshort{EMF} alternative is taught.
@@ -86,7 +86,6 @@ This kind of editor has what is known as a \textit{master-detail layout}, where 
 No actor in the Eclipse ecosystem was working on such a tree editor for \gls{Ecore} models for \gls{VSCode}.
 Preliminary searches online did not find such an editor created by anyone outside the Eclipse ecosystem either.
 
-% TODO: add a picture of a tree editor
 
 \paragraph{Initial requirements for a tree editor were chosen.}
 The period of work was constrained to the pre-project and master's thesis, which is from August 2020 to June 2021.
@@ -110,33 +109,22 @@ The code should also be well structured, documented and easy to contribute to fo
 The initial, unrefined functional requirement was that \textbf{\gls{VSCode} should be able to view, edit and save \gls{Ecore} models and model instances in ``.ecore'' and ``.xmi'' files.}
 The pre-project did further work to refine this functional requirement into multiple smaller requirements, and discovered many new ones, by requirements extraction~\cite[p.~47,48]{rekstadModelingEnvironmentCloud2020}.
 As noted in the discussion in \cite[p.~51]{rekstadModelingEnvironmentCloud2020}, the list of functional requirements was not complete.
-% TODO: add requirements as appendix?
 
 
-\paragraph{A software architecture and protocol emerged by analyzing similar solutions.}
+\paragraph{Related software architectures and protocols were analyzed.}
 Because the \acrshort{EMF} tooling had to move to \gls{VSCode} now, it is plausible that it will need to move to another \acrshort{IDE} later in the future.
-This could result in a customized plugin for each editor.
-That problem is also seen in programming languages: every editor needs a plugin for every programming language.
-Microsoft has tried to solve this combinatorial ``\(m{\times}n\)'' problem in \gls{VSCode} by introducing the \acrfull{LSP}.
-This architecture was also used as inspiration for a Eclipse ecosystem project, the \acrfull{GLSP}.
-A similar protocol design could benefit this tree editor, where the \gls{Ecore} language details are isolated in a component reusable across \acrshortpl{IDE}~\cite{rekstadModelingEnvironmentCloud2020}.\\
+The pre-project explored protocols related to this, like \acrfull{LSP} and \acrfull{GLSP}.
 
-The architecture was also inspired by \acrshort{GLSP} in terms of components for the \gls{VSCode} extension.
-A ``generic'' frontend that handles all kinds of tree structures is hosted in a webview inside \gls{VSCode}, and talks to the \gls{VSCode} extension.
-The extension code bridges the \gls{Ecore} specific server to the generic frontend via the previously mentioned protocol~\cite{rekstadModelingEnvironmentCloud2020}.
-
-% TODO: add figure of architecture?
 
 \paragraph{The pre-project used prototypes to verify the feasibility of the architecture.}
-The main issues solved in the pre-project were related to design choices and feasibility.
-It tried to answer if and how such a \gls{Ecore} specific server could be made in java and be executed from the \gls{VSCode} extension itself.
+The main issues solved in the pre-project were related to hypothetical design choices and feasibility.
+It tried to answer if and how java could be executed from the \gls{VSCode} extension, to reuse \acrshort{EMF} code.
 The pre-project also looked for a good data model to support editing of any tree structure, while providing a user interface with high usability and constraints~\cite[p.~24,25]{rekstadModelingEnvironmentCloud2020}.
 
 \paragraph{More work was needed in order to evaluate the pre-project solution.}
 No complete editor was produced during the pre-project.
-Its feasibility was confirmed through several prototypes, however, and a minimal implementation was made.
-This implementation was not completed to the point where it could establish a protocol between the extension and \gls{Ecore} server.
-It could only render an example tree in \gls{VSCode} and \gls{Theia} in \gls{Gitpod}.
+It only proved the possibility of creating a custom frontend, and that extensions could run java programs.
+The entire protocol was unexplored, and no real \acrshort{EMF} data was ever loaded into the frontend.
 This master's thesis will pick up on these results and try develop them further into a usable solution.
 It also aims to create an \gls{open source} repository that is viable and suitable for further development by the Eclipse ecosystem and other master students.
 
